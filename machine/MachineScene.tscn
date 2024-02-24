@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxpk01wb20dkj"]
+
+[ext_resource type="Script" path="res://machine/Machine.cs" id="1_srwm5"]
+
+[node name="MachineScene" type="Node2D"]
+script = ExtResource("1_srwm5")
+PlayCost = 5
+JackpotAmount = 25
+JackpotProbability = 0.1
+NumRolls = 10

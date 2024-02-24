@@ -1,6 +1,7 @@
 using Godot;
+using System;
 
-public partial class Machine : Sprite2D
+public partial class Machine : Node2D
 {
 	/// <summary>
 	/// Cost of the machine in the shop.
@@ -44,21 +45,41 @@ public partial class Machine : Sprite2D
 	public override void _Ready()
 	{
 		base._Ready();
-		GD.Print(Roll());
+		Tick();
 	}
 
 	public void Tick()
 	{
-
+		int Revenue = 0;
+		for(int index = 0; index < NumRolls; index++){
+			Revenue += PlayCost;
+			Revenue -= Roll(0);
+		}
+		GD.Print(Revenue);
 	}
 
 	/// <summary>
 	/// Simulates a guest using the machine.
 	/// </summary>
-	public float Roll()
+	
+	public int Roll(ulong seed)
+	{
+		float random = Probability(seed);
+		if(random <= JackpotProbability){
+			GD.Print("JACKPOT");
+			return JackpotAmount;
+		}
+		else{
+			GD.Print("=(");
+			return 0;
+		}
+	}
+	
+	public float Probability(ulong seed)
 	{
 		var RNG = new RandomNumberGenerator();
 		RNG.Randomize();
+		GD.Seed(seed);
 		float value = RNG.Randf();
 		return value;
 	}
