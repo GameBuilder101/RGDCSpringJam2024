@@ -10,15 +10,23 @@ public partial class MachineManager : Node2D
 	private double Progress = 0.0;
 	private double TimeBetweenTicks = 5.0;
 	private Machine[] Machines;
+	private Node2D[] Locations;
 	
 	[Export]
-	private Node2D[] Locations;
+	private Node LocationHolder;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		instance = this;
-		Machines = new Machine[Locations.Length];
+		int num = LocationHolder.GetChildCount();
+		Locations = new Node2D[num];
+		int index = 0;
+		foreach(Node l in LocationHolder.GetChildren()) {
+			Locations[index] = (Node2D) l;
+			index += 1;
+		}
+		Machines = new Machine[num];
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,7 +39,7 @@ public partial class MachineManager : Node2D
 				if (m == null) {
 					continue;
 				}
-				m.Tick(this);
+				m.Tick();
 			}
 		}
 		if (Moola < 0) {
