@@ -2,5 +2,6 @@
 
 [ext_resource type="Script" path="res://machine_manager/MachineManager.cs" id="1_f37br"]
 
-[node name="MachineManager" type="Node2D"]
+[node name="MachineManager" type="Node2D" node_paths=PackedStringArray("Locations")]
 script = ExtResource("1_f37br")
+Locations = []

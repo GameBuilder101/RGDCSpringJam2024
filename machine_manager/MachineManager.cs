@@ -3,6 +3,9 @@ using System;
 
 public partial class MachineManager : Node2D
 {
+	public static MachineManager instance;
+	
+	private double Suspicion = 0.0;
 	private int Moola = 0;
 	private double Progress = 0.0;
 	private double TimeBetweenTicks = 5.0;
@@ -11,11 +14,10 @@ public partial class MachineManager : Node2D
 	[Export]
 	private Node2D[] Locations;
 	
-	
-	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		instance = this;
 		Machines = new Machine[Locations.Length];
 	}
 
@@ -31,6 +33,9 @@ public partial class MachineManager : Node2D
 		}
 		if (Moola < 0) {
 			// switch to end screen
+		}
+		if (Suspicion > 0.9) {
+			// call the inspector
 		}
 	}
 	

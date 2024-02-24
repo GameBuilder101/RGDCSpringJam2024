@@ -46,7 +46,7 @@ public partial class Machine : Node
         base._Ready();
     }
 
-    public void Tick(MachineManager m)
+    public void Tick()
     {
 
     }
