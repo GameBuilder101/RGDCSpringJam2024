@@ -68,9 +68,9 @@ public partial class MachineRiggingMenu : Node2D
         _playCostLabel.Text = "Payout Per Play: $" + machine.PlayCost;
         _sellCostLabel.Text = "Sell $" + SellCost;
         _jackpotAmountLabel.Text = "Jackpot Cost: $" + machine.JackpotAmount;
-        _suspicionFactorLabel.Text = "Suspicion Factor: " + machine.SuspicionFactor * 100;
+        _suspicionFactorLabel.Text = "Suspicion Factor: " + (int) (machine.SuspicionFactor * 100.0) + "%";
         _numRollsLabel.Text = "Rolls Per Guest: " + machine.NumRolls;
-        _winChanceLabel.Text = machine.JackpotProbability + "%";
+        _winChanceLabel.Text = machine.JackpotProbability * 100 + "%";
     }
 
     public void IncreaseWinChance()

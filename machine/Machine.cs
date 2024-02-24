@@ -123,7 +123,7 @@ public partial class Machine : Node2D
 	
 	public void SuspicionUpdater()
 	{
-		SuspicionFactor = ((DefaultJackpotProbability/JackpotProbability)*DefaultSuspicionFactor)-DefaultSuspicionFactor;
+		SuspicionFactor = DefaultJackpotProbability * DefaultSuspicionFactor / JackpotProbability;
 		if(SuspicionFactor < 0){
 			SuspicionFactor = 0;
 		}
