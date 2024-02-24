@@ -4,7 +4,7 @@ using System;
 public partial class MachineShop : Node2D
 {
 	public static MachineShop instance;
-	private int ViewIndex;
+	public int ViewIndex {get; private set;}
 	
 	[Export]
 	private BuyNew buyNew;

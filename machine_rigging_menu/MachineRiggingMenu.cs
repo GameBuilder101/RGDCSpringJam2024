@@ -4,7 +4,6 @@ public partial class MachineRiggingMenu : Node2D
 {
 	public static MachineRiggingMenu Instance { get; private set; }
 
-    private int _targetMachineIndex;
 	private Machine _targetMachine;
     /// <summary>
     /// Gets or sets the location index of the target machine.
@@ -46,17 +45,11 @@ public partial class MachineRiggingMenu : Node2D
 
     }
 
-    public void HideRiggingMenu()
-    {
-        base.Hide();
-        MachineManager.instance.focus(-1);
-    }
-
     public void Sell()
     {
         MachineManager.instance.Moola += SellCost;
-        MachineManager.instance.removeMachine(_targetMachineIndex);
-        HideRiggingMenu();
+        MachineManager.instance.removeMachine(MachineShop.instance.ViewIndex);
+        MachineShop.instance.HideShop();
     }
 
     public void OpenOnMachine(Machine machine)

@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://machine/Machine.cs" id="1_srwm5"]
 
-[node name="MachineScene" type="Node2D"]
+[node name="MachineScene" type="Sprite2D"]
+texture_filter = 2
 script = ExtResource("1_srwm5")
 ShopCost = 500
 PlayCost = 5

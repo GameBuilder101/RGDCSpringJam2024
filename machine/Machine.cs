@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Machine : Node2D
+public partial class Machine : Sprite2D
 {
 	[Export]
 	public String name {get; private set;}
@@ -60,6 +60,7 @@ public partial class Machine : Node2D
 	private Machine(Machine m) {
 		this.name = m.name;
 		this.MachineTexture = m.MachineTexture;
+		this.Texture = m.MachineTexture;
 		this.ShopCost = m.ShopCost;
 		this.PlayCost = m.PlayCost;
 		this.JackpotAmount = m.JackpotAmount;

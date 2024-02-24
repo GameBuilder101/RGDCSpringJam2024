@@ -59,7 +59,7 @@ public partial class MachineManager : Node2D
 	}
 	
 	public void placeMachine(int index, Machine m) {
-		m.Position = Locations[index].Position;
+		m.Position = Locations[index].Position + new Vector2(0, -8);
 		Machines[index] = m;
 		AddChild(m);
 	}
