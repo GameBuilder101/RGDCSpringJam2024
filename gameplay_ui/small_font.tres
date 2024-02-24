@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cgkpf3snkxnom"]
+
+[ext_resource type="FontFile" uid="uid://iq11tfbk1qdr" path="res://gameplay_ui/coolville.ttf" id="1_escyp"]
+
+[resource]
+default_font = ExtResource("1_escyp")
+default_font_size = 10
