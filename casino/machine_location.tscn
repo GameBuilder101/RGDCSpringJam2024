@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc53oe3kgmt80"]
+
+[ext_resource type="Texture2D" uid="uid://bq8a5dehcxb7u" path="res://casino/selection_diamond.png" id="1_mxj48"]
+
+[node name="MachineLocation" type="Node2D"]
+
+[node name="SelectionDiamond" type="Sprite2D" parent="."]
+texture = ExtResource("1_mxj48")
