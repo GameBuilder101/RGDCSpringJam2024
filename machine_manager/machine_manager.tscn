@@ -4,6 +4,4 @@
 
 [node name="MachineManager" type="Node2D" node_paths=PackedStringArray("LocationHolder")]
 script = ExtResource("1_f37br")
-LocationHolder = NodePath("LocationHolder")
-
-[node name="LocationHolder" type="Node" parent="."]
+LocationHolder = NodePath("")

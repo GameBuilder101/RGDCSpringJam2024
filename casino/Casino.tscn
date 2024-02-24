@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dojadhcakpdba"]
+
+[ext_resource type="PackedScene" uid="uid://cqspb4krtx0jk" path="res://machine_manager/machine_manager.tscn" id="1_kw7cu"]
+
+[node name="Casino" type="Node2D"]
+
+[node name="MachineManager" parent="." node_paths=PackedStringArray("LocationHolder") instance=ExtResource("1_kw7cu")]
+LocationHolder = NodePath("../Locations")
+
+[node name="Locations" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
