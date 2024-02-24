@@ -3,11 +3,17 @@ using System;
 
 public partial class Machine : Node2D
 {
+	
+	[Export]
+	public Texture2D CrapsZero {get; private set;}
+	
+	
 	/// <summary>
 	/// Cost of the machine in the shop.
 	/// </summary>
 	[Export]
 	public int ShopCost { get; private set; }
+	
 
 	/// <summary>
 	/// Cost for a guest to play the machine (payed to the casino owner).
