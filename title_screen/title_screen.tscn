@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckjmmo02eipxu"]
+
+[ext_resource type="Script" path="res://title_screen/TitleScreen.cs" id="1_qmqmw"]
+[ext_resource type="Texture2D" uid="uid://caxruiclyrbby" path="res://title_screen/IMG_1785.png" id="2_w588t"]
+[ext_resource type="Texture2D" uid="uid://c3ulteue43g5y" path="res://title_screen/IMG_1877.png" id="3_y0svh"]
+[ext_resource type="Texture2D" uid="uid://e1mmc6jy7ln0" path="res://title_screen/IMG_1916.png" id="4_ilkb8"]
+
+[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_qmqmw")
+framesPerSecond = 2.0
+frames = Array[Texture2D]([ExtResource("2_w588t"), ExtResource("3_y0svh"), ExtResource("4_ilkb8")])
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(179, 116)
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("2_w588t")
