@@ -1,17 +1,91 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckjmmo02eipxu"]
+[gd_scene load_steps=7 format=3 uid="uid://ckjmmo02eipxu"]
 
 [ext_resource type="Script" path="res://title_screen/TitleScreen.cs" id="1_qmqmw"]
 [ext_resource type="Texture2D" uid="uid://caxruiclyrbby" path="res://title_screen/IMG_1785.png" id="2_w588t"]
 [ext_resource type="Texture2D" uid="uid://c3ulteue43g5y" path="res://title_screen/IMG_1877.png" id="3_y0svh"]
 [ext_resource type="Texture2D" uid="uid://e1mmc6jy7ln0" path="res://title_screen/IMG_1916.png" id="4_ilkb8"]
+[ext_resource type="Theme" path="res://gameplay_ui/big_font.tres" id="5_u50um"]
+[ext_resource type="Texture2D" uid="uid://bvewoahciuf6n" path="res://title_screen/tutorial_background.png" id="6_xmqd2"]
 
-[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("sprite")]
+[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("sprite", "startLabel", "instructions", "instructionsLabel", "underline")]
 script = ExtResource("1_qmqmw")
 framesPerSecond = 2.0
 frames = Array[Texture2D]([ExtResource("2_w588t"), ExtResource("3_y0svh"), ExtResource("4_ilkb8")])
-sprite = NodePath("Sprite2D")
+flashInterval = 0.6
+flashColors = PackedColorArray(0.243137, 1, 0.992157, 1, 0.972549, 0.243137, 1, 1, 0.972549, 1, 0.243137, 1)
+sprite = NodePath("Animation")
+startLabel = NodePath("PressStart")
+instructions = NodePath("Node")
+instructionsLabel = NodePath("InstructionsTitle")
+underline = NodePath("InstructionsUnderline")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(179, 116)
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 384.0
+offset_bottom = 256.0
+color = Color(0, 0, 0, 1)
+
+[node name="Animation" type="Sprite2D" parent="."]
+position = Vector2(192, 128)
 scale = Vector2(0.105, 0.105)
 texture = ExtResource("2_w588t")
+
+[node name="PressStart" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = 192.0
+offset_right = 320.0
+offset_bottom = 215.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_u50um")
+theme_override_colors/font_color = Color(0.243137, 1, 0.992157, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+text = "PRESS ANY BUTTON"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Instructions0" type="Sprite2D" parent="Node"]
+texture_filter = 1
+position = Vector2(192, 128)
+texture = ExtResource("6_xmqd2")
+
+[node name="InstructionsTitle" type="Label" parent="."]
+top_level = true
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 142.0
+offset_top = 48.0
+offset_right = 242.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("5_u50um")
+text = "HOW TO PLAY"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="InstructionsUnderline" type="ColorRect" parent="."]
+top_level = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -192.0
+offset_right = 60.0
+offset_bottom = -191.0
+grow_horizontal = 2
+grow_vertical = 0
