@@ -4,13 +4,14 @@ using System;
 public partial class MachineManager : Node2D
 {
 	public static MachineManager instance;
-	
-	private double Suspicion = 0.0;
-	private int Moola = 0;
+
+	public double Suspicion { get; set; } = 0.0;
+	public int Moola { get; set; }
 	private double Progress = 0.0;
 	private double TimeBetweenTicks = 5.0;
 	private Machine[] Machines;
-	private Node2D[] Locations;
+	private MachineLocation[] Locations;
+	public int FocussedLocation {get; private set;} = -1;
 	
 	[Export]
 	private Node LocationHolder;
@@ -20,7 +21,7 @@ public partial class MachineManager : Node2D
 	{
 		instance = this;
 		int num = LocationHolder.GetChildCount();
-		Locations = new Node2D[num];
+		Locations = new MachineLocation[num];
 		int index = 0;
 		MachineLocation loc;
 		foreach(Node l in LocationHolder.GetChildren()) {
@@ -62,5 +63,20 @@ public partial class MachineManager : Node2D
 	public void removeMachine(int index) {
 		Machines[index].QueueFree();
 		Machines[index] = null;
+	}
+	
+	public Machine getMachine(int index) {
+		return Machines[index];
+	}
+	
+	// -1 to unfocus
+	public void focus(int index) {
+		if (FocussedLocation != -1) {
+			Locations[FocussedLocation].Focus = false;
+		}
+		FocussedLocation = index;
+		if (FocussedLocation != -1) {
+			Locations[FocussedLocation].Focus = true;
+		}
 	}
 }

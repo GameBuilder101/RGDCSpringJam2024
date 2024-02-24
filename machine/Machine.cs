@@ -3,11 +3,19 @@ using System;
 
 public partial class Machine : Node2D
 {
+	[Export]
+	public String name {get; private set;}
+	
+	[Export]
+	public Texture2D MachineTexture { get; private set; }
+	
+	
 	/// <summary>
 	/// Cost of the machine in the shop.
 	/// </summary>
 	[Export]
 	public int ShopCost { get; private set; }
+	
 
 	/// <summary>
 	/// Cost for a guest to play the machine (payed to the casino owner).
@@ -24,7 +32,13 @@ public partial class Machine : Node2D
 	/// The chance for a guest to win the jackpot. 0 means no chance, and 1 means 100% chance.
 	/// </summary>
 	[Export]
-	public float JackpotProbability { get; private set; }
+	public float JackpotProbability {get; set;}
+	/// <summary>
+	/// The default chance for a guest to win the jackpot.
+	/// </summary>
+	[Export]
+	public float DefaultJackpotProbability { get; private set; }
+	
 	/// <summary>
 	/// The amount of times that a machine gets rolled in a tick.
 	/// </summary>
@@ -32,10 +46,14 @@ public partial class Machine : Node2D
 	public int NumRolls { get; private set; }
 
 	/// <summary>
-	/// The amount that suspicion increases each tick that a win has not occured.
+	/// The amount that suspicion increases each tick that a win has not occured. The formula for this is defined in Ready()
+	/// </summary>
+	public float SuspicionFactor;
+	/// <summary>
+	/// The default amount that suspicion increases each tick that a win has not occured.
 	/// </summary>
 	[Export]
-	public float SuspicionFactor { get; private set; }
+	public float DefaultSuspicionFactor { get; private set; }
 
 	/*
 	[Export]
@@ -45,17 +63,22 @@ public partial class Machine : Node2D
 	public override void _Ready()
 	{
 		base._Ready();
+		SuspicionUpdater();
+		GD.Print(SuspicionFactor);
 		Tick();
 	}
 
 	public void Tick()
 	{
+		SuspicionUpdater();
 		int Revenue = 0;
 		for(int index = 0; index < NumRolls; index++){
 			Revenue += PlayCost;
 			Revenue -= Roll(0);
 		}
 		GD.Print(Revenue);
+		MachineManager.instance.Moola += Revenue;
+		MachineManager.instance.Suspicion += (double)SuspicionFactor;
 	}
 
 	/// <summary>
@@ -82,6 +105,14 @@ public partial class Machine : Node2D
 		GD.Seed(seed);
 		float value = RNG.Randf();
 		return value;
+	}
+	
+	public void SuspicionUpdater()
+	{
+		SuspicionFactor = ((DefaultJackpotProbability/JackpotProbability)*DefaultSuspicionFactor)-DefaultSuspicionFactor;
+		if(SuspicionFactor < 0){
+			SuspicionFactor = 0;
+		}
 	}
 
 	/// <summary>
