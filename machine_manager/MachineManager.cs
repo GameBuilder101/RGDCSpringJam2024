@@ -26,7 +26,7 @@ public partial class MachineManager : Node2D
 		if (Progress >= TimeBetweenTicks) {
 			Progress -= TimeBetweenTicks;
 			foreach (Machine m in Machines) {
-				Moola += m.Tick();
+				m.Tick(this);
 			}
 		}
 		if (Moola < 0) {
