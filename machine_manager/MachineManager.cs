@@ -4,9 +4,9 @@ using System;
 public partial class MachineManager : Node2D
 {
 	public static MachineManager instance;
-	
-	private double Suspicion = 0.0;
-	private int Moola = 0;
+
+	public double Suspicion { get; set; } = 0.0;
+	public int Moola { get; set; }
 	private double Progress = 0.0;
 	private double TimeBetweenTicks = 5.0;
 	private Machine[] Machines;

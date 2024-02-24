@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://juk3wn0oyo6x"]
+[gd_scene load_steps=12 format=3 uid="uid://juk3wn0oyo6x"]
 
 [ext_resource type="Texture2D" uid="uid://b6ghw8ubbxs4h" path="res://gameplay_ui/inspect_background.png" id="1_30nh8"]
+[ext_resource type="Script" path="res://machine_rigging_menu/MachineRiggingMenu.cs" id="1_i8wyf"]
 [ext_resource type="Texture2D" uid="uid://bdm82djtj6w24" path="res://gameplay_ui/small_button.png" id="2_hrvep"]
 [ext_resource type="Texture2D" uid="uid://c2ja12fg6argj" path="res://gameplay_ui/small_button_highlighted.png" id="3_4j31a"]
 [ext_resource type="Theme" uid="uid://b2hh8747xw4e8" path="res://gameplay_ui/big_font.tres" id="4_c8isf"]
@@ -11,7 +12,15 @@
 [ext_resource type="Texture2D" uid="uid://govsub7t4prr" path="res://gameplay_ui/subtract_button_highlighted.png" id="8_3jboq"]
 [ext_resource type="Theme" uid="uid://cgkpf3snkxnom" path="res://gameplay_ui/small_font.tres" id="8_oakfx"]
 
-[node name="MachineShop" type="Node2D"]
+[node name="MachineShop" type="Node2D" node_paths=PackedStringArray("_machineSprite", "_playCostLabel", "_sellCostLabel", "_jackpotAmountLabel", "_suspicionFactorLabel", "_numRollsLabel", "_winChanceLabel")]
+script = ExtResource("1_i8wyf")
+_machineSprite = NodePath("Machine")
+_playCostLabel = NodePath("Play Cost")
+_sellCostLabel = NodePath("Sell Button/Label")
+_jackpotAmountLabel = NodePath("Jackpot Amount")
+_suspicionFactorLabel = NodePath("Suspicion Factor")
+_numRollsLabel = NodePath("Num Rolls")
+_winChanceLabel = NodePath("Win Chance")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1
