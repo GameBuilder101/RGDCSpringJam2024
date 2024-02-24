@@ -7,25 +7,34 @@ public partial class LocationControl : Control
 	private Sprite2D Diamond;
 	
 	public int index;
+	private bool _f;
+	public bool Focus {get {return _f;} set {_f = value; updateDiamond();}}
+	private bool _m;
+	private bool MouseOn {get {return _m;} set {_m = value; updateDiamond();}}
 	
 	public override void _Ready()
     {
         base._Ready();
-		Diamond.Visible = false;
+		Focus = false;
+		MouseOn = false;
     }
 	
 	private void OnMouseEntered()
 	{
-	    Diamond.Visible = true;
+	    MouseOn = true;
 	}
 
 	private void OnMouseExited()
 	{
-	    Diamond.Visible = false;
+	    MouseOn = false;
 	}
 	
 	private void OnPressed()
 	{
-	    // Replace with function body.
+	    MachineShop.instance.ShowSlot(index);
+	}
+	
+	private void updateDiamond() {
+		Diamond.Visible = Focus || MouseOn;
 	}
 }
