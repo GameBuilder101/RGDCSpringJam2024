@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqspb4krtx0jk"]
+
+[ext_resource type="Script" path="res://machine_manager/machine_manager.cs" id="1_f37br"]
+
+[node name="MachineManager" type="Node2D"]
+script = ExtResource("1_f37br")
