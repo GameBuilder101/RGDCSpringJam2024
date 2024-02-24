@@ -22,8 +22,11 @@ public partial class MachineManager : Node2D
 		int num = LocationHolder.GetChildCount();
 		Locations = new Node2D[num];
 		int index = 0;
+		MachineLocation loc;
 		foreach(Node l in LocationHolder.GetChildren()) {
-			Locations[index] = (Node2D) l;
+			loc = (MachineLocation) l;
+			Locations[index] = loc;
+			loc.setIndex(index);
 			index += 1;
 		}
 		Machines = new Machine[num];

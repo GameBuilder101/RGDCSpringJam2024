@@ -1,8 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://cc53oe3kgmt80"]
+[gd_scene load_steps=9 format=3 uid="uid://cc53oe3kgmt80"]
 
+[ext_resource type="Script" path="res://casino/MachineLocation.cs" id="1_kno7u"]
 [ext_resource type="Texture2D" uid="uid://bq8a5dehcxb7u" path="res://casino/selection_diamond.png" id="1_mxj48"]
+[ext_resource type="Script" path="res://casino/LocationControl.cs" id="2_0b6n1"]
 
-[node name="MachineLocation" type="Node2D"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nm038"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_764n8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nfvwk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lc4ap"]
+
+[sub_resource type="Theme" id="Theme_fbfty"]
+Button/styles/focus = SubResource("StyleBoxEmpty_nm038")
+Button/styles/hover = SubResource("StyleBoxEmpty_764n8")
+Button/styles/normal = SubResource("StyleBoxEmpty_nfvwk")
+Button/styles/pressed = SubResource("StyleBoxEmpty_lc4ap")
+
+[node name="MachineLocation" type="Node2D" node_paths=PackedStringArray("loc")]
+script = ExtResource("1_kno7u")
+loc = NodePath("Button")
+
+[node name="Button" type="Button" parent="." node_paths=PackedStringArray("Diamond")]
+texture_filter = 1
+offset_left = -21.0
+offset_top = -21.0
+offset_right = 21.0
+offset_bottom = 21.0
+theme = SubResource("Theme_fbfty")
+action_mode = 0
+flat = true
+script = ExtResource("2_0b6n1")
+Diamond = NodePath("../SelectionDiamond")
 
 [node name="SelectionDiamond" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("1_mxj48")
+
+[connection signal="mouse_entered" from="Button" to="Button" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="Button" to="Button" method="OnMouseExited"]
+[connection signal="pressed" from="Button" to="Button" method="OnPressed"]
