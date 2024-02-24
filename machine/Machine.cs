@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class Machine : Node
+public partial class Machine : Sprite2D
 {
 	/// <summary>
 	/// Cost of the machine in the shop.

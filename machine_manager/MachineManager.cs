@@ -28,6 +28,9 @@ public partial class MachineManager : Node2D
 		if (Progress >= TimeBetweenTicks) {
 			Progress -= TimeBetweenTicks;
 			foreach (Machine m in Machines) {
+				if (m == null) {
+					continue;
+				}
 				m.Tick(this);
 			}
 		}
@@ -40,10 +43,13 @@ public partial class MachineManager : Node2D
 	}
 	
 	public void placeMachine(int index, Machine m) {
+		m.Position = Locations[index].Position;
 		Machines[index] = m;
+		AddChild(m);
 	}
 	
 	public void removeMachine(int index) {
+		Machines[index].QueueFree();
 		Machines[index] = null;
 	}
 }
