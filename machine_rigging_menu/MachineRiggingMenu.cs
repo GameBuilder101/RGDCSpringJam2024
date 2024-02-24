@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 public partial class MachineRiggingMenu : Node2D
 {
@@ -60,17 +61,23 @@ public partial class MachineRiggingMenu : Node2D
         _machineSprite.Texture = machine.MachineTexture;
         _playCostLabel.Text = "Payout Per Play: $" + machine.PlayCost;
         _sellCostLabel.Text = "Sell $" + SellCost;
-        _jackpotAmountLabel.Text = "Jackpot Cost: $" + machine.JackpotAmount;
-        _suspicionFactorLabel.Text = "Suspicion Factor: " + (int) (machine.SuspicionFactor * 100.0) + "%";
-        _numRollsLabel.Text = "Rolls Per Guest: " + machine.NumRolls;
-        _winChanceLabel.Text = machine.JackpotProbability * 100 + "%";
+        UpdateDynamicDisplay();
+		_numRollsLabel.Text = "Rolls Per Guest: " + machine.NumRolls;
     }
+
+	private void UpdateDynamicDisplay() {
+		_winChanceLabel.Text = Math.Round(TargetMachine.JackpotProbability * 100) + "%";
+		_suspicionFactorLabel.Text = "Suspicion Factor: " + Math.Round(TargetMachine.SuspicionFactor * 100.0) + "%";
+	}
 
     public void IncreaseWinChance()
     {
         TargetMachine.JackpotProbability += 0.05f;
         if (TargetMachine.JackpotProbability > 1.0f)
             TargetMachine.JackpotProbability = 1.0f;
+		RoundWinChance();
+		TargetMachine.SuspicionUpdater();
+		UpdateDynamicDisplay();
     }
 
     public void DecreaseWinChance()
@@ -78,5 +85,12 @@ public partial class MachineRiggingMenu : Node2D
         TargetMachine.JackpotProbability -= 0.05f;
         if (TargetMachine.JackpotProbability < 0.0f)
             TargetMachine.JackpotProbability = 0.0f;
+		RoundWinChance();
+		TargetMachine.SuspicionUpdater();
+		UpdateDynamicDisplay();
     }
+	
+	public void RoundWinChance() {
+		TargetMachine.JackpotProbability = (float) Math.Round(TargetMachine.JackpotProbability, 2);
+	}
 }
