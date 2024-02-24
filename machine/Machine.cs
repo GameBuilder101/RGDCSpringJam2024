@@ -69,6 +69,8 @@ public partial class Machine : Node2D
 			Revenue += PlayCost;
 			Revenue -= Roll(0);
 		}
+		MachineManager.instance.Moola += Revenue;
+		MachineManager.instance.Suspicion += (double)SuspicionFactor;
 		GD.Print(Revenue);
 	}
 
