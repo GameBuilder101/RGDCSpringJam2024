@@ -11,7 +11,7 @@ public partial class MachineManager : Node2D
 	private double TimeBetweenTicks = 5.0;
 	private Machine[] Machines;
 	private MachineLocation[] Locations;
-	private int FocussedLocation = -1;
+	public int FocussedLocation {get; private set;} = -1;
 	
 	[Export]
 	private Node LocationHolder;

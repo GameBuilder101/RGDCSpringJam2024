@@ -3,6 +3,8 @@ using System;
 
 public partial class Machine : Node2D
 {
+	[Export]
+	public String name {get; private set;}
 	
 	[Export]
 	public Texture2D MachineTexture { get; private set; }
@@ -46,7 +48,6 @@ public partial class Machine : Node2D
 	/// <summary>
 	/// The amount that suspicion increases each tick that a win has not occured. The formula for this is defined in Ready()
 	/// </summary>
-	[Export]
 	public float SuspicionFactor;
 	/// <summary>
 	/// The default amount that suspicion increases each tick that a win has not occured.

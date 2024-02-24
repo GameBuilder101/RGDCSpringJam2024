@@ -7,7 +7,7 @@ public partial class MachineShop : Node2D
 	private int ViewIndex;
 	
 	[Export]
-	private Node2D BuyNew;
+	private BuyNew buyNew;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -17,12 +17,19 @@ public partial class MachineShop : Node2D
 	}
 	
 	public void ShowSlot(int index) {
+		// get slot data
 		ViewIndex = index;
+		// if clicked on same spot 2x, unfocus it and hide
+		if (index == MachineManager.instance.FocussedLocation) {
+			HideShop();
+			return;
+		}
+		// focus on the correct slot on board
 		MachineManager.instance.focus(index);
 		Machine display = MachineManager.instance.getMachine(index);
-		if (display == null) {
-			BuyNew.Visible = true;
-		}
+		// if empty, show buy new screen
+		buyNew.Visible = display == null;
+		// if no errors, show
 		Visible = true;
 	}
 	
