@@ -8,6 +8,8 @@ public partial class MachineShop : Node2D
 	
 	[Export]
 	private BuyNew buyNew;
+	[Export]
+	private MachineRiggingMenu machineRiggingMenu;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -29,6 +31,12 @@ public partial class MachineShop : Node2D
 		Machine display = MachineManager.instance.getMachine(index);
 		// if empty, show buy new screen
 		buyNew.Visible = display == null;
+		machineRiggingMenu.Visible = display != null;
+		if (display == null) {
+			buyNew.UpdateDisplay();
+		} else {
+			machineRiggingMenu.OpenOnMachine(display);
+		}
 		// if no errors, show
 		Visible = true;
 	}

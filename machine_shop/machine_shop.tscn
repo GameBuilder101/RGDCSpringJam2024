@@ -1,13 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://brhocaqo0jdyd"]
+[gd_scene load_steps=15 format=3 uid="uid://brhocaqo0jdyd"]
 
 [ext_resource type="Texture2D" uid="uid://b6ghw8ubbxs4h" path="res://gameplay_ui/inspect_background.png" id="1_mvyaj"]
 [ext_resource type="Script" path="res://machine_shop/MachineShop.cs" id="1_uvfg6"]
 [ext_resource type="PackedScene" uid="uid://drh46xmeyvrse" path="res://machine_shop/buy_new.tscn" id="3_61s6k"]
 [ext_resource type="Texture2D" uid="uid://c80s8pnn22okp" path="res://machine/slot_machine_0.png" id="3_iarv2"]
-[ext_resource type="Texture2D" uid="uid://bdm82djtj6w24" path="res://gameplay_ui/small_button.png" id="4_0vxbb"]
-[ext_resource type="Texture2D" uid="uid://c2ja12fg6argj" path="res://gameplay_ui/small_button_highlighted.png" id="5_ch3lx"]
-[ext_resource type="Script" path="res://machine_shop/CancelButton.cs" id="5_wbhbc"]
-[ext_resource type="Theme" path="res://gameplay_ui/big_font.tres" id="6_p2tyv"]
 [ext_resource type="PackedScene" uid="uid://bdade3ye4s3ir" path="res://machine/MachineScene.tscn" id="8_5eohu"]
 [ext_resource type="Texture2D" uid="uid://b5noid4ntjqky" path="res://machine/craps_table_0.png" id="9_4lmo0"]
 [ext_resource type="Texture2D" uid="uid://n2g66mkm4mur" path="res://machine/craps_table_1.png" id="10_ufsdh"]
@@ -17,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dkwi3akixvssm" path="res://machine/poker_table_2.png" id="14_idq16"]
 [ext_resource type="Texture2D" uid="uid://5u76xyyf8pxx" path="res://machine/slot_machine_1.png" id="16_7yggo"]
 [ext_resource type="Texture2D" uid="uid://bh2gjcsuittdv" path="res://machine/slot_machine_2.png" id="17_i33i4"]
+[ext_resource type="PackedScene" uid="uid://juk3wn0oyo6x" path="res://machine_rigging_menu/machine_rigging_menu.tscn" id="18_a5tbs"]
 
 [node name="MachineShop" type="Node2D" node_paths=PackedStringArray("buyNew")]
 script = ExtResource("1_uvfg6")
@@ -29,32 +26,6 @@ texture = ExtResource("1_mvyaj")
 
 [node name="BuyNew" parent="." node_paths=PackedStringArray("MachineTypes") instance=ExtResource("3_61s6k")]
 MachineTypes = [NodePath("../MachineTypes/craps_0"), NodePath("../MachineTypes/craps_1"), NodePath("../MachineTypes/craps_2"), NodePath("../MachineTypes/poker_0"), NodePath("../MachineTypes/poker_1"), NodePath("../MachineTypes/poker_2"), NodePath("../MachineTypes/slot_0"), NodePath("../MachineTypes/slot_1"), NodePath("../MachineTypes/slot_2")]
-
-[node name="Cancel Button" type="TextureButton" parent="."]
-texture_filter = 1
-offset_left = 272.0
-offset_top = 192.0
-offset_right = 360.0
-offset_bottom = 216.0
-texture_normal = ExtResource("4_0vxbb")
-texture_pressed = ExtResource("5_ch3lx")
-texture_hover = ExtResource("5_ch3lx")
-script = ExtResource("5_wbhbc")
-
-[node name="Label" type="Label" parent="Cancel Button"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("6_p2tyv")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
-text = "Cancel"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="MachineTypes" type="Node" parent="."]
 
@@ -95,4 +66,4 @@ MachineTexture = ExtResource("16_7yggo")
 name = "Slots (III)"
 MachineTexture = ExtResource("17_i33i4")
 
-[connection signal="pressed" from="Cancel Button" to="Cancel Button" method="OnPressed"]
+[node name="MachineRiggingMenu" parent="." instance=ExtResource("18_a5tbs")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://drh46xmeyvrse"]
+[gd_scene load_steps=12 format=3 uid="uid://drh46xmeyvrse"]
 
 [ext_resource type="Script" path="res://machine_shop/BuyNew.cs" id="1_3hjxg"]
 [ext_resource type="Texture2D" uid="uid://bdm82djtj6w24" path="res://gameplay_ui/small_button.png" id="2_5i7bg"]
@@ -10,19 +10,11 @@
 [ext_resource type="Script" path="res://machine_shop/ArrowButton.cs" id="7_1h844"]
 [ext_resource type="Texture2D" uid="uid://c80s8pnn22okp" path="res://machine/slot_machine_0.png" id="8_tt4bn"]
 [ext_resource type="Theme" path="res://gameplay_ui/small_font.tres" id="9_pcuu0"]
-[ext_resource type="PackedScene" uid="uid://bdade3ye4s3ir" path="res://machine/MachineScene.tscn" id="11_pf5l4"]
-[ext_resource type="Texture2D" uid="uid://b5noid4ntjqky" path="res://machine/craps_table_0.png" id="12_r0liy"]
-[ext_resource type="Texture2D" uid="uid://n2g66mkm4mur" path="res://machine/craps_table_1.png" id="13_11fow"]
-[ext_resource type="Texture2D" uid="uid://dwoi377ovkh65" path="res://machine/craps_table_2.png" id="14_up4xv"]
-[ext_resource type="Texture2D" uid="uid://cixkeoddx6sgm" path="res://machine/poker_table_0.png" id="15_vndx8"]
-[ext_resource type="Texture2D" uid="uid://or8bs3v32pjs" path="res://machine/poker_table_1.png" id="16_nlst3"]
-[ext_resource type="Texture2D" uid="uid://dkwi3akixvssm" path="res://machine/poker_table_2.png" id="17_ebj2s"]
-[ext_resource type="Texture2D" uid="uid://5u76xyyf8pxx" path="res://machine/slot_machine_1.png" id="18_fxi15"]
-[ext_resource type="Texture2D" uid="uid://bh2gjcsuittdv" path="res://machine/slot_machine_2.png" id="19_vlur0"]
+[ext_resource type="Script" path="res://machine_shop/CancelButton.cs" id="11_f271s"]
 
 [node name="BuyNew" type="Node2D" node_paths=PackedStringArray("MachineTypes", "ShopCostLabel", "MachineImage", "NameLabel", "CostLabel", "JackpotLabel", "SusLabel", "RollsLabel")]
 script = ExtResource("1_3hjxg")
-MachineTypes = [NodePath("MachineTypes/craps_0"), NodePath("MachineTypes/craps_1"), NodePath("MachineTypes/craps_2"), NodePath("MachineTypes/poker_0"), NodePath("MachineTypes/poker_1"), NodePath("MachineTypes/poker_2"), NodePath("MachineTypes/slot_0"), NodePath("MachineTypes/slot_1"), NodePath("MachineTypes/slot_2")]
+MachineTypes = []
 ShopCostLabel = NodePath("Buy Button/Label")
 MachineImage = NodePath("Machine")
 NameLabel = NodePath("Machine Name")
@@ -143,45 +135,33 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 text = "Rolls per Guest: "
 
-[node name="MachineTypes" type="Node" parent="."]
+[node name="Cancel Button" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = 272.0
+offset_top = 192.0
+offset_right = 360.0
+offset_bottom = 216.0
+texture_normal = ExtResource("2_5i7bg")
+texture_pressed = ExtResource("3_205d4")
+texture_hover = ExtResource("3_205d4")
+script = ExtResource("11_f271s")
 
-[node name="craps_0" parent="MachineTypes" instance=ExtResource("11_pf5l4")]
-name = "Craps Table (I)"
-MachineTexture = ExtResource("12_r0liy")
-DefaultSuspicionFactor = 0.2
-
-[node name="craps_1" parent="MachineTypes" instance=ExtResource("11_pf5l4")]
-name = "Craps Table (II)"
-MachineTexture = ExtResource("13_11fow")
-
-[node name="craps_2" parent="MachineTypes" instance=ExtResource("11_pf5l4")]
-name = "Craps Table (III)"
-MachineTexture = ExtResource("14_up4xv")
-
-[node name="poker_0" parent="MachineTypes" instance=ExtResource("11_pf5l4")]
-name = "Poker Table (I)"
-MachineTexture = ExtResource("15_vndx8")
-
-[node name="poker_1" parent="MachineTypes" instance=ExtResource("11_pf5l4")]
-name = "Poker Table (II)"
-MachineTexture = ExtResource("16_nlst3")
-
-[node name="poker_2" parent="MachineTypes" instance=ExtResource("11_pf5l4")]
-name = "Poker Table (III)"
-MachineTexture = ExtResource("17_ebj2s")
-
-[node name="slot_0" parent="MachineTypes" instance=ExtResource("11_pf5l4")]
-name = "Slots (I)"
-MachineTexture = ExtResource("8_tt4bn")
-
-[node name="slot_1" parent="MachineTypes" instance=ExtResource("11_pf5l4")]
-name = "Slots (II)"
-MachineTexture = ExtResource("18_fxi15")
-
-[node name="slot_2" parent="MachineTypes" instance=ExtResource("11_pf5l4")]
-name = "Slots (III)"
-MachineTexture = ExtResource("19_vlur0")
+[node name="Label" type="Label" parent="Cancel Button"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_wuaed")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+text = "Cancel"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Buy Button" to="Buy Button" method="OnPressed"]
 [connection signal="pressed" from="Left Arrow Button" to="Left Arrow Button" method="LeftPressed"]
 [connection signal="pressed" from="Right Arrow Button" to="Right Arrow Button" method="RightPressed"]
+[connection signal="pressed" from="Cancel Button" to="Cancel Button" method="OnPressed"]

@@ -44,15 +44,6 @@ public partial class MachineRiggingMenu : Node2D
 
     }
 
-    public void ShowSlot(int index)
-    {
-        MachineManager.instance.focus(index);
-        _targetMachineIndex = index;
-        TargetMachine = MachineManager.instance.getMachine(index);
-        OpenOnMachine(TargetMachine);
-        Visible = true;
-    }
-
     public void HideRiggingMenu()
     {
         base.Hide();
