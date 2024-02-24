@@ -54,6 +54,10 @@ public partial class MachineManager : Node2D
 		}
 	}
 	
+	public void placeMachine(Machine m) {
+		placeMachine(FocussedLocation, m);
+	}
+	
 	public void placeMachine(int index, Machine m) {
 		m.Position = Locations[index].Position;
 		Machines[index] = m;

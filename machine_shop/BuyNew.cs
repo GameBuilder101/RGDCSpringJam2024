@@ -49,4 +49,13 @@ public partial class BuyNew : Node2D
 				) % MachineTypes.Length;
 		UpdateDisplay();
 	}
+	
+	public void Buy() {
+		Machine m = MachineTypes[MachineViewIndex];
+		if (MachineManager.instance.Moola < m.ShopCost) {
+			return;
+		}
+		MachineManager.instance.placeMachine(m.copy());
+		MachineManager.instance.Moola -= m.ShopCost;
+	}
 }
