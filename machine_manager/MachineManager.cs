@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class machine_manager : Node2D
+public partial class MachineManager : Node2D
 {
 	private int Moola = 0;
 	private double Progress = 0.0;
@@ -26,7 +26,7 @@ public partial class machine_manager : Node2D
 		if (Progress >= TimeBetweenTicks) {
 			Progress -= TimeBetweenTicks;
 			foreach (Machine m in Machines) {
-				Moola += m.tick();
+				Moola += m.Tick();
 			}
 		}
 		if (Moola < 0) {
