@@ -59,48 +59,39 @@ vertical_alignment = 1
 [node name="MachineTypes" type="Node" parent="."]
 
 [node name="craps_0" parent="MachineTypes" instance=ExtResource("8_5eohu")]
-visible = false
 name = "Craps Table (I)"
 MachineTexture = ExtResource("9_4lmo0")
 DefaultSuspicionFactor = 0.2
 
 [node name="craps_1" parent="MachineTypes" instance=ExtResource("8_5eohu")]
-visible = false
 name = "Craps Table (II)"
 MachineTexture = ExtResource("10_ufsdh")
 
 [node name="craps_2" parent="MachineTypes" instance=ExtResource("8_5eohu")]
-visible = false
 name = "Craps Table (III)"
 MachineTexture = ExtResource("11_4anvj")
 
 [node name="poker_0" parent="MachineTypes" instance=ExtResource("8_5eohu")]
-visible = false
 name = "Poker Table (I)"
 MachineTexture = ExtResource("12_6bvin")
 
 [node name="poker_1" parent="MachineTypes" instance=ExtResource("8_5eohu")]
-visible = false
 name = "Poker Table (II)"
 MachineTexture = ExtResource("13_dt6l4")
 
 [node name="poker_2" parent="MachineTypes" instance=ExtResource("8_5eohu")]
-visible = false
 name = "Poker Table (III)"
 MachineTexture = ExtResource("14_idq16")
 
 [node name="slot_0" parent="MachineTypes" instance=ExtResource("8_5eohu")]
-visible = false
 name = "Slots (I)"
 MachineTexture = ExtResource("3_iarv2")
 
 [node name="slot_1" parent="MachineTypes" instance=ExtResource("8_5eohu")]
-visible = false
 name = "Slots (II)"
 MachineTexture = ExtResource("16_7yggo")
 
 [node name="slot_2" parent="MachineTypes" instance=ExtResource("8_5eohu")]
-visible = false
 name = "Slots (III)"
 MachineTexture = ExtResource("17_i33i4")
 

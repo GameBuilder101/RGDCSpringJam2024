@@ -55,6 +55,25 @@ public partial class Machine : Node2D
 	[Export]
 	public float DefaultSuspicionFactor { get; private set; }
 
+	public Machine() {}
+
+	private Machine(Machine m) {
+		this.name = m.name;
+		this.MachineTexture = m.MachineTexture;
+		this.ShopCost = m.ShopCost;
+		this.PlayCost = m.PlayCost;
+		this.JackpotAmount = m.JackpotAmount;
+		this.JackpotProbability = m.DefaultJackpotProbability;
+		this.DefaultJackpotProbability = m.DefaultJackpotProbability;
+		this.NumRolls = m.NumRolls;
+		this.SuspicionFactor = m.DefaultSuspicionFactor;
+		this.DefaultSuspicionFactor = m.DefaultSuspicionFactor;
+	}
+
+	public Machine copy() {
+		return new Machine(this);
+	}
+
 	/*
 	[Export]
 	private MachineOptions _optionsMenu;
@@ -64,8 +83,6 @@ public partial class Machine : Node2D
 	{
 		base._Ready();
 		SuspicionUpdater();
-		GD.Print(SuspicionFactor);
-		Tick();
 	}
 
 	public void Tick()
@@ -76,7 +93,6 @@ public partial class Machine : Node2D
 			Revenue += PlayCost;
 			Revenue -= Roll(0);
 		}
-		GD.Print(Revenue);
 		MachineManager.instance.Moola += Revenue;
 		MachineManager.instance.Suspicion += (double)SuspicionFactor;
 	}
@@ -89,11 +105,9 @@ public partial class Machine : Node2D
 	{
 		float random = Probability(seed);
 		if(random <= JackpotProbability){
-			GD.Print("JACKPOT");
 			return JackpotAmount;
 		}
 		else{
-			GD.Print("=(");
 			return 0;
 		}
 	}
