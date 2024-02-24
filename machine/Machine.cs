@@ -3,11 +3,17 @@ using System;
 
 public partial class Machine : Node2D
 {
+	
+	[Export]
+	public Texture2D CrapsZero { get; private set; }
+	
+	
 	/// <summary>
 	/// Cost of the machine in the shop.
 	/// </summary>
 	[Export]
 	public int ShopCost { get; private set; }
+	
 
 	/// <summary>
 	/// Cost for a guest to play the machine (payed to the casino owner).
@@ -24,7 +30,7 @@ public partial class Machine : Node2D
 	/// The chance for a guest to win the jackpot. 0 means no chance, and 1 means 100% chance.
 	/// </summary>
 	[Export]
-	public float JackpotProbability { get; private set; }
+	public float JackpotProbability {get; set;}
 	/// <summary>
 	/// The default chance for a guest to win the jackpot.
 	/// </summary>
