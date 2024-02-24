@@ -4,16 +4,16 @@ public partial class MachineRiggingMenu : Node2D
 {
 	public static MachineRiggingMenu Instance { get; private set; }
 
-	private int _targetLocation;
+	private Machine _targetMachine;
     /// <summary>
     /// Gets or sets the location index of the target machine.
     /// </summary>
-    public int TargetLocation
+    public Machine TargetMachine
 	{
-		get { return _targetLocation; }
+		get { return _targetMachine; }
 		set
 		{
-            _targetLocation = value;
+            _targetMachine = value;
 		}
 	}
 
@@ -41,12 +41,24 @@ public partial class MachineRiggingMenu : Node2D
 
     public void OpenOnMachine(Machine machine)
     {
-        _machineSprite.Texture = machine.Texture;
+        TargetMachine = machine;
+
+        //_machineSprite.Texture = machine;
         _playCostLabel.Text = "Payout Per Play: $" + machine.PlayCost;
         _sellCostLabel.Text = "Sell ($" + machine.ShopCost / 2 + ")";
         _jackpotAmountLabel.Text = "Jackpot Cost: $" + machine.JackpotAmount;
         _suspicionFactorLabel.Text = "Suspicion Factor: $" + machine.SuspicionFactor;
         _numRollsLabel.Text = "Rolls Per Guest: " + machine.NumRolls;
         _winChanceLabel.Text = machine.JackpotProbability + "%";
+    }
+
+    public void IncreaseWinChance()
+    {
+        //TargetMachine.JackpotProbability
+    }
+
+    public void DecreaseWinChance()
+    {
+        //TargetMachine.JackpotProbability
     }
 }
