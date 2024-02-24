@@ -2,3 +2,5 @@
 .godot/
 .git/
 addons/godot-git-plugin
+.vs/
+*.sln
