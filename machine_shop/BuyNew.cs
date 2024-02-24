@@ -39,7 +39,7 @@ public partial class BuyNew : Node2D
 		NameLabel.Text = m.name;
 		CostLabel.Text = string.Format("Payout Per Play: ${0}", m.PlayCost);
 		JackpotLabel.Text = string.Format("Jackpot Cost: ${0}", m.JackpotAmount);
-		SusLabel.Text = string.Format("Suspicion Factor: {0:0.00}", m.DefaultSuspicionFactor);
+		SusLabel.Text = string.Format("Suspicion Factor: {0:00}%", m.DefaultSuspicionFactor * 100);
 		RollsLabel.Text = string.Format("Rolls Per Guest: {0}", m.NumRolls);
 	}
 	
@@ -57,5 +57,10 @@ public partial class BuyNew : Node2D
 		}
 		MachineManager.instance.placeMachine(m.copy());
 		MachineManager.instance.Moola -= m.ShopCost;
+		Machine display = MachineManager.instance.getMachine();
+
+		Visible = false;
+		MachineRiggingMenu.Instance.Visible = true;
+		MachineRiggingMenu.Instance.OpenOnMachine(display);
 	}
 }

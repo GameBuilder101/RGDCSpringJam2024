@@ -6,7 +6,7 @@ public partial class MachineManager : Node2D
 	public static MachineManager instance;
 
 	public double Suspicion { get; set; } = 0.0;
-	public int Moola { get; set; }
+	public int Moola { get; set; } = 10;
 	private double Progress = 0.0;
 	private double TimeBetweenTicks = 5.0;
 	private Machine[] Machines;
@@ -71,6 +71,10 @@ public partial class MachineManager : Node2D
 	
 	public Machine getMachine(int index) {
 		return Machines[index];
+	}
+	
+	public Machine getMachine() {
+		return getMachine(FocussedLocation);
 	}
 	
 	// -1 to unfocus

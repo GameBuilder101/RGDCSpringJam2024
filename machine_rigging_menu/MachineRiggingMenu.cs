@@ -22,6 +22,8 @@ public partial class MachineRiggingMenu : Node2D
     /// </summary>
     private int SellCost { get { return TargetMachine.ShopCost / 2; } }
 
+	[Export]
+	private Label _machineNameLabel;
     [Export]
     private Sprite2D _machineSprite;
     [Export]
@@ -61,11 +63,12 @@ public partial class MachineRiggingMenu : Node2D
     {
         TargetMachine = machine;
 
+		_machineNameLabel.Text = machine.name;
         _machineSprite.Texture = machine.MachineTexture;
         _playCostLabel.Text = "Payout Per Play: $" + machine.PlayCost;
-        _sellCostLabel.Text = "Sell ($" + SellCost + ")";
+        _sellCostLabel.Text = "Sell $" + SellCost;
         _jackpotAmountLabel.Text = "Jackpot Cost: $" + machine.JackpotAmount;
-        _suspicionFactorLabel.Text = "Suspicion Factor: $" + machine.SuspicionFactor;
+        _suspicionFactorLabel.Text = "Suspicion Factor: " + machine.SuspicionFactor * 100;
         _numRollsLabel.Text = "Rolls Per Guest: " + machine.NumRolls;
         _winChanceLabel.Text = machine.JackpotProbability + "%";
     }

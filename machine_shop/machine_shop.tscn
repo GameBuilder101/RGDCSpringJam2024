@@ -15,9 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://bh2gjcsuittdv" path="res://machine/slot_machine_2.png" id="17_i33i4"]
 [ext_resource type="PackedScene" uid="uid://juk3wn0oyo6x" path="res://machine_rigging_menu/machine_rigging_menu.tscn" id="18_a5tbs"]
 
-[node name="MachineShop" type="Node2D" node_paths=PackedStringArray("buyNew")]
+[node name="MachineShop" type="Node2D" node_paths=PackedStringArray("buyNew", "machineRiggingMenu")]
 script = ExtResource("1_uvfg6")
 buyNew = NodePath("BuyNew")
+machineRiggingMenu = NodePath("MachineRiggingMenu")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -32,6 +33,8 @@ MachineTypes = [NodePath("../MachineTypes/craps_0"), NodePath("../MachineTypes/c
 [node name="craps_0" parent="MachineTypes" instance=ExtResource("8_5eohu")]
 name = "Craps Table (I)"
 MachineTexture = ExtResource("9_4lmo0")
+ShopCost = 10
+DefaultJackpotProbability = 0.05
 DefaultSuspicionFactor = 0.2
 
 [node name="craps_1" parent="MachineTypes" instance=ExtResource("8_5eohu")]

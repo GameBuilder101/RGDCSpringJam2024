@@ -12,8 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://govsub7t4prr" path="res://gameplay_ui/subtract_button_highlighted.png" id="8_3jboq"]
 [ext_resource type="Theme" path="res://gameplay_ui/small_font.tres" id="8_oakfx"]
 
-[node name="MachineRiggingMenu" type="Node2D" node_paths=PackedStringArray("_machineSprite", "_playCostLabel", "_sellCostLabel", "_jackpotAmountLabel", "_suspicionFactorLabel", "_numRollsLabel", "_winChanceLabel")]
+[node name="MachineRiggingMenu" type="Node2D" node_paths=PackedStringArray("_machineNameLabel", "_machineSprite", "_playCostLabel", "_sellCostLabel", "_jackpotAmountLabel", "_suspicionFactorLabel", "_numRollsLabel", "_winChanceLabel")]
 script = ExtResource("1_i8wyf")
+_machineNameLabel = NodePath("Machine Name")
 _machineSprite = NodePath("Machine")
 _playCostLabel = NodePath("Play Cost")
 _sellCostLabel = NodePath("Sell Button/Label")
