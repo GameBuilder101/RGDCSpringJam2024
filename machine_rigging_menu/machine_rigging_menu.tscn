@@ -47,7 +47,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_c8isf")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 2
 text = "Cancel"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -72,7 +72,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_c8isf")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 2
 text = "Sell ($)"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -90,7 +90,7 @@ offset_right = 192.0
 offset_bottom = 200.0
 theme = ExtResource("4_c8isf")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 2
 text = "Machine Name"
 
 [node name="Play Cost" type="Label" parent="."]
@@ -102,7 +102,7 @@ offset_bottom = 216.0
 theme = ExtResource("8_oakfx")
 theme_override_colors/font_color = Color(0.560784, 1, 0.172549, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 2
 text = "Payout Per Play: $"
 
 [node name="Jackpot Amount" type="Label" parent="."]
@@ -114,7 +114,7 @@ offset_bottom = 224.0
 theme = ExtResource("8_oakfx")
 theme_override_colors/font_color = Color(0.972549, 1, 0.243137, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 2
 text = "Jackpot Cost: $"
 
 [node name="Suspicion Factor" type="Label" parent="."]
@@ -126,7 +126,7 @@ offset_bottom = 232.0
 theme = ExtResource("8_oakfx")
 theme_override_colors/font_color = Color(1, 0.352941, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 2
 text = "Suspicion Factor: $"
 
 [node name="Num Rolls" type="Label" parent="."]
@@ -137,7 +137,7 @@ offset_right = 192.0
 offset_bottom = 240.0
 theme = ExtResource("8_oakfx")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 2
 text = "Rolls per Guest: "
 
 [node name="Add Button" type="TextureButton" parent="."]
@@ -169,7 +169,7 @@ offset_bottom = 240.0
 theme = ExtResource("8_oakfx")
 theme_override_colors/font_color = Color(0.243137, 1, 0.992157, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 2
 text = "Rigged Chance:"
 horizontal_alignment = 1
 
@@ -182,7 +182,7 @@ offset_bottom = 240.0
 theme = ExtResource("4_c8isf")
 theme_override_colors/font_color = Color(0.243137, 1, 0.992157, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 2
 text = "%"
 horizontal_alignment = 1
 

@@ -1,0 +1,178 @@
+[gd_scene load_steps=11 format=3 uid="uid://bihod1p8sud5p"]
+
+[ext_resource type="Texture2D" uid="uid://bfjokgh4vrx7s" path="res://title_screen/background_club.png" id="1_5rw5c"]
+[ext_resource type="Script" path="res://game_over/GameOver.cs" id="1_dck11"]
+[ext_resource type="Theme" uid="uid://b2hh8747xw4e8" path="res://gameplay_ui/big_font.tres" id="2_t2xol"]
+[ext_resource type="Texture2D" uid="uid://bf8vawrmb4rf1" path="res://title_screen/background_diamond.png" id="3_nceg8"]
+[ext_resource type="Theme" uid="uid://cgkpf3snkxnom" path="res://gameplay_ui/small_font.tres" id="3_uxstq"]
+[ext_resource type="Texture2D" uid="uid://dumf7e8an0v36" path="res://title_screen/background_heart.png" id="4_e4v82"]
+[ext_resource type="Texture2D" uid="uid://bdm82djtj6w24" path="res://gameplay_ui/small_button.png" id="4_me0fo"]
+[ext_resource type="Texture2D" uid="uid://c2ja12fg6argj" path="res://gameplay_ui/small_button_highlighted.png" id="5_mjpue"]
+[ext_resource type="Texture2D" uid="uid://dyc3inbotvehk" path="res://title_screen/background_spade.png" id="5_t5igy"]
+[ext_resource type="Script" path="res://machine_shop/CancelButton.cs" id="6_6vu1l"]
+
+[node name="GameOver" type="Node2D" node_paths=PackedStringArray("_timePlayedLabel", "_highestMoneyLabel", "_timesFinedLabel", "_finalScoreLabel")]
+script = ExtResource("1_dck11")
+_timePlayedLabel = NodePath("Label2")
+_highestMoneyLabel = NodePath("Label5")
+_timesFinedLabel = NodePath("Label6")
+_finalScoreLabel = NodePath("Label4")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 384.0
+offset_bottom = 256.0
+color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Clubs" type="CPUParticles2D" parent="Node2D"]
+texture_filter = 1
+position = Vector2(192, -16)
+amount = 6
+lifetime = 14.0
+texture = ExtResource("1_5rw5c")
+emission_shape = 3
+emission_rect_extents = Vector2(192, 0)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 26.76
+initial_velocity_max = 26.76
+
+[node name="Diamonds" type="CPUParticles2D" parent="Node2D"]
+texture_filter = 1
+position = Vector2(192, -16)
+amount = 6
+lifetime = 10.0
+texture = ExtResource("3_nceg8")
+emission_shape = 3
+emission_rect_extents = Vector2(192, 0)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 34.44
+initial_velocity_max = 34.44
+
+[node name="Hearts" type="CPUParticles2D" parent="Node2D"]
+texture_filter = 1
+position = Vector2(192, -16)
+amount = 6
+lifetime = 8.0
+texture = ExtResource("4_e4v82")
+emission_shape = 3
+emission_rect_extents = Vector2(192, 0)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 65.22
+initial_velocity_max = 65.22
+
+[node name="Spades" type="CPUParticles2D" parent="Node2D"]
+texture_filter = 1
+position = Vector2(192, -16)
+amount = 6
+lifetime = 4.0
+texture = ExtResource("5_t5igy")
+emission_shape = 3
+emission_rect_extents = Vector2(192, 0)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 88.05
+initial_velocity_max = 88.05
+
+[node name="Game Over Label" type="Label" parent="."]
+texture_filter = 1
+offset_right = 384.0
+offset_bottom = 64.0
+theme = ExtResource("2_t2xol")
+theme_override_colors/font_color = Color(0.972549, 1, 0.243137, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 16
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Label2" type="Label" parent="."]
+texture_filter = 1
+offset_top = 80.0
+offset_right = 384.0
+offset_bottom = 88.0
+theme = ExtResource("3_uxstq")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "Minutes in Business: "
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="."]
+texture_filter = 1
+offset_top = 88.0
+offset_right = 384.0
+offset_bottom = 96.0
+theme = ExtResource("3_uxstq")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+text = "Most Money at Once: "
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="."]
+texture_filter = 1
+offset_top = 96.0
+offset_right = 384.0
+offset_bottom = 104.0
+theme = ExtResource("3_uxstq")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+text = "Times Fined: "
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+texture_filter = 1
+offset_top = 128.0
+offset_right = 384.0
+offset_bottom = 136.0
+theme = ExtResource("2_t2xol")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+text = "Final Score:"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+texture_filter = 1
+offset_top = 144.0
+offset_right = 384.0
+offset_bottom = 160.0
+theme = ExtResource("2_t2xol")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+
+[node name="Return Button" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = 148.0
+offset_top = 192.0
+offset_right = 236.0
+offset_bottom = 216.0
+texture_normal = ExtResource("4_me0fo")
+texture_pressed = ExtResource("5_mjpue")
+texture_hover = ExtResource("5_mjpue")
+script = ExtResource("6_6vu1l")
+
+[node name="Label" type="Label" parent="Return Button"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_t2xol")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "Return"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Return Button" to="." method="SwitchToTitle"]
