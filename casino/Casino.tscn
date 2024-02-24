@@ -1,14 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cu18nn5mfsyv5"]
+[gd_scene load_steps=5 format=3 uid="uid://dojadhcakpdba"]
 
 [ext_resource type="PackedScene" uid="uid://cqspb4krtx0jk" path="res://machine_manager/machine_manager.tscn" id="1_kw7cu"]
 [ext_resource type="Texture2D" uid="uid://b85hboxg11js8" path="res://casino/casino_cyan.png" id="2_aur2d"]
-[ext_resource type="PackedScene" path="res://casino/machine_location.tscn" id="2_j7635"]
-[ext_resource type="PackedScene" uid="uid://byfamwoajjqun" path="res://machine_shop/machine_shop.tscn" id="4_ohbly"]
-[ext_resource type="PackedScene" uid="uid://juk3wn0oyo6x" path="res://machine_rigging_menu/machine_rigging_menu.tscn" id="5_tpbqv"]
+[ext_resource type="PackedScene" uid="uid://cc53oe3kgmt80" path="res://casino/machine_location.tscn" id="2_j7635"]
+[ext_resource type="PackedScene" uid="uid://brhocaqo0jdyd" path="res://machine_shop/machine_shop.tscn" id="4_ohbly"]
 
 [node name="Casino" type="Node2D"]
 
 [node name="MachineManager" parent="." node_paths=PackedStringArray("LocationHolder") instance=ExtResource("1_kw7cu")]
+texture_filter = 1
 LocationHolder = NodePath("../Locations")
 
 [node name="Locations" type="Node" parent="."]
@@ -49,12 +49,10 @@ position = Vector2(272, 136)
 [node name="MachineLocation12" parent="Locations" instance=ExtResource("2_j7635")]
 position = Vector2(320, 136)
 
+[node name="MachineShop" parent="." instance=ExtResource("4_ohbly")]
+
 [node name="Background" type="Sprite2D" parent="."]
+z_index = -1
 texture_filter = 1
 texture = ExtResource("2_aur2d")
 centered = false
-
-[node name="MachineShop" parent="." instance=ExtResource("4_ohbly")]
-
-[node name="MachineRiggingMenu" parent="." instance=ExtResource("5_tpbqv")]
-visible = false

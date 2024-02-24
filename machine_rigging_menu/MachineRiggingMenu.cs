@@ -4,7 +4,6 @@ public partial class MachineRiggingMenu : Node2D
 {
 	public static MachineRiggingMenu Instance { get; private set; }
 
-    private int _targetMachineIndex;
 	private Machine _targetMachine;
     /// <summary>
     /// Gets or sets the location index of the target machine.
@@ -22,6 +21,8 @@ public partial class MachineRiggingMenu : Node2D
     /// </summary>
     private int SellCost { get { return TargetMachine.ShopCost / 2; } }
 
+	[Export]
+	private Label _machineNameLabel;
     [Export]
     private Sprite2D _machineSprite;
     [Export]
@@ -44,39 +45,25 @@ public partial class MachineRiggingMenu : Node2D
 
     }
 
-    public void ShowSlot(int index)
-    {
-        MachineManager.instance.focus(index);
-        _targetMachineIndex = index;
-        TargetMachine = MachineManager.instance.getMachine(index);
-        OpenOnMachine(TargetMachine);
-        Visible = true;
-    }
-
-    public void HideRiggingMenu()
-    {
-        base.Hide();
-        MachineManager.instance.focus(-1);
-    }
-
     public void Sell()
     {
         MachineManager.instance.Moola += SellCost;
-        MachineManager.instance.removeMachine(_targetMachineIndex);
-        HideRiggingMenu();
+        MachineManager.instance.removeMachine(MachineShop.instance.ViewIndex);
+        MachineShop.instance.HideShop();
     }
 
     public void OpenOnMachine(Machine machine)
     {
         TargetMachine = machine;
 
+		_machineNameLabel.Text = machine.name;
         _machineSprite.Texture = machine.MachineTexture;
         _playCostLabel.Text = "Payout Per Play: $" + machine.PlayCost;
-        _sellCostLabel.Text = "Sell ($" + SellCost + ")";
+        _sellCostLabel.Text = "Sell $" + SellCost;
         _jackpotAmountLabel.Text = "Jackpot Cost: $" + machine.JackpotAmount;
-        _suspicionFactorLabel.Text = "Suspicion Factor: $" + machine.SuspicionFactor;
+        _suspicionFactorLabel.Text = "Suspicion Factor: " + (int) (machine.SuspicionFactor * 100.0) + "%";
         _numRollsLabel.Text = "Rolls Per Guest: " + machine.NumRolls;
-        _winChanceLabel.Text = machine.JackpotProbability + "%";
+        _winChanceLabel.Text = machine.JackpotProbability * 100 + "%";
     }
 
     public void IncreaseWinChance()
