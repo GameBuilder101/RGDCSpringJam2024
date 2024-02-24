@@ -3,20 +3,22 @@ using System;
 
 enum TitleState
 {
+	Credits,
 	Title,
 	Instructions
 }
 public partial class TitleScreen : Node2D
 {
 	[Export] double framesPerSecond;
+	[Export] Label creditsText;
+	[Export] double creditsDuration;
 	[Export] Texture2D[] frames;
 	[Export] double flashInterval;
 	[Export] Color[] flashColors;
 	[Export] Sprite2D sprite;
 	[Export] Label startLabel;
-	[Export] Node instructions;
-	[Export] Label instructionsLabel;
-	[Export] ColorRect underline;
+	[Export] Node2D instructionsParent;
+	[Export] Node2D[] instructions;
 
 	double secondsPerFrame;
 	double timer;
@@ -38,13 +40,15 @@ public partial class TitleScreen : Node2D
 		flashIndex = flashColors.Length - 1;
 		instructionIndex = 0;
 		sprite.Texture = frames[frameIndex];
-		startLabel.Visible = false;
+        sprite.Visible = false;
+        creditsText.Visible = true;
+        startLabel.Visible = false;
+		instructionsParent.Visible = false;
+		/*
 		foreach (Node panel in instructions.GetChildren())
-			((Sprite2D)panel).Visible = false;
-        instructionsLabel.Visible = false;
-        underline.Visible = false;
+			((Sprite2D)panel).Visible = false;*/
 
-        state = TitleState.Title;
+        state = TitleState.Credits;
 		prevPressState = false;
 	}
 
@@ -53,6 +57,16 @@ public partial class TitleScreen : Node2D
 	{
 		switch(state)
 		{
+			case TitleState.Credits:
+				timer += delta;
+				if (timer >= creditsDuration)
+				{
+					state = TitleState.Title;
+                    creditsText.Visible = false;
+					sprite.Visible = true;
+					timer = 0.0;
+                }
+				break;
 			case TitleState.Title:
                 timer += delta;
                 if (frameIndex < frames.Length - 1)
@@ -93,33 +107,32 @@ public partial class TitleScreen : Node2D
                         state = TitleState.Instructions;
                         sprite.Visible = false;
                         startLabel.Visible = false;
-                        ((Sprite2D)instructions.GetChild(instructionIndex)).Visible = true;
-                        instructionsLabel.Visible = true;
-                        underline.Visible = true;
+                        instructionsParent.Visible = true;
+                        //((Sprite2D)instructions.GetChild(instructionIndex)).Visible = true;
                     }
                 }
 
 				prevPressState = Input.IsAnythingPressed();
 				break;
 			case TitleState.Instructions:
-				int newIndex = instructionIndex;
+				/*int newIndex = instructionIndex;
 				if (instructionIndex > 0 && Input.IsActionJustPressed("PrevPage"))
 					newIndex--;
 				if (Input.IsActionJustPressed("Go"))
 				{
-					if (instructionIndex == instructions.GetChildren().Count - 1)
+					if (instructionIndex == instructionsParent.GetChildren().Count - 1)
 						GetTree().ChangeSceneToFile("res://casino/Casino.tscn");
 					else
                         newIndex++;
                 }
-				else if (instructionIndex < instructions.GetChildren().Count - 1 && Input.IsActionJustPressed("NextPage"))
+				else if (instructionIndex < instructionsParent.GetChildren().Count - 1 && Input.IsActionJustPressed("NextPage"))
 					newIndex++;
 				if (newIndex != instructionIndex)
 				{
-					((Sprite2D)instructions.GetChild(instructionIndex)).Visible = false;
-                    ((Sprite2D)instructions.GetChild(newIndex)).Visible = true;
+					((Sprite2D)instructionsParent.GetChild(instructionIndex)).Visible = false;
+                    ((Sprite2D)instructionsParent.GetChild(newIndex)).Visible = true;
 					instructionIndex = newIndex;
-                }
+                }*/
 				break;
         }
 	}
@@ -127,5 +140,20 @@ public partial class TitleScreen : Node2D
 	void SetLabelColor(int index)
 	{
         startLabel.AddThemeColorOverride("font_color", flashColors[index]);
+    }
+
+	public void NextInstructionPage()
+	{
+		instructions[instructionIndex].Visible = false;
+		instructionIndex++;
+		if (instructionIndex >= instructions.Length)
+			EndInstructions();
+		else
+			instructions[instructionIndex].Visible = true;
+    }
+
+	public void EndInstructions()
+	{
+        GetTree().ChangeSceneToFile("res://casino/Casino.tscn");
     }
 }

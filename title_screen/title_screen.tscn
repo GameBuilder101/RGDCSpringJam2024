@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddc7rt5kv5ur5"]
+[gd_scene load_steps=22 format=3 uid="uid://ddc7rt5kv5ur5"]
 
 [ext_resource type="Script" path="res://title_screen/TitleScreen.cs" id="1_qmqmw"]
 [ext_resource type="Texture2D" uid="uid://caxruiclyrbby" path="res://title_screen/IMG_1785.png" id="2_w588t"]
@@ -10,13 +10,30 @@
 [ext_resource type="Texture2D" uid="uid://bvewoahciuf6n" path="res://title_screen/tutorial_background.png" id="6_xmqd2"]
 [ext_resource type="Texture2D" uid="uid://dumf7e8an0v36" path="res://title_screen/background_heart.png" id="7_n4r1h"]
 [ext_resource type="Texture2D" uid="uid://dyc3inbotvehk" path="res://title_screen/background_spade.png" id="8_gqrav"]
+[ext_resource type="Theme" uid="uid://cgkpf3snkxnom" path="res://gameplay_ui/small_font.tres" id="11_ymwo4"]
+[ext_resource type="Texture2D" uid="uid://bdm82djtj6w24" path="res://gameplay_ui/small_button.png" id="12_fut6g"]
+[ext_resource type="Texture2D" uid="uid://c2ja12fg6argj" path="res://gameplay_ui/small_button_highlighted.png" id="13_rqsi0"]
+[ext_resource type="Script" path="res://machine_shop/CancelButton.cs" id="14_lc13s"]
+[ext_resource type="Texture2D" uid="uid://ckdkdsevn5ukk" path="res://gameplay_ui/arrow_button.png" id="15_7lqqc"]
+[ext_resource type="Texture2D" uid="uid://osjit1npbebf" path="res://gameplay_ui/arrow_button_highlighted.png" id="16_0xgrb"]
+[ext_resource type="Script" path="res://machine_shop/ArrowButton.cs" id="17_56ma3"]
+[ext_resource type="Texture2D" uid="uid://b85hboxg11js8" path="res://casino/casino_cyan.png" id="18_t0ya6"]
+[ext_resource type="Texture2D" uid="uid://bq8a5dehcxb7u" path="res://casino/selection_diamond.png" id="19_wcobr"]
+[ext_resource type="Texture2D" uid="uid://c80s8pnn22okp" path="res://machine/slot_machine_0.png" id="20_a5djn"]
+[ext_resource type="Texture2D" uid="uid://cfn17pocu10cc" path="res://casino/inspector.png" id="21_qy8nt"]
 
-[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("sprite", "startLabel")]
+[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("creditsText", "sprite", "startLabel", "instructionsParent", "instructions")]
 script = ExtResource("1_qmqmw")
 framesPerSecond = 2.0
+creditsText = NodePath("Credits")
+creditsDuration = 2.75
 frames = Array[Texture2D]([ExtResource("2_w588t"), ExtResource("3_y0svh"), ExtResource("4_ilkb8")])
+flashInterval = 0.6
+flashColors = PackedColorArray(0.243137, 1, 0.992157, 1, 0.972549, 0.243137, 1, 1, 0.972549, 1, 0.243137, 1)
 sprite = NodePath("Animation")
 startLabel = NodePath("PressStart")
+instructionsParent = NodePath("Instructions")
+instructions = [NodePath("Instructions/Page 1"), NodePath("Instructions/Page 2"), NodePath("Instructions/Page 3"), NodePath("Instructions/Page 4"), NodePath("Instructions/Page 5"), NodePath("Instructions/Page 6")]
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 384.0
@@ -86,6 +103,34 @@ position = Vector2(192, 128)
 scale = Vector2(0.105, 0.105)
 texture = ExtResource("2_w588t")
 
+[node name="Credits" type="Label" parent="."]
+visible = false
+top_level = true
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_top = -144.0
+offset_right = 184.0
+offset_bottom = -92.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("11_ymwo4")
+theme_override_colors/font_color = Color(0.992157, 0.992157, 0.992157, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "A game by Giovanni Paulino, Lyx Huston,
+Joshua W, CryztalGalaxy, and GameBuilder101
+
+PC Senior Font by codeman38 on 1001fonts.com
+Coolville Font by Tyler Finck on 1001fonts.com"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 2
+
 [node name="PressStart" type="Label" parent="."]
 texture_filter = 1
 anchors_preset = 8
@@ -93,10 +138,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 64.0
 offset_top = 192.0
-offset_right = 320.0
-offset_bottom = 215.0
+offset_right = 384.0
+offset_bottom = 208.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("5_u50um")
@@ -107,16 +151,54 @@ text = "PRESS ANY BUTTON"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Node" type="Node" parent="."]
-
-[node name="Instructions0" type="Sprite2D" parent="Node"]
+[node name="Instructions" type="Node2D" parent="."]
 visible = false
+
+[node name="Background" type="Sprite2D" parent="Instructions"]
 texture_filter = 1
 position = Vector2(192, 128)
 texture = ExtResource("6_xmqd2")
 
-[node name="InstructionsTitle" type="Label" parent="Node"]
-visible = false
+[node name="Skip Button" type="TextureButton" parent="Instructions"]
+texture_filter = 1
+offset_left = 112.0
+offset_top = 184.0
+offset_right = 200.0
+offset_bottom = 208.0
+texture_normal = ExtResource("12_fut6g")
+texture_pressed = ExtResource("13_rqsi0")
+texture_hover = ExtResource("13_rqsi0")
+script = ExtResource("14_lc13s")
+
+[node name="Label" type="Label" parent="Instructions/Skip Button"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_u50um")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "Skip"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Next Button" type="TextureButton" parent="Instructions"]
+texture_filter = 1
+offset_left = 232.0
+offset_top = 180.0
+offset_right = 266.0
+offset_bottom = 212.0
+texture_normal = ExtResource("15_7lqqc")
+texture_pressed = ExtResource("16_0xgrb")
+texture_hover = ExtResource("16_0xgrb")
+script = ExtResource("17_56ma3")
+
+[node name="Page 1" type="Node2D" parent="Instructions"]
+
+[node name="Title" type="Label" parent="Instructions/Page 1"]
 top_level = true
 texture_filter = 1
 anchors_preset = 7
@@ -133,21 +215,230 @@ grow_vertical = 0
 theme = ExtResource("5_u50um")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-text = "HOW TO PLAY"
+text = "HOW TO PLAY (1/6)"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="InstructionsUnderline" type="ColorRect" parent="Node"]
+[node name="Body" type="RichTextLabel" parent="Instructions/Page 1"]
+texture_filter = 1
+offset_left = 112.0
+offset_top = 72.0
+offset_right = 272.0
+offset_bottom = 176.0
+theme = ExtResource("11_ymwo4")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+bbcode_enabled = true
+text = "You are the manager of a casino. Make as much money as you can without raising suspicion to stay open as long as possible.
+
+(Press arrow to go to next page)"
+
+[node name="Page 2" type="Node2D" parent="Instructions"]
 visible = false
+
+[node name="Title" type="Label" parent="Instructions/Page 2"]
 top_level = true
+texture_filter = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -64.0
-offset_top = -192.0
-offset_right = 64.0
-offset_bottom = -191.0
+offset_left = -96.0
+offset_top = -224.0
+offset_right = 96.0
+offset_bottom = -196.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("5_u50um")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "HOW TO PLAY (2/6)"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Body" type="RichTextLabel" parent="Instructions/Page 2"]
+texture_filter = 1
+offset_left = 112.0
+offset_top = 72.0
+offset_right = 272.0
+offset_bottom = 176.0
+theme = ExtResource("11_ymwo4")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+bbcode_enabled = true
+text = "Select [color=#3efffd]empty spots[/color] to purchase new casino games. Different games have different stats."
+
+[node name="CasinoCyan" type="Sprite2D" parent="Instructions/Page 2"]
+texture_filter = 1
+position = Vector2(168, 136)
+texture = ExtResource("18_t0ya6")
+region_enabled = true
+region_rect = Rect2(40, 32, 48, 48)
+
+[node name="SelectionDiamond" type="Sprite2D" parent="Instructions/Page 2"]
+texture_filter = 1
+position = Vector2(168, 136)
+texture = ExtResource("19_wcobr")
+
+[node name="SlotMachine0" type="Sprite2D" parent="Instructions/Page 2"]
+texture_filter = 1
+position = Vector2(224, 136)
+texture = ExtResource("20_a5djn")
+
+[node name="Page 3" type="Node2D" parent="Instructions"]
+visible = false
+
+[node name="Title" type="Label" parent="Instructions/Page 3"]
+top_level = true
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -224.0
+offset_right = 96.0
+offset_bottom = -196.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("5_u50um")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "HOW TO PLAY (3/6)"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Body" type="RichTextLabel" parent="Instructions/Page 3"]
+texture_filter = 1
+offset_left = 112.0
+offset_top = 72.0
+offset_right = 272.0
+offset_bottom = 176.0
+theme = ExtResource("11_ymwo4")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+bbcode_enabled = true
+text = "Each time a guest plays a game, it [color=#8fff2c]makes you a small amount of money[/color]. If the guest gets a [color=#f8ff3e]jackpot[/color], you [color=#f8ff3e]lose a large amount of money.[/color]"
+
+[node name="Page 4" type="Node2D" parent="Instructions"]
+visible = false
+
+[node name="Title" type="Label" parent="Instructions/Page 4"]
+top_level = true
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -224.0
+offset_right = 96.0
+offset_bottom = -196.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("5_u50um")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "HOW TO PLAY (4/6)"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Body" type="RichTextLabel" parent="Instructions/Page 4"]
+texture_filter = 1
+offset_left = 112.0
+offset_top = 72.0
+offset_right = 272.0
+offset_bottom = 176.0
+theme = ExtResource("11_ymwo4")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+bbcode_enabled = true
+text = "You can [color=#3efffd]rig[/color] games to make the [color=#f8ff3e]jackpot[/color] harder to win. However, this raises [color=#ff5a00]suspicion[/color]."
+
+[node name="SlotMachine0" type="Sprite2D" parent="Instructions/Page 4"]
+texture_filter = 1
+position = Vector2(192, 136)
+texture = ExtResource("20_a5djn")
+
+[node name="Page 5" type="Node2D" parent="Instructions"]
+visible = false
+
+[node name="Title" type="Label" parent="Instructions/Page 5"]
+top_level = true
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -224.0
+offset_right = 96.0
+offset_bottom = -196.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("5_u50um")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "HOW TO PLAY (5/6)"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Body" type="RichTextLabel" parent="Instructions/Page 5"]
+texture_filter = 1
+offset_left = 112.0
+offset_top = 72.0
+offset_right = 272.0
+offset_bottom = 176.0
+theme = ExtResource("11_ymwo4")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+bbcode_enabled = true
+text = "If [color=#ff5a00]the inspector[/color] arrives while your [color=#ff5a00]suspicion[/color] is maximum, you get fined."
+
+[node name="Inspector" type="Sprite2D" parent="Instructions/Page 5"]
+texture_filter = 1
+position = Vector2(192, 136)
+texture = ExtResource("21_qy8nt")
+
+[node name="Page 6" type="Node2D" parent="Instructions"]
+visible = false
+
+[node name="Title" type="Label" parent="Instructions/Page 6"]
+top_level = true
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -224.0
+offset_right = 96.0
+offset_bottom = -196.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("5_u50um")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "HOW TO PLAY (6/6)"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Body" type="RichTextLabel" parent="Instructions/Page 6"]
+texture_filter = 1
+offset_left = 112.0
+offset_top = 72.0
+offset_right = 272.0
+offset_bottom = 176.0
+theme = ExtResource("11_ymwo4")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+bbcode_enabled = true
+text = "If you go bankrupt, the game ends. Stay open longer to get a higher score!"
+
+[connection signal="button_down" from="Instructions/Skip Button" to="." method="EndInstructions"]
+[connection signal="button_down" from="Instructions/Next Button" to="." method="NextInstructionPage"]

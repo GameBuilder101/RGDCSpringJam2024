@@ -1,16 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://drh46xmeyvrse"]
+[gd_scene load_steps=20 format=3 uid="uid://ba4yl4t23kwar"]
 
 [ext_resource type="Script" path="res://machine_shop/BuyNew.cs" id="1_3hjxg"]
 [ext_resource type="Texture2D" uid="uid://bdm82djtj6w24" path="res://gameplay_ui/small_button.png" id="2_5i7bg"]
 [ext_resource type="Texture2D" uid="uid://c2ja12fg6argj" path="res://gameplay_ui/small_button_highlighted.png" id="3_205d4"]
 [ext_resource type="Script" path="res://machine_shop/BuyButton.cs" id="4_5o4j7"]
-[ext_resource type="Theme" path="res://gameplay_ui/big_font.tres" id="4_wuaed"]
+[ext_resource type="Theme" uid="uid://b2hh8747xw4e8" path="res://gameplay_ui/big_font.tres" id="4_wuaed"]
 [ext_resource type="Texture2D" uid="uid://ckdkdsevn5ukk" path="res://gameplay_ui/arrow_button.png" id="5_oabu3"]
 [ext_resource type="Texture2D" uid="uid://osjit1npbebf" path="res://gameplay_ui/arrow_button_highlighted.png" id="6_1hagl"]
 [ext_resource type="Script" path="res://machine_shop/ArrowButton.cs" id="7_1h844"]
 [ext_resource type="Texture2D" uid="uid://c80s8pnn22okp" path="res://machine/slot_machine_0.png" id="8_tt4bn"]
-[ext_resource type="Theme" path="res://gameplay_ui/small_font.tres" id="9_pcuu0"]
-[ext_resource type="PackedScene" uid="uid://bdade3ye4s3ir" path="res://machine/MachineScene.tscn" id="11_pf5l4"]
+[ext_resource type="Theme" uid="uid://cgkpf3snkxnom" path="res://gameplay_ui/small_font.tres" id="9_pcuu0"]
+[ext_resource type="PackedScene" path="res://machine/MachineScene.tscn" id="11_pf5l4"]
 [ext_resource type="Texture2D" uid="uid://b5noid4ntjqky" path="res://machine/craps_table_0.png" id="12_r0liy"]
 [ext_resource type="Texture2D" uid="uid://n2g66mkm4mur" path="res://machine/craps_table_1.png" id="13_11fow"]
 [ext_resource type="Texture2D" uid="uid://dwoi377ovkh65" path="res://machine/craps_table_2.png" id="14_up4xv"]
@@ -52,7 +52,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_wuaed")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 2
 text = "Buy ($)"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -93,7 +93,7 @@ offset_right = 264.0
 offset_bottom = 200.0
 theme = ExtResource("4_wuaed")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 2
 text = "Machine Name"
 
 [node name="Play Cost" type="Label" parent="."]
@@ -105,7 +105,7 @@ offset_bottom = 216.0
 theme = ExtResource("9_pcuu0")
 theme_override_colors/font_color = Color(0.560784, 1, 0.172549, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 2
 text = "Payout Per Play: $"
 
 [node name="Jackpot Amount" type="Label" parent="."]
@@ -117,7 +117,7 @@ offset_bottom = 224.0
 theme = ExtResource("9_pcuu0")
 theme_override_colors/font_color = Color(0.972549, 1, 0.243137, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 2
 text = "Jackpot Cost: $"
 
 [node name="Suspicion Factor" type="Label" parent="."]
@@ -129,7 +129,7 @@ offset_bottom = 232.0
 theme = ExtResource("9_pcuu0")
 theme_override_colors/font_color = Color(1, 0.352941, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 2
 text = "Suspicion Factor: $"
 
 [node name="Num Rolls" type="Label" parent="."]
@@ -140,7 +140,7 @@ offset_right = 264.0
 offset_bottom = 240.0
 theme = ExtResource("9_pcuu0")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 2
 text = "Rolls per Guest: "
 
 [node name="MachineTypes" type="Node" parent="."]
