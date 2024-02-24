@@ -5,7 +5,7 @@ public partial class Machine : Node2D
 {
 	
 	[Export]
-	public Texture2D MachineTexture { get; set; }
+	public Texture2D MachineTexture { get; private set; }
 	
 	
 	/// <summary>

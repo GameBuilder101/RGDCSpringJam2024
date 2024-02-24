@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsmdrup61uuoc"]
+
+[ext_resource type="Script" path="res://machine/Machine.cs" id="1_luxc1"]
+[ext_resource type="Texture2D" uid="uid://or8bs3v32pjs" path="res://machine/poker_table_1.png" id="2_3hrrn"]
+
+[node name="SlotMachine0" type="Node2D"]
+script = ExtResource("1_luxc1")
+MachineTexture = ExtResource("2_3hrrn")
+NumRolls = 1
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_3hrrn")

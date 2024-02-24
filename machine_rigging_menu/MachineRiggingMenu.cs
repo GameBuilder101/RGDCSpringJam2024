@@ -43,7 +43,7 @@ public partial class MachineRiggingMenu : Node2D
     {
         TargetMachine = machine;
 
-        //_machineSprite.Texture = machine;
+        _machineSprite.Texture = machine.MachineTexture;
         _playCostLabel.Text = "Payout Per Play: $" + machine.PlayCost;
         _sellCostLabel.Text = "Sell ($" + machine.ShopCost / 2 + ")";
         _jackpotAmountLabel.Text = "Jackpot Cost: $" + machine.JackpotAmount;
@@ -54,11 +54,15 @@ public partial class MachineRiggingMenu : Node2D
 
     public void IncreaseWinChance()
     {
-        //TargetMachine.JackpotProbability
+        TargetMachine.JackpotProbability += 0.05f;
+        if (TargetMachine.JackpotProbability > 1.0f)
+            TargetMachine.JackpotProbability = 1.0f;
     }
 
     public void DecreaseWinChance()
     {
-        //TargetMachine.JackpotProbability
+        TargetMachine.JackpotProbability -= 0.05f;
+        if (TargetMachine.JackpotProbability < 0.0f)
+            TargetMachine.JackpotProbability = 0.0f;
     }
 }
