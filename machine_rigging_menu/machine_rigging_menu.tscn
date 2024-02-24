@@ -1,6 +1,5 @@
-[gd_scene load_steps=12 format=3 uid="uid://juk3wn0oyo6x"]
+[gd_scene load_steps=11 format=3 uid="uid://juk3wn0oyo6x"]
 
-[ext_resource type="Texture2D" uid="uid://b6ghw8ubbxs4h" path="res://gameplay_ui/inspect_background.png" id="1_30nh8"]
 [ext_resource type="Script" path="res://machine_rigging_menu/MachineRiggingMenu.cs" id="1_i8wyf"]
 [ext_resource type="Texture2D" uid="uid://bdm82djtj6w24" path="res://gameplay_ui/small_button.png" id="2_hrvep"]
 [ext_resource type="Texture2D" uid="uid://c2ja12fg6argj" path="res://gameplay_ui/small_button_highlighted.png" id="3_4j31a"]
@@ -22,11 +21,6 @@ _jackpotAmountLabel = NodePath("Jackpot Amount")
 _suspicionFactorLabel = NodePath("Suspicion Factor")
 _numRollsLabel = NodePath("Num Rolls")
 _winChanceLabel = NodePath("Win Chance")
-
-[node name="Background" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(192, 216)
-texture = ExtResource("1_30nh8")
 
 [node name="Cancel Button" type="TextureButton" parent="."]
 texture_filter = 1
@@ -143,9 +137,9 @@ text = "Rolls per Guest: "
 
 [node name="Add Button" type="TextureButton" parent="."]
 texture_filter = 1
-offset_left = 192.0
+offset_left = 232.0
 offset_top = 192.0
-offset_right = 224.0
+offset_right = 264.0
 offset_bottom = 216.0
 texture_normal = ExtResource("5_snsxw")
 texture_pressed = ExtResource("6_ppsd5")
@@ -153,9 +147,9 @@ texture_hover = ExtResource("6_ppsd5")
 
 [node name="Subtract Button" type="TextureButton" parent="."]
 texture_filter = 1
-offset_left = 232.0
+offset_left = 192.0
 offset_top = 192.0
-offset_right = 264.0
+offset_right = 224.0
 offset_bottom = 216.0
 texture_normal = ExtResource("7_601am")
 texture_pressed = ExtResource("8_3jboq")
