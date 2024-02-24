@@ -5,7 +5,7 @@ public partial class Machine : Node2D
 {
 	
 	[Export]
-	public Texture2D CrapsZero {get; private set;}
+	public Texture2D CrapsZero { get; private set; }
 	
 	
 	/// <summary>
@@ -30,7 +30,7 @@ public partial class Machine : Node2D
 	/// The chance for a guest to win the jackpot. 0 means no chance, and 1 means 100% chance.
 	/// </summary>
 	[Export]
-	public float JackpotProbability { get; private set; }
+	public float JackpotProbability {get; set;}
 	/// <summary>
 	/// The default chance for a guest to win the jackpot.
 	/// </summary>
