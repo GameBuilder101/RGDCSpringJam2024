@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b2hh8747xw4e8"]
+
+[ext_resource type="FontFile" uid="uid://da3ma5hfq6m80" path="res://gameplay_ui/pc_senior.ttf" id="1_lxtkl"]
+
+[resource]
+default_font = ExtResource("1_lxtkl")
+default_font_size = 8

@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://dojadhcakpdba"]
+
+[ext_resource type="PackedScene" uid="uid://cqspb4krtx0jk" path="res://machine_manager/machine_manager.tscn" id="1_kw7cu"]
+[ext_resource type="Texture2D" uid="uid://b85hboxg11js8" path="res://casino/casino_cyan.png" id="2_aur2d"]
+[ext_resource type="PackedScene" uid="uid://cc53oe3kgmt80" path="res://casino/machine_location.tscn" id="2_j7635"]
+
+[node name="Casino" type="Node2D"]
+
+[node name="MachineManager" parent="." node_paths=PackedStringArray("LocationHolder") instance=ExtResource("1_kw7cu")]
+LocationHolder = NodePath("../Locations")
+
+[node name="Locations" type="Node" parent="."]
+
+[node name="MachineLocation" parent="Locations" instance=ExtResource("2_j7635")]
+position = Vector2(64, 56)
+
+[node name="MachineLocation2" parent="Locations" instance=ExtResource("2_j7635")]
+position = Vector2(112, 56)
+
+[node name="MachineLocation3" parent="Locations" instance=ExtResource("2_j7635")]
+position = Vector2(160, 56)
+
+[node name="MachineLocation4" parent="Locations" instance=ExtResource("2_j7635")]
+position = Vector2(224, 56)
+
+[node name="MachineLocation5" parent="Locations" instance=ExtResource("2_j7635")]
+position = Vector2(272, 56)
+
+[node name="MachineLocation6" parent="Locations" instance=ExtResource("2_j7635")]
+position = Vector2(320, 56)
+
+[node name="MachineLocation7" parent="Locations" instance=ExtResource("2_j7635")]
+position = Vector2(64, 136)
+
+[node name="MachineLocation8" parent="Locations" instance=ExtResource("2_j7635")]
+position = Vector2(112, 136)
+
+[node name="MachineLocation9" parent="Locations" instance=ExtResource("2_j7635")]
+position = Vector2(160, 136)
+
+[node name="MachineLocation10" parent="Locations" instance=ExtResource("2_j7635")]
+position = Vector2(224, 136)
+
+[node name="MachineLocation11" parent="Locations" instance=ExtResource("2_j7635")]
+position = Vector2(272, 136)
+
+[node name="MachineLocation12" parent="Locations" instance=ExtResource("2_j7635")]
+position = Vector2(320, 136)
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_aur2d")
+centered = false
