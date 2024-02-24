@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://govsub7t4prr" path="res://gameplay_ui/subtract_button_highlighted.png" id="8_3jboq"]
 [ext_resource type="Theme" uid="uid://cgkpf3snkxnom" path="res://gameplay_ui/small_font.tres" id="8_oakfx"]
 
-[node name="MachineShop" type="Node2D" node_paths=PackedStringArray("_machineSprite", "_playCostLabel", "_sellCostLabel", "_jackpotAmountLabel", "_suspicionFactorLabel", "_numRollsLabel", "_winChanceLabel")]
+[node name="MachineRiggingMenu" type="Node2D" node_paths=PackedStringArray("_machineSprite", "_playCostLabel", "_sellCostLabel", "_jackpotAmountLabel", "_suspicionFactorLabel", "_numRollsLabel", "_winChanceLabel")]
 script = ExtResource("1_i8wyf")
 _machineSprite = NodePath("Machine")
 _playCostLabel = NodePath("Play Cost")
@@ -185,3 +185,8 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 text = "%"
 horizontal_alignment = 1
+
+[connection signal="button_down" from="Cancel Button" to="." method="HideRiggingMenu"]
+[connection signal="button_down" from="Sell Button" to="." method="Sell"]
+[connection signal="button_down" from="Add Button" to="." method="IncreaseWinChance"]
+[connection signal="button_down" from="Subtract Button" to="." method="DecreaseWinChance"]
