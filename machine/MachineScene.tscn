@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c80s8pnn22okp" path="res://machine/slot_machine_0.png" id="1_fq1w3"]
 [ext_resource type="Script" path="res://machine/Machine.cs" id="1_srwm5"]
-[ext_resource type="Theme" uid="uid://cgkpf3snkxnom" path="res://gameplay_ui/small_font.tres" id="3_n3nhx"]
+[ext_resource type="Theme" path="res://gameplay_ui/small_font.tres" id="3_n3nhx"]
 
 [node name="MachineScene" type="Sprite2D" node_paths=PackedStringArray("_belowLabel")]
 texture_filter = 1
