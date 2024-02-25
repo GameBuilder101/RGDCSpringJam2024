@@ -153,8 +153,8 @@ public partial class Machine : Sprite2D
 	public int Roll()
 	{
 		if(moneyRNG.Randf() <= JackpotProbability){
-            MachineManager.instance.Suspicion -= JackpotSuspicionReduction;
-            return JackpotAmount;
+			MachineManager.instance.Suspicion -= JackpotSuspicionReduction;
+			return JackpotAmount;
 		}
 		else{
 			return 0;
@@ -174,13 +174,13 @@ public partial class Machine : Sprite2D
 	public string GetSuspicionFactorDisplay()
 	{
 		return (Math.Round(SuspicionFactor * 100000.0)) / 1000 + "%";
-    }
+	}
 
 	public void JackpotProbabilityLowerLimit()
 	{
 		if(JackpotProbability < 0.001){
 			JackpotProbability = (float)0.001;
 		}
-		JackpotSuspicionReduction = (DefaultSuspicionFactor/50)*3;
+		JackpotSuspicionReduction = (DefaultSuspicionFactor/5);
 	}
 }
