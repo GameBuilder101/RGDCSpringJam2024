@@ -5,8 +5,8 @@ public partial class MachineManager : Node2D
 {
 	public static MachineManager instance;
 
-	public double Suspicion { get; set; } = 0.0;
-	public long Moola { get; set; } = 100;
+	public double Suspicion { get; set; } = 1.0;
+	public long Moola { get; set; } = 1000;
 	private double Progress = 0.0;
 	private double TimeBetweenTicks = 5.0;
 	private Machine[] Machines;
@@ -52,17 +52,20 @@ public partial class MachineManager : Node2D
 				m.Tick();
 			}
 		}
+		if (Suspicion >= 1) {
+			NumFines += 1;
+			Moola -= NumFines * 500;
+			Suspicion = 0;
+			TextParticleManager.instance.createFineMessage(
+				NumFines, NumFines * 500
+			);
+		}
 		if (Moola < 0) {
 			GameOver.SetScoreValues(TimePlayed, HighMoola, NumFines);
 			GetTree().ChangeSceneToFile("res://game_over/game_over.tscn");
 		}
 		if (Moola > HighMoola) {
 			HighMoola = Moola;
-		}
-		if (Suspicion >= 1) {
-			NumFines += 1;
-			Moola -= NumFines * 500;
-			Suspicion = 0;
 		}
 	}
 	
