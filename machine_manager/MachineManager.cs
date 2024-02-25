@@ -6,14 +6,14 @@ public partial class MachineManager : Node2D
 	public static MachineManager instance;
 
 	public double Suspicion { get; set; } = 0.0;
-	public int Moola { get; set; } = 100;
+	public long Moola { get; set; } = 100;
 	private double Progress = 0.0;
 	private double TimeBetweenTicks = 5.0;
 	private Machine[] Machines;
 	private MachineLocation[] Locations;
 	public int FocussedLocation {get; private set;} = -1;
 	private double TimePlayed = 0;
-	private int HighMoola = 0;
+	private long HighMoola = 0;
 	private int NumFines = 0;
 
 	[Export]

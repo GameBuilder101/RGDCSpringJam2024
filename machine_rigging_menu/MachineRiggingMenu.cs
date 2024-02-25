@@ -88,6 +88,7 @@ public partial class MachineRiggingMenu : Node2D
 		_machineNameLabel.Text = machine.name;
 		_machineSprite.Texture = machine.MachineTexture;
 		_playCostLabel.Text = "Payout Per Play: $" + machine.PlayCost;
+		_jackpotAmountLabel.Text = "Jackpot Cost: $" + machine.JackpotAmount;
 		_sellCostLabel.Text = "Sell $" + SellCost;
 		UpdateDynamicDisplay();
 		_numRollsLabel.Text = "Rolls Per Guest: " + machine.NumRolls;

@@ -12,7 +12,7 @@ public partial class Machine : Sprite2D
 	private RandomNumberGenerator moneyRNG;
 	private RandomNumberGenerator posRNG;
 	
-	private int SingleParticleThreshold = 5;
+	private int SingleParticleThreshold = 3;
 	private int OffsetRadius = 30;
 	
 	/// <summary>
@@ -126,14 +126,14 @@ public partial class Machine : Sprite2D
 			Revenue += rollChange;
 		}
 		if (NumRolls >= SingleParticleThreshold) {
-			string prepend;
+			string text;
 			if (numJackpots == 0) {
-				prepend = "No";
+				text = "";
 			} else {
-				prepend = numJackpots + "x";
+				text = numJackpots + "x jackpots!";
 			}
 			TextParticleManager.instance.createMoneyChangeParticle(
-				prepend + " jackpots!", Revenue, nextParticlePos()
+				text, Revenue, nextParticlePos()
 			);
 		}
 		MachineManager.instance.Moola += Revenue;

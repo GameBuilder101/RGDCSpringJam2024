@@ -26,8 +26,11 @@ public partial class TextParticleManager : Node
 			color = moneyIncrease;
 			prepend = "+";
 		}
+		if (msg != "") {
+			prepend = "\n" + prepend;
+		}
 		AddChild(new TextParticle(
-			msg + "\n" + prepend + change, at, color, Math.Sqrt(Math.Abs(change))
+			msg + prepend + change, at, color, 0.5 * Math.Log(Math.Abs(change))
 		));
 	}
 }

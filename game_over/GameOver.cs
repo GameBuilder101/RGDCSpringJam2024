@@ -4,7 +4,7 @@ using System;
 public partial class GameOver : Node2D
 {
 	private static double _timePlayed;
-	private static int _highestMoney;
+	private static long _highestMoney;
 	private static int _timesFined;
 
 	[Export]
@@ -42,14 +42,14 @@ public partial class GameOver : Node2D
     /// <summary>
     /// Call to set the values displayed on the game over screen.
     /// </summary>
-    public static void SetScoreValues(double timePlayed, int highestMoney, int timesFined)
+    public static void SetScoreValues(double timePlayed, long highestMoney, int timesFined)
 	{
 		_timePlayed = timePlayed;
 		_highestMoney = highestMoney;
 		_timesFined = timesFined;
 	}
 
-	public static int CalculateFinalScore(double timePlayed, int highestMoney, int timesFined)
+	public static long CalculateFinalScore(double timePlayed, long highestMoney, int timesFined)
 	{
 		return ((int)timePlayed - timesFined * 4) * 10 + highestMoney;
 	}
