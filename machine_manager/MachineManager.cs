@@ -5,8 +5,8 @@ public partial class MachineManager : Node2D
 {
 	public static MachineManager instance;
 
-	public double Suspicion { get; set; } = 1.0;
-	public long Moola { get; set; } = 1000;
+	public double Suspicion { get; set; } = 0.0;
+	public long Moola { get; set; } = 100;
 	private double Progress = 0.0;
 	private double TimeBetweenTicks = 5.0;
 	private Machine[] Machines;
@@ -15,9 +15,12 @@ public partial class MachineManager : Node2D
 	private double TimePlayed = 0;
 	private long HighMoola = 0;
 	private int NumFines = 0;
+	private bool Lost = false;
 
 	[Export]
 	private Node LocationHolder;
+	[Export]
+	private FadeOverlay Overlay;
 
 	public int TotalMachineRollCount { get; private set; }
 
@@ -60,21 +63,14 @@ public partial class MachineManager : Node2D
 				NumFines, NumFines * 500
 			);
 		}
-		if (Moola < 0) {
+		if (Moola < 0 && !Lost) {
+			Overlay.fadeOut();
 			GameOver.SetScoreValues(TimePlayed, HighMoola, NumFines);
-			GetTree().ChangeSceneToFile("res://game_over/game_over.tscn");
+			Lost = true;
 		}
 		if (Moola > HighMoola) {
 			HighMoola = Moola;
 		}
-<<<<<<< HEAD
-=======
-		if (Suspicion >= 1) {
-			NumFines += 1;
-			Moola -= NumFines * 100;
-			Suspicion = 0;
-		}
->>>>>>> 58a4c4510b7b44c75f54a8d1b57bb0c57d417dbe
 	}
 	
 	public void placeMachine(Machine m) {

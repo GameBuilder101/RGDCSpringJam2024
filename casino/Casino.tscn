@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cu18nn5mfsyv5"]
+[gd_scene load_steps=15 format=3 uid="uid://cu18nn5mfsyv5"]
 
 [ext_resource type="PackedScene" uid="uid://cqspb4krtx0jk" path="res://machine_manager/machine_manager.tscn" id="1_kw7cu"]
 [ext_resource type="Texture2D" uid="uid://b85hboxg11js8" path="res://casino/casino_cyan.png" id="2_aur2d"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" path="res://casino/inspector.tscn" id="6_cvj0l"]
 [ext_resource type="Script" path="res://casino/GuestMovementNode.cs" id="7_mvues"]
 [ext_resource type="Script" path="res://casino/GuestManager.cs" id="7_xergn"]
+[ext_resource type="Script" path="res://casino/FadeOverlay.cs" id="14_78imb"]
 
 [node name="Casino" type="Node2D"]
 
@@ -25,10 +26,11 @@ script = ExtResource("2_da27r")
 _textures = Array[Texture2D]([ExtResource("2_aur2d"), ExtResource("3_p3dlk"), ExtResource("4_wlecm")])
 _switchTime = 1.0
 
-[node name="MachineManager" parent="." node_paths=PackedStringArray("LocationHolder") instance=ExtResource("1_kw7cu")]
+[node name="MachineManager" parent="." node_paths=PackedStringArray("LocationHolder", "Overlay") instance=ExtResource("1_kw7cu")]
 y_sort_enabled = true
 texture_filter = 1
 LocationHolder = NodePath("../Locations")
+Overlay = NodePath("../Overlay")
 
 [node name="Locations" type="Node2D" parent="."]
 
@@ -142,3 +144,9 @@ fineSpawn = NodePath("FineSpawn")
 
 [node name="FineSpawn" type="Node2D" parent="TextParticleManager"]
 position = Vector2(192, 95)
+
+[node name="Overlay" type="ColorRect" parent="."]
+offset_right = 384.0
+offset_bottom = 256.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("14_78imb")
