@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkona1kj5aer"]
+
+[ext_resource type="Theme" path="res://gameplay_ui/small_font.tres" id="1_3ip4l"]
+[ext_resource type="Script" path="res://text_particles/TextParticle.cs" id="2_1cadc"]
+
+[node name="TextParticle" type="Label"]
+texture_filter = 1
+theme = ExtResource("1_3ip4l")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Particle Text"
+horizontal_alignment = 1
+uppercase = true
+script = ExtResource("2_1cadc")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
