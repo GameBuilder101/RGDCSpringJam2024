@@ -12,6 +12,9 @@ public partial class MachineManager : Node2D
 	private Machine[] Machines;
 	private MachineLocation[] Locations;
 	public int FocussedLocation {get; private set;} = -1;
+	private double TimePlayed = 0;
+	private int HighMoola = 0;
+	private int NumFines = 0;
 	
 	[Export]
 	private Node LocationHolder;
@@ -36,6 +39,7 @@ public partial class MachineManager : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		TimePlayed += delta;
 		Progress += delta;
 		if (Progress >= TimeBetweenTicks) {
 			Progress -= TimeBetweenTicks;
@@ -47,10 +51,16 @@ public partial class MachineManager : Node2D
 			}
 		}
 		if (Moola < 0) {
-			// switch to end screen
+			GameOver.SetScoreValues(TimePlayer, HighMoola, NumFines);
+			GetTree().ChangeSceneToFile("res://game_over/game_over.tscn");
 		}
-		if (Suspicion > 0.9) {
-			// call the inspector
+		if (Moola > HighMoola) {
+			HighMoola = Moola;
+		}
+		if (Suspicion >= 1) {
+			NumFines += 1;
+			Moola -= NumFines * 500;
+			Suspicion = 0;
 		}
 	}
 	
