@@ -26,7 +26,7 @@
 script = ExtResource("1_qmqmw")
 framesPerSecond = 2.0
 creditsText = NodePath("Credits")
-creditsDuration = 2.75
+creditsDuration = 2.0
 frames = Array[Texture2D]([ExtResource("2_w588t"), ExtResource("3_y0svh"), ExtResource("4_ilkb8")])
 flashInterval = 0.6
 flashColors = PackedColorArray(0.243137, 1, 0.992157, 1, 0.972549, 0.243137, 1, 1, 0.972549, 1, 0.243137, 1)
