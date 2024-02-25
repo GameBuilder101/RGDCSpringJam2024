@@ -49,10 +49,10 @@ position = Vector2(272, 136)
 [node name="MachineLocation12" parent="Locations" instance=ExtResource("2_j7635")]
 position = Vector2(320, 136)
 
-[node name="MachineShop" parent="." instance=ExtResource("4_ohbly")]
-
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1
 texture_filter = 1
 texture = ExtResource("2_aur2d")
 centered = false
+
+[node name="MachineShop" parent="." instance=ExtResource("4_ohbly")]
