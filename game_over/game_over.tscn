@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bihod1p8sud5p"]
+[gd_scene load_steps=14 format=3 uid="uid://bihod1p8sud5p"]
 
 [ext_resource type="Texture2D" uid="uid://bfjokgh4vrx7s" path="res://title_screen/background_club.png" id="1_5rw5c"]
 [ext_resource type="Script" path="res://game_over/GameOver.cs" id="1_dck11"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://c2ja12fg6argj" path="res://gameplay_ui/small_button_highlighted.png" id="5_mjpue"]
 [ext_resource type="Texture2D" uid="uid://dyc3inbotvehk" path="res://title_screen/background_spade.png" id="5_t5igy"]
 [ext_resource type="Script" path="res://machine_shop/CancelButton.cs" id="6_6vu1l"]
+[ext_resource type="AudioStream" uid="uid://du5qxonfpfwjd" path="res://game_over/game_over.wav" id="11_c5a4x"]
+[ext_resource type="AudioStream" uid="uid://pvpi052c88so" path="res://gameplay_ui/ui_click_0.wav" id="12_v0k3j"]
+[ext_resource type="Script" path="res://gameplay_ui/EventPlayableAudio.cs" id="13_wa6gc"]
 
 [node name="GameOver" type="Node2D" node_paths=PackedStringArray("_timePlayedLabel", "_highestMoneyLabel", "_timesFinedLabel", "_finalScoreLabel")]
 script = ExtResource("1_dck11")
@@ -188,4 +191,14 @@ text = "Return"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Game Over Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_c5a4x")
+autoplay = true
+
+[node name="UI Click 0" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_v0k3j")
+volume_db = -13.827
+script = ExtResource("13_wa6gc")
+
+[connection signal="button_down" from="Return Button" to="UI Click 0" method="Play"]
 [connection signal="pressed" from="Return Button" to="." method="SwitchToTitle"]

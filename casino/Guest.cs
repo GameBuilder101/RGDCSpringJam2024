@@ -91,7 +91,6 @@ public partial class Guest : Sprite2D
 		// Get a random position offset from the destination by a maximum amount
 		DestinationOffset = Vector2.FromAngle((float)(_random.NextDouble() * 2.0 * Math.PI))
 			* (float)_random.NextDouble() * _maxDestinationOffset;
-		GD.Print(DestinationOffset);
 
 		MoveSpeed = _minMoveSpeed + (float)_random.NextDouble() * (_maxMoveSpeed - _minMoveSpeed);
         LoiterTime = _minLoiterTime + (float)_random.NextDouble() * (_maxLoiterTime - _minLoiterTime);

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://byfamwoajjqun"]
+[gd_scene load_steps=21 format=3 uid="uid://byfamwoajjqun"]
 
 [ext_resource type="Texture2D" uid="uid://b6ghw8ubbxs4h" path="res://gameplay_ui/inspect_background.png" id="1_mvyaj"]
 [ext_resource type="Script" path="res://machine_shop/MachineShop.cs" id="1_uvfg6"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://5u76xyyf8pxx" path="res://machine/slot_machine_1.png" id="16_7yggo"]
 [ext_resource type="Texture2D" uid="uid://bh2gjcsuittdv" path="res://machine/slot_machine_2.png" id="17_i33i4"]
 [ext_resource type="PackedScene" uid="uid://juk3wn0oyo6x" path="res://machine_rigging_menu/machine_rigging_menu.tscn" id="18_a5tbs"]
+[ext_resource type="AudioStream" uid="uid://15y4j4q5byru" path="res://gameplay_ui/ui_click_1.wav" id="19_w4mwg"]
+[ext_resource type="Script" path="res://gameplay_ui/EventPlayableAudio.cs" id="20_8w1ct"]
 
 [node name="MachineShop" type="Node2D" node_paths=PackedStringArray("buyNew", "machineRiggingMenu")]
 script = ExtResource("1_uvfg6")
@@ -161,4 +163,10 @@ DefaultSuspicionFactor = 0.009
 
 [node name="MachineRiggingMenu" parent="." instance=ExtResource("18_a5tbs")]
 
+[node name="UI Click 1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_w4mwg")
+volume_db = -13.827
+script = ExtResource("20_8w1ct")
+
+[connection signal="button_down" from="Cancel Button" to="UI Click 1" method="Play"]
 [connection signal="pressed" from="Cancel Button" to="Cancel Button" method="OnPressed"]

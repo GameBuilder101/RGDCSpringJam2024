@@ -28,6 +28,9 @@ public partial class BuyNew : Node2D
     [Export]
     private PackedScene _machineTemplate;
 
+	[Export]
+	private EventPlayableAudio _buyAudio;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -69,5 +72,6 @@ public partial class BuyNew : Node2D
 		Visible = false;
 		MachineRiggingMenu.Instance.Visible = true;
 		MachineRiggingMenu.Instance.OpenOnMachine(display);
+		_buyAudio.Play();
 	}
 }

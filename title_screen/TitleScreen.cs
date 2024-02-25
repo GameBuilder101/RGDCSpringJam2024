@@ -20,6 +20,8 @@ public partial class TitleScreen : Node2D
 	[Export] Node2D instructionsParent;
 	[Export] Node2D[] instructions;
 
+	[Export] EventPlayableAudio _startAudio;
+
 	double secondsPerFrame;
 	double timer;
 	int frameIndex;
@@ -111,7 +113,9 @@ public partial class TitleScreen : Node2D
                         sprite.Visible = false;
                         startLabel.Visible = false;
                         instructionsParent.Visible = true;
-                        //((Sprite2D)instructions.GetChild(instructionIndex)).Visible = true;
+						//((Sprite2D)instructions.GetChild(instructionIndex)).Visible = true;
+
+						_startAudio.Play();
                     }
                 }
 

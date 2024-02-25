@@ -15,15 +15,17 @@ public partial class TextParticle : Label
 		string text,
 		Vector2 position,
 		Color color,
-		double lifeTime
+		double lifeTime,
+		int size
 	) {
+		this.GrowHorizontal = (GrowDirection) 2;
 		this.Text = text;
 		this.Position = position;
 		this.textColor = new Color(color);
 		Set("theme_override_colors/font_color", textColor);
 		Set("theme_override_colors/font_outline_color", outlineColor);
 		Set("theme_override_constants/outline_size", 2);
-		Set("theme_override_font_sizes/font_size", 10);
+		Set("theme_override_font_sizes/font_size", size);
 		this.HorizontalAlignment = (HorizontalAlignment) 1;
 		this.LifeTime = lifeTime;
 		this.TotalLifeTime = lifeTime;
