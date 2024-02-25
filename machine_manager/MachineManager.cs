@@ -6,7 +6,7 @@ public partial class MachineManager : Node2D
 	public static MachineManager instance;
 
 	public double Suspicion { get; set; } = 0.0;
-	public long Moola { get; set; } = 10000000000000;
+	public long Moola { get; set; } = 125;
 	private double Progress = 0.0;
 	private double TimeBetweenTicks = 5.0;
 	private Machine[] Machines;
