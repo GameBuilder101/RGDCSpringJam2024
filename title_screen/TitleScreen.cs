@@ -39,7 +39,7 @@ public partial class TitleScreen : Node2D
 		secondsPerFrame = 1 / framesPerSecond;
 		timer = 0;
 		frameIndex = 0;
-		flashTimer = 0;
+		flashTimer = flashInterval;
 		flashIndex = flashColors.Length - 1;
 		instructionIndex = 0;
 		sprite.Texture = frames[frameIndex];
