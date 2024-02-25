@@ -63,91 +63,96 @@ vertical_alignment = 1
 [node name="slot_0" parent="MachineTypes" instance=ExtResource("8_5eohu")]
 name = "Slots (I)"
 MachineTexture = ExtResource("3_iarv2")
-ShopCost = 10
+ShopCost = 50
 JackpotAmount = 10
 JackpotProbability = 0.25
-DefaultJackpotProbability = 0.5
+DefaultJackpotProbability = 0.53
 NumRolls = 1
 DefaultSuspicionFactor = 0.001
 
 [node name="slot_1" parent="MachineTypes" instance=ExtResource("8_5eohu")]
 name = "Slots (II)"
 MachineTexture = ExtResource("16_7yggo")
-ShopCost = 100
-PlayCost = 50
-JackpotAmount = 100
+ShopCost = 150
+PlayCost = 10
+JackpotAmount = 20
 JackpotProbability = 0.25
-DefaultJackpotProbability = 0.5
-NumRolls = 3
+DefaultJackpotProbability = 0.53
+NumRolls = 1
 DefaultSuspicionFactor = 0.001
 
 [node name="slot_2" parent="MachineTypes" instance=ExtResource("8_5eohu")]
 name = "Slots (III)"
 MachineTexture = ExtResource("17_i33i4")
-ShopCost = 1000
-PlayCost = 500
-JackpotAmount = 1000
+ShopCost = 600
+PlayCost = 25
+JackpotAmount = 50
 JackpotProbability = 0.25
-DefaultJackpotProbability = 0.5
-NumRolls = 5
+DefaultJackpotProbability = 0.53
+NumRolls = 2
 DefaultSuspicionFactor = 0.001
 
 [node name="poker_0" parent="MachineTypes" instance=ExtResource("8_5eohu")]
 name = "Poker Table (I)"
 MachineTexture = ExtResource("12_6bvin")
-ShopCost = 50
-PlayCost = 10
-JackpotAmount = 40
+ShopCost = 800
+PlayCost = 20
+JackpotAmount = 80
 JackpotProbability = 0.125
-DefaultJackpotProbability = 0.25
-NumRolls = 5
+DefaultJackpotProbability = 0.27
+NumRolls = 3
 DefaultSuspicionFactor = 0.002
 
 [node name="poker_1" parent="MachineTypes" instance=ExtResource("8_5eohu")]
 name = "Poker Table (II)"
 MachineTexture = ExtResource("13_dt6l4")
-PlayCost = 100
-JackpotAmount = 400
+ShopCost = 1250
+PlayCost = 30
+JackpotAmount = 120
 JackpotProbability = 0.125
-DefaultJackpotProbability = 0.25
+DefaultJackpotProbability = 0.27
+NumRolls = 3
 DefaultSuspicionFactor = 0.002
 
 [node name="poker_2" parent="MachineTypes" instance=ExtResource("8_5eohu")]
 name = "Poker Table (III)"
 MachineTexture = ExtResource("14_idq16")
-ShopCost = 5000
-PlayCost = 1000
-JackpotAmount = 4000
+ShopCost = 1800
+PlayCost = 40
+JackpotAmount = 160
 JackpotProbability = 0.125
-DefaultJackpotProbability = 0.25
-NumRolls = 20
+DefaultJackpotProbability = 0.27
+NumRolls = 4
 DefaultSuspicionFactor = 0.002
 
 [node name="craps_0" parent="MachineTypes" instance=ExtResource("8_5eohu")]
 name = "Craps Table (I)"
 MachineTexture = ExtResource("9_4lmo0")
-ShopCost = 100
-PlayCost = 20
-JackpotAmount = 200
+ShopCost = 2400
+PlayCost = 40
+JackpotAmount = 400
+DefaultJackpotProbability = 0.12
 NumRolls = 5
 DefaultSuspicionFactor = 0.003
 
 [node name="craps_1" parent="MachineTypes" instance=ExtResource("8_5eohu")]
 name = "Craps Table (II)"
 MachineTexture = ExtResource("10_ufsdh")
-ShopCost = 1000
-PlayCost = 200
-JackpotAmount = 2000
-NumRolls = 20
+ShopCost = 3200
+PlayCost = 50
+JackpotAmount = 500
+DefaultJackpotProbability = 0.12
+NumRolls = 5
 DefaultSuspicionFactor = 0.003
 
 [node name="craps_2" parent="MachineTypes" instance=ExtResource("8_5eohu")]
 name = "Craps Table (III)"
 MachineTexture = ExtResource("11_4anvj")
-ShopCost = 10000
-PlayCost = 2000
-JackpotAmount = 20000
-NumRolls = 50
+ShopCost = 4000
+PlayCost = 60
+JackpotAmount = 600
+DefaultJackpotProbability = 0.12
+NumRolls = 6
 DefaultSuspicionFactor = 0.003
 
 [node name="MachineRiggingMenu" parent="." instance=ExtResource("18_a5tbs")]
