@@ -92,7 +92,6 @@ public partial class TitleScreen : Node2D
 					{
 						frameIndex = frames.Length - 1;
                         sprite.Texture = frames[frameIndex];
-                        startLabel.Visible = true;
 
                         _musicAudio.Stop();
                     }
