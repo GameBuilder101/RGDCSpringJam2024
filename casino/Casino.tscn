@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cu18nn5mfsyv5"]
+[gd_scene load_steps=22 format=3 uid="uid://cu18nn5mfsyv5"]
 
 [ext_resource type="PackedScene" uid="uid://cqspb4krtx0jk" path="res://machine_manager/machine_manager.tscn" id="1_kw7cu"]
 [ext_resource type="Texture2D" uid="uid://b85hboxg11js8" path="res://casino/casino_cyan.png" id="2_aur2d"]
@@ -16,6 +16,11 @@
 [ext_resource type="Script" path="res://casino/FadeOverlay.cs" id="14_78imb"]
 [ext_resource type="AudioStream" uid="uid://b8014rtpil78a" path="res://casino/casino_music.wav" id="15_8vop4"]
 [ext_resource type="Script" path="res://casino/LoopAudio.cs" id="16_qq60u"]
+[ext_resource type="AudioStream" uid="uid://15y4j4q5byru" path="res://gameplay_ui/ui_click_1.wav" id="17_bhyb0"]
+[ext_resource type="Script" path="res://gameplay_ui/EventPlayableAudio.cs" id="18_74rnt"]
+[ext_resource type="AudioStream" uid="uid://bd8v23txnpcjo" path="res://machine_manager/jackpot.wav" id="19_r0myl"]
+[ext_resource type="AudioStream" uid="uid://dcbmejvgs2c1r" path="res://machine_manager/no_jackpot.wav" id="20_r6vmd"]
+[ext_resource type="AudioStream" uid="uid://bl0lu45pla7ul" path="res://machine_manager/fined.wav" id="21_p6j6f"]
 
 [node name="Casino" type="Node2D"]
 
@@ -28,10 +33,15 @@ script = ExtResource("2_da27r")
 _textures = Array[Texture2D]([ExtResource("2_aur2d"), ExtResource("3_p3dlk"), ExtResource("4_wlecm")])
 _switchTime = 1.0
 
-[node name="MachineManager" parent="." node_paths=PackedStringArray("LocationHolder") instance=ExtResource("1_kw7cu")]
+[node name="MachineManager" parent="." node_paths=PackedStringArray("LocationHolder", "Overlay", "_focusAudio", "_jackpotAudio", "_noJackpotAudio", "_finedAudio") instance=ExtResource("1_kw7cu")]
 y_sort_enabled = true
 texture_filter = 1
 LocationHolder = NodePath("../Locations")
+Overlay = NodePath("../Overlay")
+_focusAudio = NodePath("../UI Click 1")
+_jackpotAudio = NodePath("../Jackpot Audio")
+_noJackpotAudio = NodePath("../No Jackpot Audio")
+_finedAudio = NodePath("../Fined Audio")
 
 [node name="Locations" type="Node2D" parent="."]
 
@@ -137,9 +147,11 @@ z_index = 0
 
 [node name="MachineShop" parent="." instance=ExtResource("4_ohbly")]
 
-[node name="TextParticleManager" parent="." instance=ExtResource("6_6lvv6")]
+[node name="TextParticleManager" parent="." node_paths=PackedStringArray("fineSpawn") instance=ExtResource("6_6lvv6")]
 moneyIncrease = Color(0.560784, 1, 0.172549, 1)
 moneyDecrease = Color(0.972549, 1, 0.243137, 1)
+fineColor = Color(1, 0.352941, 0, 1)
+fineSpawn = NodePath("FineSpawn")
 
 [node name="FineSpawn" type="Node2D" parent="TextParticleManager"]
 position = Vector2(192, 95)
@@ -150,9 +162,28 @@ offset_bottom = 256.0
 color = Color(0, 0, 0, 0)
 script = ExtResource("14_78imb")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_8vop4")
+volume_db = -8.534
 autoplay = true
 script = ExtResource("16_qq60u")
 
-[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="Finished"]
+[node name="UI Click 1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_bhyb0")
+volume_db = -13.827
+script = ExtResource("18_74rnt")
+
+[node name="Jackpot Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_r0myl")
+script = ExtResource("18_74rnt")
+
+[node name="No Jackpot Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_r6vmd")
+script = ExtResource("18_74rnt")
+
+[node name="Fined Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_p6j6f")
+volume_db = -13.827
+script = ExtResource("18_74rnt")
+
+[connection signal="finished" from="Music" to="Music" method="Finished"]

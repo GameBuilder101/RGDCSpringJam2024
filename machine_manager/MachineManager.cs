@@ -24,7 +24,18 @@ public partial class MachineManager : Node2D
 	[Export]
 	private int fineAmount;
 
-	public int TotalMachineRollCount { get; private set; }
+    [Export]
+    private EventPlayableAudio _focusAudio;
+	public bool GotJackpot { get; set; }
+    [Export]
+	private EventPlayableAudio _jackpotAudio;
+    public bool GotHouseWin { get; set; }
+    [Export]
+    private EventPlayableAudio _noJackpotAudio;
+    [Export]
+    private EventPlayableAudio _finedAudio;
+
+    public int TotalMachineRollCount { get; private set; }
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -73,7 +84,19 @@ public partial class MachineManager : Node2D
 		if (Moola > HighMoola) {
 			HighMoola = Moola;
 		}
-	}
+
+		if (GotJackpot)
+		{
+			_jackpotAudio.Play();
+			GotJackpot = false;
+		}
+
+        if (GotHouseWin)
+        {
+            _noJackpotAudio.Play();
+            GotHouseWin = false;
+        }
+    }
 	
 	public void placeMachine(Machine m) {
 		placeMachine(FocussedLocation, m);
@@ -111,5 +134,6 @@ public partial class MachineManager : Node2D
 		if (FocussedLocation != -1) {
 			Locations[FocussedLocation].Focus = true;
 		}
+		_focusAudio.Play();
 	}
 }

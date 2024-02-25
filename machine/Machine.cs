@@ -112,7 +112,8 @@ public partial class Machine : Sprite2D
 			if (rollChange < 0) {
 				HadJackpot = 1;
 				if (NumRolls < SingleParticleThreshold) {
-					TextParticleManager.instance.createMoneyChangeParticle(
+                    MachineManager.instance.GotJackpot = true;
+                    TextParticleManager.instance.createMoneyChangeParticle(
 						"Jackpot!", rollChange, nextParticlePos()
 					);
 				} else {
@@ -120,7 +121,8 @@ public partial class Machine : Sprite2D
 				}
 			} else {
 				if (NumRolls < SingleParticleThreshold) {
-					TextParticleManager.instance.createMoneyChangeParticle(
+                    MachineManager.instance.GotHouseWin = true;
+                    TextParticleManager.instance.createMoneyChangeParticle(
 						"House win!", rollChange, nextParticlePos()
 					);
 				}
@@ -161,7 +163,7 @@ public partial class Machine : Sprite2D
 	{
 		if(moneyRNG.Randf() <= JackpotProbability){
 			MachineManager.instance.Suspicion -= JackpotSuspicionReduction;
-			return JackpotAmount;
+            return JackpotAmount;
 		}
 		else{
 			return 0;
