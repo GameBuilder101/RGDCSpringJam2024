@@ -39,14 +39,42 @@ public partial class MachineRiggingMenu : Node2D
 	[Export]
 	private Label _winChanceLabel;
 
-	public override void _Ready()
+	private double _increaseTimer = -1.0;
+    private double _decreaseTimer = -1.0;
+
+    public override void _Ready()
 	{
 		base._Ready();
 		Instance = this;
 
 	}
 
-	public void Sell()
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+
+		if (_increaseTimer >= 0.0)
+		{
+            _increaseTimer -= delta;
+			if (_increaseTimer <= 0.0)
+			{
+                IncreaseWinChance();
+				_increaseTimer = 0.1;
+            }
+        }
+
+        if (_decreaseTimer >= 0.0)
+        {
+            _decreaseTimer -= delta;
+            if (_decreaseTimer <= 0.0)
+            {
+                DecreaseWinChance();
+                _decreaseTimer = 0.1;
+            }
+        }
+    }
+
+    public void Sell()
 	{
 		MachineManager.instance.Moola += SellCost;
 		MachineManager.instance.removeMachine(MachineShop.instance.ViewIndex);
@@ -67,28 +95,49 @@ public partial class MachineRiggingMenu : Node2D
 
 	private void UpdateDynamicDisplay() {
 		_winChanceLabel.Text = Math.Round(TargetMachine.JackpotProbability * 100) + "%";
-		_suspicionFactorLabel.Text = "Suspicion Factor: " + (Math.Round(TargetMachine.SuspicionFactor * 100000.0))/1000 + "%";
+		_suspicionFactorLabel.Text = "Suspicion Factor: " + TargetMachine.GetSuspicionFactorDisplay();
+
+    }
+
+	public void StartIncreaseWinChance()
+	{
+		_increaseTimer = 0.0;
 	}
 
-	public void IncreaseWinChance()
+	public void StopIncreaseWinChance()
 	{
-		TargetMachine.JackpotProbability += 0.01f;
-		if (TargetMachine.JackpotProbability > 1.0f)
-			TargetMachine.JackpotProbability = 1.0f;
-		RoundWinChance();
-		TargetMachine.SuspicionUpdater();
-		UpdateDynamicDisplay();
+		_increaseTimer = -1.0;
 	}
 
-	public void DecreaseWinChance()
+	public void StartDecreaseWinChance()
 	{
-		TargetMachine.JackpotProbability -= 0.01f;
-		if (TargetMachine.JackpotProbability < 0.0f)
-			TargetMachine.JackpotProbability = 0.0f;
-		RoundWinChance();
-		TargetMachine.SuspicionUpdater();
-		UpdateDynamicDisplay();
+		_decreaseTimer = 0.0;
 	}
+
+	public void StopDecreaseWinChance()
+	{
+		_decreaseTimer = -1.0;
+	}
+
+	private void IncreaseWinChance()
+	{
+        TargetMachine.JackpotProbability += 0.01f;
+        if (TargetMachine.JackpotProbability > 1.0f)
+            TargetMachine.JackpotProbability = 1.0f;
+        RoundWinChance();
+        TargetMachine.SuspicionUpdater();
+        UpdateDynamicDisplay();
+    }
+
+	private void DecreaseWinChance()
+	{
+        TargetMachine.JackpotProbability -= 0.01f;
+        if (TargetMachine.JackpotProbability < 0.0f)
+            TargetMachine.JackpotProbability = 0.0f;
+        RoundWinChance();
+        TargetMachine.SuspicionUpdater();
+        UpdateDynamicDisplay();
+    }
 	
 	public void RoundWinChance() {
 		TargetMachine.JackpotProbability = (float) Math.Round(TargetMachine.JackpotProbability, 2);

@@ -33,22 +33,11 @@ public partial class Machine : Sprite2D
 	/// </summary>
 	[Export]
 	public int JackpotAmount { get; private set; }
-	private float _jackpotProbability;
 	/// <summary>
 	/// The chance for a guest to win the jackpot. 0 means no chance, and 1 means 100% chance.
 	/// </summary>
 	[Export]
-	public float JackpotProbability
-	{
-		get { return _jackpotProbability; }
-		set
-		{
-			_jackpotProbability = value;
-            if (_jackpotProbabilityLabel == null)
-                return;
-            _jackpotProbabilityLabel.Text = Math.Round(_jackpotProbability * 100) + "%";
-        }
-	}
+	public float JackpotProbability { get; set; }
 	/// <summary>
 	/// The default chance for a guest to win the jackpot.
 	/// </summary>
@@ -74,7 +63,7 @@ public partial class Machine : Sprite2D
 	public float JackpotSuspicionReduction {get; private set;}
 
 	[Export]
-	private Label _jackpotProbabilityLabel;
+	private Label _belowLabel;
 
 	public Machine() {}
 
@@ -179,20 +168,19 @@ public partial class Machine : Sprite2D
 		if(SuspicionFactor < 0){
 			SuspicionFactor = 0;
 		}
+		_belowLabel.Text = GetSuspicionFactorDisplay();
 	}
+
+	public string GetSuspicionFactorDisplay()
+	{
+		return (Math.Round(SuspicionFactor * 100000.0)) / 1000 + "%";
+    }
+
 	public void JackpotProbabilityLowerLimit()
 	{
 		if(JackpotProbability < 0.001){
 			JackpotProbability = (float)0.001;
 		}
 		JackpotSuspicionReduction = (DefaultSuspicionFactor/50)*3;
-	}
-
-	/// <summary>
-	/// Called when the machine sprite is clicked.
-	/// </summary>
-	public void Clicked()
-	{
-
 	}
 }

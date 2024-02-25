@@ -74,7 +74,7 @@ _guestParent = NodePath("../MachineManager")
 _startingNode = NodePath("../Guest Movement Nodes/Start")
 _templateGuest = ExtResource("5_04ryu")
 _templateInspector = ExtResource("6_cvj0l")
-_timeForNewGuest = 2.0
+_timeForNewGuest = 8.0
 _inspectorThreshold = 0.75
 
 [node name="Guest Movement Nodes" type="Node" parent="."]

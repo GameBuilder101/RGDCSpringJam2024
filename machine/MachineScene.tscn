@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://machine/Machine.cs" id="1_srwm5"]
 [ext_resource type="Theme" uid="uid://cgkpf3snkxnom" path="res://gameplay_ui/small_font.tres" id="3_n3nhx"]
 
-[node name="MachineScene" type="Sprite2D" node_paths=PackedStringArray("_jackpotProbabilityLabel")]
+[node name="MachineScene" type="Sprite2D" node_paths=PackedStringArray("_belowLabel")]
 texture_filter = 1
 texture = ExtResource("1_fq1w3")
 script = ExtResource("1_srwm5")
@@ -15,7 +15,7 @@ JackpotProbability = 0.05
 DefaultJackpotProbability = 0.1
 NumRolls = 10
 DefaultSuspicionFactor = 0.1
-_jackpotProbabilityLabel = NodePath("Label")
+_belowLabel = NodePath("Label")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -16.0
@@ -23,6 +23,7 @@ offset_top = 16.0
 offset_right = 16.0
 offset_bottom = 32.0
 theme = ExtResource("3_n3nhx")
+theme_override_colors/font_color = Color(0.498039, 0.498039, 0.498039, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 text = "%"
