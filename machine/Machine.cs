@@ -59,6 +59,8 @@ public partial class Machine : Sprite2D
 	/// </summary>
 	[Export]
 	public float DefaultSuspicionFactor { get; private set; }
+	
+	public float JackpotSuspicionReduction {get; private set;}
 
 	public Machine() {}
 
@@ -149,6 +151,7 @@ public partial class Machine : Sprite2D
 	{
 		if(moneyRNG.Randf() <= JackpotProbability){
 			return JackpotAmount;
+			MachineManager.instance.Suspicion -= JackpotSuspicionReduction;
 		}
 		else{
 			return 0;
@@ -168,6 +171,7 @@ public partial class Machine : Sprite2D
 		if(JackpotProbability < 0.001){
 			JackpotProbability = (float)0.001;
 		}
+		JackpotSuspicionReduction = (DefaultSuspicionFactor/50)*3;
 	}
 
 	/// <summary>
