@@ -72,7 +72,7 @@ public partial class MachineRiggingMenu : Node2D
 
 	public void IncreaseWinChance()
 	{
-		TargetMachine.JackpotProbability += 0.05f;
+		TargetMachine.JackpotProbability += 0.01f;
 		if (TargetMachine.JackpotProbability > 1.0f)
 			TargetMachine.JackpotProbability = 1.0f;
 		RoundWinChance();
@@ -82,7 +82,7 @@ public partial class MachineRiggingMenu : Node2D
 
 	public void DecreaseWinChance()
 	{
-		TargetMachine.JackpotProbability -= 0.05f;
+		TargetMachine.JackpotProbability -= 0.01f;
 		if (TargetMachine.JackpotProbability < 0.0f)
 			TargetMachine.JackpotProbability = 0.0f;
 		RoundWinChance();

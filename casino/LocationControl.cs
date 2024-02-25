@@ -13,25 +13,25 @@ public partial class LocationControl : Control
 	private bool MouseOn {get {return _m;} set {_m = value; updateDiamond();}}
 	
 	public override void _Ready()
-    {
-        base._Ready();
+	{
+		base._Ready();
 		Focus = false;
 		MouseOn = false;
-    }
+	}
 	
 	private void OnMouseEntered()
 	{
-	    MouseOn = true;
+		MouseOn = true;
 	}
 
 	private void OnMouseExited()
 	{
-	    MouseOn = false;
+		MouseOn = false;
 	}
 	
 	private void OnPressed()
 	{
-	    MachineShop.instance.ShowSlot(index);
+		MachineShop.instance.ShowSlot(index);
 	}
 	
 	private void updateDiamond() {
