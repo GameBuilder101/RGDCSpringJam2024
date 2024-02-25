@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cu18nn5mfsyv5"]
+[gd_scene load_steps=17 format=3 uid="uid://cu18nn5mfsyv5"]
 
 [ext_resource type="PackedScene" uid="uid://cqspb4krtx0jk" path="res://machine_manager/machine_manager.tscn" id="1_kw7cu"]
 [ext_resource type="Texture2D" uid="uid://b85hboxg11js8" path="res://casino/casino_cyan.png" id="2_aur2d"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" path="res://casino/GuestMovementNode.cs" id="7_mvues"]
 [ext_resource type="Script" path="res://casino/GuestManager.cs" id="7_xergn"]
 [ext_resource type="Script" path="res://casino/FadeOverlay.cs" id="14_78imb"]
+[ext_resource type="AudioStream" uid="uid://b8014rtpil78a" path="res://casino/casino_music.wav" id="15_8vop4"]
+[ext_resource type="Script" path="res://casino/LoopAudio.cs" id="16_qq60u"]
 
 [node name="Casino" type="Node2D"]
 
@@ -150,3 +152,10 @@ offset_right = 384.0
 offset_bottom = 256.0
 color = Color(0, 0, 0, 1)
 script = ExtResource("14_78imb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_8vop4")
+autoplay = true
+script = ExtResource("16_qq60u")
+
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="Finished"]
