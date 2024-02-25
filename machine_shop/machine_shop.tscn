@@ -82,7 +82,7 @@ JackpotAmount = 40
 JackpotProbability = 0.5
 DefaultJackpotProbability = 0.53
 NumRolls = 1
-DefaultSuspicionFactor = 0.03
+DefaultSuspicionFactor = 0.02
 
 [node name="slot_2" parent="MachineTypes" instance=ExtResource("8_5eohu")]
 name = "Slots (III)"
@@ -93,7 +93,7 @@ JackpotAmount = 100
 JackpotProbability = 0.5
 DefaultJackpotProbability = 0.53
 NumRolls = 1
-DefaultSuspicionFactor = 0.09
+DefaultSuspicionFactor = 0.04
 
 [node name="poker_0" parent="MachineTypes" instance=ExtResource("8_5eohu")]
 name = "Poker Table (I)"
@@ -114,7 +114,7 @@ JackpotAmount = 80
 JackpotProbability = 0.25
 DefaultJackpotProbability = 0.27
 NumRolls = 2
-DefaultSuspicionFactor = 0.03
+DefaultSuspicionFactor = 0.02
 
 [node name="poker_2" parent="MachineTypes" instance=ExtResource("8_5eohu")]
 name = "Poker Table (III)"
@@ -125,7 +125,7 @@ JackpotAmount = 200
 JackpotProbability = 0.25
 DefaultJackpotProbability = 0.27
 NumRolls = 2
-DefaultSuspicionFactor = 0.09
+DefaultSuspicionFactor = 0.04
 
 [node name="craps_0" parent="MachineTypes" instance=ExtResource("8_5eohu")]
 name = "Craps Table (I)"
@@ -146,7 +146,7 @@ JackpotAmount = 200
 JackpotProbability = 0.1
 DefaultJackpotProbability = 0.12
 NumRolls = 3
-DefaultSuspicionFactor = 0.03
+DefaultSuspicionFactor = 0.02
 
 [node name="craps_2" parent="MachineTypes" instance=ExtResource("8_5eohu")]
 name = "Craps Table (III)"
@@ -157,7 +157,7 @@ JackpotAmount = 500
 JackpotProbability = 0.1
 DefaultJackpotProbability = 0.12
 NumRolls = 3
-DefaultSuspicionFactor = 0.09
+DefaultSuspicionFactor = 0.04
 
 [node name="MachineRiggingMenu" parent="." instance=ExtResource("18_a5tbs")]
 
