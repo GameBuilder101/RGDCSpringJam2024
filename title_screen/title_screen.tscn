@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ddc7rt5kv5ur5"]
+[gd_scene load_steps=27 format=3 uid="uid://ddc7rt5kv5ur5"]
 
 [ext_resource type="Script" path="res://title_screen/TitleScreen.cs" id="1_qmqmw"]
 [ext_resource type="Texture2D" uid="uid://caxruiclyrbby" path="res://title_screen/IMG_1785.png" id="2_w588t"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://bq8a5dehcxb7u" path="res://casino/selection_diamond.png" id="19_wcobr"]
 [ext_resource type="Texture2D" uid="uid://c80s8pnn22okp" path="res://machine/slot_machine_0.png" id="20_a5djn"]
 [ext_resource type="Texture2D" uid="uid://cfn17pocu10cc" path="res://casino/inspector.png" id="21_qy8nt"]
+[ext_resource type="Texture2D" uid="uid://cd4eqqdcqdbdw" path="res://casino/guest.png" id="22_1q2ft"]
 [ext_resource type="AudioStream" uid="uid://pvpi052c88so" path="res://gameplay_ui/ui_click_0.wav" id="22_p6dmr"]
 [ext_resource type="AudioStream" uid="uid://15y4j4q5byru" path="res://gameplay_ui/ui_click_1.wav" id="23_t827o"]
 [ext_resource type="Script" path="res://gameplay_ui/EventPlayableAudio.cs" id="23_ugli6"]
@@ -458,6 +459,11 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 bbcode_enabled = true
 text = "If you go bankrupt, the game ends. Stay open longer to get a higher score!"
+
+[node name="Inspector" type="Sprite2D" parent="Instructions"]
+texture_filter = 1
+position = Vector2(192, 136)
+texture = ExtResource("22_1q2ft")
 
 [node name="UI Click 0" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_p6dmr")
