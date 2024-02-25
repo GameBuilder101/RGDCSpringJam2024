@@ -3,8 +3,7 @@ using System;
 
 public partial class TextParticle : Label
 {
-
-	private static Vector2 movement = new Vector2(0, -5);
+	private static Color outlineColor = new Color(0, 0, 0);
 
 	private Color textColor;
 	private double LifeTime;
@@ -22,19 +21,27 @@ public partial class TextParticle : Label
 		this.Position = position;
 		this.textColor = new Color(color);
 		Set("theme_override_colors/font_color", textColor);
+		Set("theme_override_colors/font_outline_color", outlineColor);
+		Set("theme_override_constants/outline_size", 2);
+		Set("theme_override_font_sizes/font_size", 10);
+		this.HorizontalAlignment = (HorizontalAlignment) 1;
 		this.LifeTime = lifeTime;
 		this.TotalLifeTime = lifeTime;
+		this.ZIndex = 1;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		this.LifeTime -= delta;
-		this.Position += movement * (float) delta;
 		if (this.LifeTime <= 0) {
 			this.QueueFree();
 		} else {
-			this.textColor.A = (float) Math.Sqrt(this.LifeTime / this.TotalLifeTime);
+			if (this.LifeTime / this.TotalLifeTime > 0.5) {
+				return;
+			}
+			this.textColor.A = (float) Math.Sqrt(2 * this.LifeTime / this.TotalLifeTime);
+			Set("theme_override_colors/font_color", textColor);
 		}
 	}
 }

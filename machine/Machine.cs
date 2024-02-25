@@ -9,6 +9,11 @@ public partial class Machine : Sprite2D
 	[Export]
 	public Texture2D MachineTexture { get; private set; }
 	
+	private RandomNumberGenerator moneyRNG;
+	private RandomNumberGenerator posRNG;
+	
+	private int SingleParticleThreshold = 5;
+	private int OffsetRadius = 30;
 	
 	/// <summary>
 	/// Cost of the machine in the shop.
@@ -69,6 +74,10 @@ public partial class Machine : Sprite2D
 		this.NumRolls = m.NumRolls;
 		this.SuspicionFactor = m.SuspicionFactor;
 		this.DefaultSuspicionFactor = m.DefaultSuspicionFactor;
+		this.moneyRNG = new RandomNumberGenerator();
+		this.moneyRNG.Randomize();
+		this.posRNG = new RandomNumberGenerator();
+		this.posRNG.Randomize();
 	}
 
 	public Machine copy() {
@@ -90,12 +99,46 @@ public partial class Machine : Sprite2D
 	{
 		SuspicionUpdater();
 		int Revenue = 0;
+		int rollChange;
+		int numJackpots = 0;
 		for(int index = 0; index < NumRolls; index++){
-			Revenue += PlayCost;
-			Revenue -= Roll();
+			rollChange = PlayCost - Roll();
+			if (rollChange < 0) {
+				if (NumRolls < SingleParticleThreshold) {
+					TextParticleManager.instance.createMoneyChangeParticle(
+						"Jackpot!", rollChange, nextParticlePos()
+					);
+				} else {
+					numJackpots += 1;
+				}
+			} else {
+				if (NumRolls < SingleParticleThreshold) {
+					TextParticleManager.instance.createMoneyChangeParticle(
+						"House win!", rollChange, nextParticlePos()
+					);
+				}
+			}
+			Revenue += rollChange;
+		}
+		if (NumRolls >= SingleParticleThreshold) {
+			string prepend;
+			if (numJackpots == 0) {
+				prepend = "No";
+			} else {
+				prepend = numJackpots + "x";
+			}
+			TextParticleManager.instance.createMoneyChangeParticle(
+				prepend + " jackpots!", Revenue, nextParticlePos()
+			);
 		}
 		MachineManager.instance.Moola += Revenue;
 		MachineManager.instance.Suspicion += (double)SuspicionFactor;
+	}
+
+	private Vector2 nextParticlePos() {
+		return this.Position + Vector2.FromAngle((float) Math.PI + this.posRNG.RandfRange(
+			0, (float) (Math.PI / 3)
+		)) * OffsetRadius;
 	}
 
 	/// <summary>
@@ -104,21 +147,12 @@ public partial class Machine : Sprite2D
 	
 	public int Roll()
 	{
-		float random = Probability();
-		if(random <= JackpotProbability){
+		if(moneyRNG.Randf() <= JackpotProbability){
 			return JackpotAmount;
 		}
 		else{
 			return 0;
 		}
-	}
-	
-	public float Probability()
-	{
-		var RNG = new RandomNumberGenerator();
-		RNG.Randomize();
-		float value = RNG.Randf();
-		return value;
 	}
 	
 	public void SuspicionUpdater()

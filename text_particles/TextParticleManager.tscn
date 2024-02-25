@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://n41pml8chwpc"]
+[gd_scene load_steps=3 format=3 uid="uid://n41pml8chwpc"]
 
 [ext_resource type="Script" path="res://text_particles/TextParticleManager.cs" id="1_120vy"]
+[ext_resource type="Theme" uid="uid://cgkpf3snkxnom" path="res://gameplay_ui/small_font.tres" id="1_q1l51"]
 
-[node name="TextParticleManager" type="Node"]
+[node name="TextParticleManager" type="Control"]
+layout_mode = 3
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_q1l51")
 script = ExtResource("1_120vy")
 moneyIncrease = Color(0, 1, 0, 1)
 moneyDecrease = Color(1, 0, 0, 1)

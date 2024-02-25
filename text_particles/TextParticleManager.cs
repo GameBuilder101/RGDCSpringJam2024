@@ -18,13 +18,16 @@ public partial class TextParticleManager : Node
 
 	public void createMoneyChangeParticle(string msg, int change, Vector2 at) {
 		Color color;
+		string prepend;
 		if (change < 0) {
 			color = moneyDecrease;
+			prepend = "";
 		} else {
 			color = moneyIncrease;
+			prepend = "+";
 		}
 		AddChild(new TextParticle(
-			msg + "\n" + change, at, color, ((double) change) / 128.0
+			msg + "\n" + prepend + change, at, color, Math.Sqrt(Math.Abs(change))
 		));
 	}
 }
