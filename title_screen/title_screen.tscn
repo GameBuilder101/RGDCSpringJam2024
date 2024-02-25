@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ddc7rt5kv5ur5"]
+[gd_scene load_steps=26 format=3 uid="uid://ddc7rt5kv5ur5"]
 
 [ext_resource type="Script" path="res://title_screen/TitleScreen.cs" id="1_qmqmw"]
 [ext_resource type="Texture2D" uid="uid://caxruiclyrbby" path="res://title_screen/IMG_1785.png" id="2_w588t"]
@@ -24,8 +24,9 @@
 [ext_resource type="AudioStream" uid="uid://pvpi052c88so" path="res://gameplay_ui/ui_click_0.wav" id="22_p6dmr"]
 [ext_resource type="AudioStream" uid="uid://15y4j4q5byru" path="res://gameplay_ui/ui_click_1.wav" id="23_t827o"]
 [ext_resource type="Script" path="res://gameplay_ui/EventPlayableAudio.cs" id="23_ugli6"]
+[ext_resource type="AudioStream" uid="uid://bddmox1cme27p" path="res://title_screen/title_screen_music.wav" id="25_taj8r"]
 
-[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("creditsText", "sprite", "startLabel", "instructionsParent", "instructions", "_startAudio")]
+[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("creditsText", "sprite", "startLabel", "instructionsParent", "instructions", "_musicAudio", "_startAudio")]
 script = ExtResource("1_qmqmw")
 framesPerSecond = 2.0
 creditsText = NodePath("Credits")
@@ -37,6 +38,7 @@ sprite = NodePath("Animation")
 startLabel = NodePath("PressStart")
 instructionsParent = NodePath("Instructions")
 instructions = [NodePath("Instructions/Page 1"), NodePath("Instructions/Page 2"), NodePath("Instructions/Page 3"), NodePath("Instructions/Page 4"), NodePath("Instructions/Page 5"), NodePath("Instructions/Page 6")]
+_musicAudio = NodePath("Title Screen Music")
 _startAudio = NodePath("UI Click 0")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -465,6 +467,10 @@ script = ExtResource("23_ugli6")
 [node name="UI Click 1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("23_t827o")
 volume_db = -13.827
+script = ExtResource("23_ugli6")
+
+[node name="Title Screen Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("25_taj8r")
 script = ExtResource("23_ugli6")
 
 [connection signal="button_down" from="Instructions/Skip Button" to="." method="EndInstructions"]

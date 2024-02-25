@@ -21,6 +21,8 @@ public partial class MachineManager : Node2D
 	private Node LocationHolder;
 	[Export]
 	private FadeOverlay Overlay;
+	[Export]
+	private int fineAmount;
 
 	public int TotalMachineRollCount { get; private set; }
 
@@ -57,10 +59,10 @@ public partial class MachineManager : Node2D
 		}
 		if (Suspicion >= 1) {
 			NumFines += 1;
-			Moola -= NumFines * 500;
+			Moola -= NumFines * fineAmount;
 			Suspicion = 0;
 			TextParticleManager.instance.createFineMessage(
-				NumFines, NumFines * 500
+				NumFines, NumFines * fineAmount
 			);
 		}
 		if (Moola < 0 && !Lost) {
