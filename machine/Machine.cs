@@ -139,7 +139,7 @@ public partial class Machine : Sprite2D
 			);
 		}
 		MachineManager.instance.Moola += Revenue;
-		if(HadJackpot == false){
+		if(HadJackpot != true){
 		MachineManager.instance.Suspicion += (double)SuspicionFactor;
 		}
 	}
@@ -185,6 +185,6 @@ public partial class Machine : Sprite2D
 		if(JackpotProbability < 0.001){
 			JackpotProbability = (float)0.001;
 		}
-		JackpotSuspicionReduction = DefaultSuspicionFactor/2;
+		JackpotSuspicionReduction = (DefaultSuspicionFactor/2);
 	}
 }
