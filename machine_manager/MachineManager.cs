@@ -15,9 +15,14 @@ public partial class MachineManager : Node2D
 	private double TimePlayed = 0;
 	private long HighMoola = 0;
 	private int NumFines = 0;
+	private bool Lost = false;
 
 	[Export]
 	private Node LocationHolder;
+	[Export]
+	private FadeOverlay Overlay;
+	[Export]
+	private int fineAmount;
 
 	public int TotalMachineRollCount { get; private set; }
 
@@ -52,17 +57,21 @@ public partial class MachineManager : Node2D
 				m.Tick();
 			}
 		}
-		if (Moola < 0) {
+		if (Suspicion >= 1) {
+			NumFines += 1;
+			Moola -= (NumFines * 100) + (NumFines * 100)*(NumFines/10);
+			Suspicion = 0;
+			TextParticleManager.instance.createFineMessage(
+				NumFines, NumFines * fineAmount
+			);
+		}
+		if (Moola < 0 && !Lost) {
+			Overlay.fadeOut();
 			GameOver.SetScoreValues(TimePlayed, HighMoola, NumFines);
-			GetTree().ChangeSceneToFile("res://game_over/game_over.tscn");
+			Lost = true;
 		}
 		if (Moola > HighMoola) {
 			HighMoola = Moola;
-		}
-		if (Suspicion >= 1) {
-			NumFines += 1;
-			Moola -= NumFines * 100;
-			Suspicion = 0;
 		}
 	}
 	
