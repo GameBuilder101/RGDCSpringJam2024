@@ -123,7 +123,7 @@ public partial class Machine : Sprite2D
 				if (NumRolls < SingleParticleThreshold) {
                     MachineManager.instance.GotHouseWin = true;
                     TextParticleManager.instance.createMoneyChangeParticle(
-						"House win!", rollChange, nextParticlePos()
+						"", rollChange, nextParticlePos()
 					);
 				}
 			}

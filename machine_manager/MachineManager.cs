@@ -70,7 +70,7 @@ public partial class MachineManager : Node2D
 		}
 		if (Suspicion >= 1) {
 			NumFines += 1;
-			Moola -= (NumFines * 100) + (NumFines * 100)*(NumFines/10);
+			Moola -= NumFines * fineAmount;
 			Suspicion = 0;
 			TextParticleManager.instance.createFineMessage(
 				NumFines, NumFines * fineAmount

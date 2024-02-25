@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cu18nn5mfsyv5"]
+[gd_scene load_steps=23 format=3 uid="uid://cu18nn5mfsyv5"]
 
 [ext_resource type="PackedScene" uid="uid://cqspb4krtx0jk" path="res://machine_manager/machine_manager.tscn" id="1_kw7cu"]
 [ext_resource type="Texture2D" uid="uid://b85hboxg11js8" path="res://casino/casino_cyan.png" id="2_aur2d"]
@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://bd8v23txnpcjo" path="res://machine_manager/jackpot.wav" id="19_r0myl"]
 [ext_resource type="AudioStream" uid="uid://dcbmejvgs2c1r" path="res://machine_manager/no_jackpot.wav" id="20_r6vmd"]
 [ext_resource type="AudioStream" uid="uid://bl0lu45pla7ul" path="res://machine_manager/fined.wav" id="21_p6j6f"]
+[ext_resource type="AudioStream" uid="uid://do5uyopw4qws7" path="res://casino/start_game.wav" id="22_r6kdk"]
 
 [node name="Casino" type="Node2D"]
 
@@ -38,6 +39,7 @@ y_sort_enabled = true
 texture_filter = 1
 LocationHolder = NodePath("../Locations")
 Overlay = NodePath("../Overlay")
+fineAmount = 500
 _focusAudio = NodePath("../UI Click 1")
 _jackpotAudio = NodePath("../Jackpot Audio")
 _noJackpotAudio = NodePath("../No Jackpot Audio")
@@ -185,5 +187,10 @@ script = ExtResource("18_74rnt")
 stream = ExtResource("21_p6j6f")
 volume_db = -13.827
 script = ExtResource("18_74rnt")
+
+[node name="Start Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("22_r6kdk")
+volume_db = -15.63
+autoplay = true
 
 [connection signal="finished" from="Music" to="Music" method="Finished"]

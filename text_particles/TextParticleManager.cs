@@ -25,16 +25,16 @@ public partial class TextParticleManager : Node
 		string prepend;
 		if (change < 0) {
 			color = moneyDecrease;
-			prepend = "";
+			prepend = "-$";
 		} else {
 			color = moneyIncrease;
-			prepend = "+";
+			prepend = "+$";
 		}
 		if (msg != "") {
 			prepend = "\n" + prepend;
 		}
 		AddChild(new TextParticle(
-			msg + prepend + change,
+			msg + prepend + Math.Abs(change),
 			at, color, 0.5 * Math.Log(Math.Abs(change)), 10
 		));
 	}
@@ -60,7 +60,7 @@ public partial class TextParticleManager : Node
 			}
 		}
 		AddChild(new TextParticle(
-			numFine + suffix + " fine!\n" + fineAmount,
+			numFine + suffix + " fine!\n -$" + fineAmount,
 			fineSpawn.Position,
 			fineColor, 0.5 * Math.Log(Math.Abs(fineAmount)),
 			20
