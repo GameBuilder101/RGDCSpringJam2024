@@ -19,10 +19,10 @@ public partial class MachineManager : Node2D
 	[Export]
 	private Node LocationHolder;
 
-    public int TotalMachineRollCount { get; private set; }
+	public int TotalMachineRollCount { get; private set; }
 
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
 	{
 		instance = this;
 		int num = LocationHolder.GetChildCount();
@@ -61,7 +61,7 @@ public partial class MachineManager : Node2D
 		}
 		if (Suspicion >= 1) {
 			NumFines += 1;
-			Moola -= NumFines * 500;
+			Moola -= NumFines * 100;
 			Suspicion = 0;
 		}
 	}
@@ -79,9 +79,9 @@ public partial class MachineManager : Node2D
 	}
 	
 	public void removeMachine(int index) {
-        TotalMachineRollCount -= Machines[index].NumRolls;
+		TotalMachineRollCount -= Machines[index].NumRolls;
 
-        Machines[index].QueueFree();
+		Machines[index].QueueFree();
 		Machines[index] = null;
 	}
 	
