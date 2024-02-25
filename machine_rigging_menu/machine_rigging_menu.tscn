@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://juk3wn0oyo6x"]
+[gd_scene load_steps=15 format=3 uid="uid://juk3wn0oyo6x"]
 
 [ext_resource type="Script" path="res://machine_rigging_menu/MachineRiggingMenu.cs" id="1_i8wyf"]
 [ext_resource type="Texture2D" uid="uid://bdm82djtj6w24" path="res://gameplay_ui/small_button.png" id="2_hrvep"]
@@ -10,8 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://c80s8pnn22okp" path="res://machine/slot_machine_0.png" id="7_p8rbj"]
 [ext_resource type="Texture2D" uid="uid://govsub7t4prr" path="res://gameplay_ui/subtract_button_highlighted.png" id="8_3jboq"]
 [ext_resource type="Theme" uid="uid://cgkpf3snkxnom" path="res://gameplay_ui/small_font.tres" id="8_oakfx"]
+[ext_resource type="AudioStream" uid="uid://d3nv4bwsrska7" path="res://machine_rigging_menu/rig.wav" id="11_u5uh0"]
+[ext_resource type="Script" path="res://gameplay_ui/EventPlayableAudio.cs" id="12_n4d2s"]
+[ext_resource type="AudioStream" uid="uid://bccddhy0minms" path="res://machine_rigging_menu/sell_machine.wav" id="14_7djdx"]
+[ext_resource type="AudioStream" uid="uid://15y4j4q5byru" path="res://gameplay_ui/ui_click_1.wav" id="14_45kwk"]
 
-[node name="MachineRiggingMenu" type="Node2D" node_paths=PackedStringArray("_machineNameLabel", "_machineSprite", "_playCostLabel", "_sellCostLabel", "_jackpotAmountLabel", "_suspicionFactorLabel", "_numRollsLabel", "_winChanceLabel")]
+[node name="MachineRiggingMenu" type="Node2D" node_paths=PackedStringArray("_machineNameLabel", "_machineSprite", "_playCostLabel", "_sellCostLabel", "_jackpotAmountLabel", "_suspicionFactorLabel", "_numRollsLabel", "_winChanceLabel", "_rigAudio")]
 script = ExtResource("1_i8wyf")
 _machineNameLabel = NodePath("Machine Name")
 _machineSprite = NodePath("Machine")
@@ -21,6 +25,7 @@ _jackpotAmountLabel = NodePath("Jackpot Amount")
 _suspicionFactorLabel = NodePath("Suspicion Factor")
 _numRollsLabel = NodePath("Num Rolls")
 _winChanceLabel = NodePath("Win Chance")
+_rigAudio = NodePath("Rig Audio")
 
 [node name="Sell Button" type="TextureButton" parent="."]
 texture_filter = 1
@@ -156,7 +161,24 @@ theme_override_constants/outline_size = 2
 text = "%"
 horizontal_alignment = 1
 
+[node name="Rig Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_u5uh0")
+volume_db = -3.006
+script = ExtResource("12_n4d2s")
+
+[node name="UI Click 1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_45kwk")
+volume_db = -13.827
+script = ExtResource("12_n4d2s")
+
+[node name="Sell Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_7djdx")
+volume_db = -3.006
+script = ExtResource("12_n4d2s")
+
 [connection signal="button_down" from="Sell Button" to="." method="Sell"]
+[connection signal="button_down" from="Sell Button" to="UI Click 1" method="Play"]
+[connection signal="button_down" from="Sell Button" to="Sell Audio" method="Play"]
 [connection signal="button_down" from="Add Button" to="." method="StartIncreaseWinChance"]
 [connection signal="button_up" from="Add Button" to="." method="StopIncreaseWinChance"]
 [connection signal="button_down" from="Subtract Button" to="." method="StartDecreaseWinChance"]

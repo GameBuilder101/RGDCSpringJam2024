@@ -39,6 +39,9 @@ public partial class MachineRiggingMenu : Node2D
 	[Export]
 	private Label _winChanceLabel;
 
+	[Export]
+	private EventPlayableAudio _rigAudio;
+
 	private double _increaseTimer = -1.0;
     private double _decreaseTimer = -1.0;
 
@@ -128,6 +131,7 @@ public partial class MachineRiggingMenu : Node2D
         RoundWinChance();
         TargetMachine.SuspicionUpdater();
         UpdateDynamicDisplay();
+		_rigAudio.Play();
     }
 
 	private void DecreaseWinChance()
@@ -138,6 +142,7 @@ public partial class MachineRiggingMenu : Node2D
         RoundWinChance();
         TargetMachine.SuspicionUpdater();
         UpdateDynamicDisplay();
+        _rigAudio.Play();
     }
 	
 	public void RoundWinChance() {
