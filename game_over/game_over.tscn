@@ -94,11 +94,23 @@ text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[node name="Label7" type="Label" parent="."]
+texture_filter = 1
+offset_top = 72.0
+offset_right = 384.0
+offset_bottom = 80.0
+theme = ExtResource("2_t2xol")
+theme_override_colors/font_color = Color(0.972549, 1, 0.243137, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "You ran out of money!"
+horizontal_alignment = 1
+
 [node name="Label2" type="Label" parent="."]
 texture_filter = 1
-offset_top = 80.0
+offset_top = 88.0
 offset_right = 384.0
-offset_bottom = 88.0
+offset_bottom = 96.0
 theme = ExtResource("3_uxstq")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
@@ -107,9 +119,9 @@ horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="."]
 texture_filter = 1
-offset_top = 88.0
+offset_top = 96.0
 offset_right = 384.0
-offset_bottom = 96.0
+offset_bottom = 104.0
 theme = ExtResource("3_uxstq")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
@@ -118,9 +130,9 @@ horizontal_alignment = 1
 
 [node name="Label6" type="Label" parent="."]
 texture_filter = 1
-offset_top = 96.0
+offset_top = 104.0
 offset_right = 384.0
-offset_bottom = 104.0
+offset_bottom = 112.0
 theme = ExtResource("3_uxstq")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
