@@ -31,9 +31,9 @@ public partial class MachineRiggingMenu : Node2D
 	[Export]
 	private Label _sellCostLabel;
 	[Export]
-	private Label _jackpotAmountLabel;
+	private Label _defaultJackpotChanceLabel;
 	[Export]
-	private Label _suspicionFactorLabel;
+	private Label _jackpotAmountLabel;
 	[Export]
 	private Label _numRollsLabel;
 	[Export]
@@ -91,7 +91,8 @@ public partial class MachineRiggingMenu : Node2D
 		_machineNameLabel.Text = machine.name;
 		_machineSprite.Texture = machine.MachineTexture;
 		_playCostLabel.Text = "Payout Per Play: $" + machine.PlayCost;
-		_jackpotAmountLabel.Text = "Jackpot Cost: $" + machine.JackpotAmount;
+		_defaultJackpotChanceLabel.Text = "Expected Jackpot: " + Math.Round(machine.DefaultJackpotProbability * 100) + "%";
+		_jackpotAmountLabel.Text = "Jackpot Amount: $" + machine.JackpotAmount;
 		_sellCostLabel.Text = "Sell $" + SellCost;
 		UpdateDynamicDisplay();
 		_numRollsLabel.Text = "Rolls Per Guest: " + machine.NumRolls;
@@ -99,8 +100,6 @@ public partial class MachineRiggingMenu : Node2D
 
 	private void UpdateDynamicDisplay() {
 		_winChanceLabel.Text = Math.Round(TargetMachine.JackpotProbability * 100) + "%";
-		_suspicionFactorLabel.Text = "Suspicion Factor: " + TargetMachine.GetSuspicionFactorDisplay();
-
     }
 
 	public void StartIncreaseWinChance()

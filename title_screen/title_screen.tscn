@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c3ulteue43g5y" path="res://title_screen/IMG_1877.png" id="3_y0svh"]
 [ext_resource type="Texture2D" uid="uid://e1mmc6jy7ln0" path="res://title_screen/IMG_1916.png" id="4_ilkb8"]
 [ext_resource type="Texture2D" uid="uid://bfjokgh4vrx7s" path="res://title_screen/background_club.png" id="5_2ap5w"]
-[ext_resource type="Theme" path="res://gameplay_ui/big_font.tres" id="5_u50um"]
+[ext_resource type="Theme" uid="uid://b2hh8747xw4e8" path="res://gameplay_ui/big_font.tres" id="5_u50um"]
 [ext_resource type="Texture2D" uid="uid://bf8vawrmb4rf1" path="res://title_screen/background_diamond.png" id="6_fxlgb"]
 [ext_resource type="Texture2D" uid="uid://bvewoahciuf6n" path="res://title_screen/tutorial_background.png" id="6_xmqd2"]
 [ext_resource type="Texture2D" uid="uid://dumf7e8an0v36" path="res://title_screen/background_heart.png" id="7_n4r1h"]
@@ -342,6 +342,11 @@ theme_override_constants/outline_size = 2
 bbcode_enabled = true
 text = "Each time a guest plays a game, it [color=#8fff2c]makes you a small amount of money[/color]. If the guest gets a [color=#f8ff3e]jackpot[/color], you [color=#f8ff3e]lose a large amount of money.[/color]"
 
+[node name="Guest" type="Sprite2D" parent="Instructions/Page 3"]
+texture_filter = 1
+position = Vector2(192, 136)
+texture = ExtResource("22_1q2ft")
+
 [node name="Page 4" type="Node2D" parent="Instructions"]
 visible = false
 
@@ -459,11 +464,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 bbcode_enabled = true
 text = "If you go bankrupt, the game ends. Stay open longer to get a higher score!"
-
-[node name="Inspector" type="Sprite2D" parent="Instructions"]
-texture_filter = 1
-position = Vector2(192, 136)
-texture = ExtResource("22_1q2ft")
 
 [node name="UI Click 0" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_p6dmr")

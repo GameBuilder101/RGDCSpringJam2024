@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Reflection.PortableExecutable;
 
 public partial class BuyNew : Node2D
 {
@@ -19,9 +20,9 @@ public partial class BuyNew : Node2D
 	[Export]
 	private Label CostLabel;
 	[Export]
-	private Label JackpotLabel;
-	[Export]
-	private Label SusLabel;
+	private Label _defaultJackpotChanceLabel;
+    [Export]
+    private Label _jackpotAmountLabel;
 	[Export]
 	private Label RollsLabel;
 
@@ -44,8 +45,8 @@ public partial class BuyNew : Node2D
 		MachineImage.Texture = m.MachineTexture;
 		NameLabel.Text = m.name;
 		CostLabel.Text = string.Format("Payout Per Play: ${0}", m.PlayCost);
-		JackpotLabel.Text = string.Format("Jackpot Cost: ${0}", m.JackpotAmount);
-		SusLabel.Text = string.Format("Suspicion Factor: {0}", m.DefaultSuspicionFactor * 100) + "%";
+        _defaultJackpotChanceLabel.Text = "Expected Jackpot: " + Math.Round(m.DefaultJackpotProbability * 100) + "%";
+        _jackpotAmountLabel.Text = "Jackpot Amount: $" + m.JackpotAmount;
 		RollsLabel.Text = string.Format("Rolls Per Guest: {0}", m.NumRolls);
 	}
 	
