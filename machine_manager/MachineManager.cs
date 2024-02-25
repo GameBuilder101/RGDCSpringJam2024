@@ -6,7 +6,7 @@ public partial class MachineManager : Node2D
 	public static MachineManager instance;
 
 	public double Suspicion { get; set; } = 0.0;
-	public int Moola { get; set; } = 10;
+	public int Moola { get; set; } = 100;
 	private double Progress = 0.0;
 	private double TimeBetweenTicks = 5.0;
 	private Machine[] Machines;
@@ -45,8 +45,6 @@ public partial class MachineManager : Node2D
 				}
 				m.Tick();
 			}
-			GD.Print(Moola);
-			GD.Print(Suspicion);
 		}
 		if (Moola < 0) {
 			// switch to end screen
