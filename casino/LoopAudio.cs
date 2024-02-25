@@ -9,7 +9,7 @@ public partial class LoopAudio : AudioStreamPlayer
 		Playing = true;
 	}
 	
-	private void Finished()
+	private new void Finished()
 	{
 	    Playing = true;
 	}
