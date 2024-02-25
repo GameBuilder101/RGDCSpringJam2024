@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://n41pml8chwpc"]
+
+[ext_resource type="Script" path="res://text_particles/TextParticleManager.cs" id="1_120vy"]
+
+[node name="TextParticleManager" type="Node"]
+script = ExtResource("1_120vy")
+moneyIncrease = Color(0, 1, 0, 1)
+moneyDecrease = Color(1, 0, 0, 1)
