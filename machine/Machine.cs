@@ -106,9 +106,11 @@ public partial class Machine : Sprite2D
 		int Revenue = 0;
 		int rollChange;
 		int numJackpots = 0;
+		bool HadJackpot = false;
 		for(int index = 0; index < NumRolls; index++){
 			rollChange = PlayCost - Roll();
 			if (rollChange < 0) {
+				HadJackpot = true;
 				if (NumRolls < SingleParticleThreshold) {
 					TextParticleManager.instance.createMoneyChangeParticle(
 						"Jackpot!", rollChange, nextParticlePos()
@@ -137,7 +139,9 @@ public partial class Machine : Sprite2D
 			);
 		}
 		MachineManager.instance.Moola += Revenue;
+		if(HadJackpot == false){
 		MachineManager.instance.Suspicion += (double)SuspicionFactor;
+		}
 	}
 
 	private Vector2 nextParticlePos() {
@@ -181,6 +185,6 @@ public partial class Machine : Sprite2D
 		if(JackpotProbability < 0.001){
 			JackpotProbability = (float)0.001;
 		}
-		JackpotSuspicionReduction = (DefaultSuspicionFactor/5);
+		JackpotSuspicionReduction = DefaultSuspicionFactor/2;
 	}
 }

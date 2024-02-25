@@ -111,14 +111,14 @@ public partial class Guest : Sprite2D
 
 	private void AnimateMoving()
 	{
-		Offset = new Vector2(_defaultOffset.X, _defaultOffset.Y - (float)Math.Sin(_animTime * 8.0) * MoveSpeed * 0.05f);
+		//Offset = new Vector2(_defaultOffset.X, _defaultOffset.Y - (float)Math.Sin(_animTime * 8.0) * MoveSpeed * 0.05f);
 		RotationDegrees = (float)(Math.Sin(_animTime * 8.0) - 0.5) * MoveSpeed * 0.11f;
 		Scale = Vector2.One;
 	}
 
 	private void AnimateIdle()
 	{
-		Offset = _defaultOffset;
+		//Offset = _defaultOffset;
 		Rotation = 0.0f;
 		Scale = new Vector2(1.0f + (float)Math.Sin(_animTime * 3.0) * 0.12f * _idleAnimScale,
 			1.0f - (float)Math.Sin(_animTime * 3.0) * 0.08f * _idleAnimScale);
