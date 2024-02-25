@@ -45,6 +45,8 @@ public partial class MachineManager : Node2D
 				}
 				m.Tick();
 			}
+			GD.Print(Moola);
+			GD.Print(Suspicion);
 		}
 		if (Moola < 0) {
 			// switch to end screen

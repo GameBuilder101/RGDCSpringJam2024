@@ -64,6 +64,7 @@ vertical_alignment = 1
 name = "Slots (I)"
 MachineTexture = ExtResource("3_iarv2")
 ShopCost = 10
+DefaultSuspicionFactor = 0.01
 
 [node name="slot_1" parent="MachineTypes" instance=ExtResource("8_5eohu")]
 name = "Slots (II)"
