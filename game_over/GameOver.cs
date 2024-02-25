@@ -22,7 +22,7 @@ public partial class GameOver : Node2D
 	public override void _Ready()
 	{
 		_timePlayedLabel.Text = "Minutes in Business: " + Math.Round(_timePlayed / 60.0);
-		_highestMoneyLabel.Text = "Most Money at Once: " + _highestMoney;
+		_highestMoneyLabel.Text = "Most Money at Once: $" + _highestMoney;
 		_timesFinedLabel.Text = "Times Fined: " + _timesFined;
 		_finalScoreLabel.Text = "" + CalculateFinalScore(_timePlayed, _highestMoney, _timesFined);
 	}
