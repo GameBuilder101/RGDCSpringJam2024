@@ -139,7 +139,7 @@ public partial class Machine : Sprite2D
 			);
 		}
 		MachineManager.instance.Moola += Revenue;
-		if(HadJackpot != true){
+		if(HadJackpot != false){
 		MachineManager.instance.Suspicion += (double)SuspicionFactor;
 		}
 	}
