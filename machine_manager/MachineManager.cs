@@ -6,7 +6,7 @@ public partial class MachineManager : Node2D
 	public static MachineManager instance;
 
 	public double Suspicion { get; set; } = 0.0;
-	public long Moola { get; set; } = 100;
+	public long Moola { get; set; } = 10000000000000;
 	private double Progress = 0.0;
 	private double TimeBetweenTicks = 5.0;
 	private Machine[] Machines;
@@ -24,18 +24,18 @@ public partial class MachineManager : Node2D
 	[Export]
 	private int fineAmount;
 
-    [Export]
-    private EventPlayableAudio _focusAudio;
+	[Export]
+	private EventPlayableAudio _focusAudio;
 	public bool GotJackpot { get; set; }
-    [Export]
+	[Export]
 	private EventPlayableAudio _jackpotAudio;
-    public bool GotHouseWin { get; set; }
-    [Export]
-    private EventPlayableAudio _noJackpotAudio;
-    [Export]
-    private EventPlayableAudio _finedAudio;
+	public bool GotHouseWin { get; set; }
+	[Export]
+	private EventPlayableAudio _noJackpotAudio;
+	[Export]
+	private EventPlayableAudio _finedAudio;
 
-    public int TotalMachineRollCount { get; private set; }
+	public int TotalMachineRollCount { get; private set; }
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -69,11 +69,22 @@ public partial class MachineManager : Node2D
 			}
 		}
 		if (Suspicion >= 1) {
+			int fine = 0;
 			NumFines += 1;
-			Moola -= NumFines * fineAmount;
+			if(NumFines == 1){
+				fine = 100;
+			}
+			else if(NumFines == 2){
+				fine = 500;
+			}
+			else{
+				fine = (NumFines-1) * fineAmount;
+			}
+			
+			Moola -= fine;
 			Suspicion = 0;
 			TextParticleManager.instance.createFineMessage(
-				NumFines, NumFines * fineAmount
+				NumFines, fine
 			);
 		}
 		if (Moola < 0 && !Lost) {
@@ -91,12 +102,12 @@ public partial class MachineManager : Node2D
 			GotJackpot = false;
 		}
 
-        if (GotHouseWin)
-        {
-            _noJackpotAudio.Play();
-            GotHouseWin = false;
-        }
-    }
+		if (GotHouseWin)
+		{
+			_noJackpotAudio.Play();
+			GotHouseWin = false;
+		}
+	}
 	
 	public void placeMachine(Machine m) {
 		placeMachine(FocussedLocation, m);
