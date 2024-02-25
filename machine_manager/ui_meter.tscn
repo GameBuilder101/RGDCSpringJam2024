@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://b2hh8747xw4e8" path="res://gameplay_ui/big_font.tres" id="4_rg7yj"]
 
 [node name="UiMeter" type="Node2D" node_paths=PackedStringArray("_meterFill", "_moneyLabel")]
+z_index = 2
 script = ExtResource("1_2kxxf")
 _meterFill = NodePath("MeterFill")
 _moneyLabel = NodePath("Money")

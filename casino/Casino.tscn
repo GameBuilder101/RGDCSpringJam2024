@@ -1,19 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://cu18nn5mfsyv5"]
+[gd_scene load_steps=14 format=3 uid="uid://cu18nn5mfsyv5"]
 
 [ext_resource type="PackedScene" uid="uid://cqspb4krtx0jk" path="res://machine_manager/machine_manager.tscn" id="1_kw7cu"]
 [ext_resource type="Texture2D" uid="uid://b85hboxg11js8" path="res://casino/casino_cyan.png" id="2_aur2d"]
-[ext_resource type="PackedScene" uid="uid://cc53oe3kgmt80" path="res://casino/machine_location.tscn" id="2_j7635"]
+[ext_resource type="Script" path="res://casino/CasinoBackground.cs" id="2_da27r"]
+[ext_resource type="PackedScene" uid="uid://ceyh43t7uoupa" path="res://casino/machine_location.tscn" id="2_j7635"]
+[ext_resource type="Texture2D" uid="uid://c4mpx4dvp3p2t" path="res://casino/casino_magenta.png" id="3_p3dlk"]
 [ext_resource type="PackedScene" uid="uid://7x4txyy55dxm" path="res://machine_manager/ui_meter.tscn" id="4_1s4jw"]
 [ext_resource type="PackedScene" uid="uid://byfamwoajjqun" path="res://machine_shop/machine_shop.tscn" id="4_ohbly"]
+[ext_resource type="Texture2D" uid="uid://b3h3lmua60idc" path="res://casino/casino_yellow.png" id="4_wlecm"]
+[ext_resource type="PackedScene" uid="uid://svqohi0hhij1" path="res://casino/guest.tscn" id="5_04ryu"]
 [ext_resource type="PackedScene" uid="uid://n41pml8chwpc" path="res://text_particles/TextParticleManager.tscn" id="6_6lvv6"]
+[ext_resource type="PackedScene" uid="uid://dqgs2r8mlglx3" path="res://casino/inspector.tscn" id="6_cvj0l"]
+[ext_resource type="Script" path="res://casino/GuestMovementNode.cs" id="7_mvues"]
+[ext_resource type="Script" path="res://casino/GuestManager.cs" id="7_xergn"]
 
 [node name="Casino" type="Node2D"]
 
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+texture_filter = 1
+texture = ExtResource("2_aur2d")
+centered = false
+script = ExtResource("2_da27r")
+_textures = Array[Texture2D]([ExtResource("2_aur2d"), ExtResource("3_p3dlk"), ExtResource("4_wlecm")])
+_switchTime = 1.0
+
 [node name="MachineManager" parent="." node_paths=PackedStringArray("LocationHolder") instance=ExtResource("1_kw7cu")]
+y_sort_enabled = true
 texture_filter = 1
 LocationHolder = NodePath("../Locations")
 
-[node name="Locations" type="Node" parent="."]
+[node name="Locations" type="Node2D" parent="."]
 
 [node name="MachineLocation" parent="Locations" instance=ExtResource("2_j7635")]
 position = Vector2(64, 56)
@@ -51,14 +68,72 @@ position = Vector2(272, 136)
 [node name="MachineLocation12" parent="Locations" instance=ExtResource("2_j7635")]
 position = Vector2(320, 136)
 
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -1
-texture_filter = 1
-texture = ExtResource("2_aur2d")
-centered = false
+[node name="Guest Manager" type="Node" parent="." node_paths=PackedStringArray("_guestParent", "_startingNode")]
+script = ExtResource("7_xergn")
+_guestParent = NodePath("../MachineManager")
+_startingNode = NodePath("../Guest Movement Nodes/Start")
+_templateGuest = ExtResource("5_04ryu")
+_templateInspector = ExtResource("6_cvj0l")
+_timeForNewGuest = 2.0
+_inspectorThreshold = 0.75
+
+[node name="Guest Movement Nodes" type="Node" parent="."]
+
+[node name="Start" type="Node2D" parent="Guest Movement Nodes" node_paths=PackedStringArray("_connected")]
+position = Vector2(192, 280)
+script = ExtResource("7_mvues")
+_connected = [NodePath("../Node2D2")]
+
+[node name="Node2D2" type="Node2D" parent="Guest Movement Nodes" node_paths=PackedStringArray("_connected")]
+position = Vector2(192, 208)
+script = ExtResource("7_mvues")
+_connected = [NodePath("../Node2D3"), NodePath("../Node2D6"), NodePath("../Node2D4")]
+
+[node name="Node2D3" type="Node2D" parent="Guest Movement Nodes" node_paths=PackedStringArray("_connected")]
+position = Vector2(32, 208)
+script = ExtResource("7_mvues")
+_connected = [NodePath("../Node2D5"), NodePath("../Node2D2")]
+
+[node name="Node2D4" type="Node2D" parent="Guest Movement Nodes" node_paths=PackedStringArray("_connected")]
+position = Vector2(352, 208)
+script = ExtResource("7_mvues")
+_connected = [NodePath("../Node2D2"), NodePath("../Node2D7")]
+
+[node name="Node2D5" type="Node2D" parent="Guest Movement Nodes" node_paths=PackedStringArray("_connected")]
+position = Vector2(32, 136)
+script = ExtResource("7_mvues")
+_connected = [NodePath("../Node2D8"), NodePath("../Node2D6")]
+
+[node name="Node2D6" type="Node2D" parent="Guest Movement Nodes" node_paths=PackedStringArray("_connected")]
+position = Vector2(192, 136)
+script = ExtResource("7_mvues")
+_connected = [NodePath("../Node2D5"), NodePath("../Node2D2"), NodePath("../Node2D9"), NodePath("../Node2D7")]
+
+[node name="Node2D7" type="Node2D" parent="Guest Movement Nodes" node_paths=PackedStringArray("_connected")]
+position = Vector2(352, 136)
+script = ExtResource("7_mvues")
+_connected = [NodePath("../Node2D6"), NodePath("../Node2D4"), NodePath("../Node2D10")]
+
+[node name="Node2D8" type="Node2D" parent="Guest Movement Nodes" node_paths=PackedStringArray("_connected")]
+position = Vector2(32, 56)
+script = ExtResource("7_mvues")
+_connected = [NodePath("../Node2D5"), NodePath("../Node2D9")]
+
+[node name="Node2D9" type="Node2D" parent="Guest Movement Nodes" node_paths=PackedStringArray("_connected")]
+position = Vector2(192, 56)
+script = ExtResource("7_mvues")
+_connected = [NodePath("../Node2D8"), NodePath("../Node2D6"), NodePath("../Node2D10")]
+
+[node name="Node2D10" type="Node2D" parent="Guest Movement Nodes" node_paths=PackedStringArray("_connected")]
+position = Vector2(352, 56)
+script = ExtResource("7_mvues")
+_connected = [NodePath("../Node2D9"), NodePath("../Node2D7")]
 
 [node name="UiMeter" parent="." instance=ExtResource("4_1s4jw")]
+z_index = 0
 
 [node name="MachineShop" parent="." instance=ExtResource("4_ohbly")]
 
 [node name="TextParticleManager" parent="." instance=ExtResource("6_6lvv6")]
+moneyIncrease = Color(0.560784, 1, 0.172549, 1)
+moneyDecrease = Color(0.972549, 1, 0.243137, 1)

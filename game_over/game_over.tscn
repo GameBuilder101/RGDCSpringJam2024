@@ -155,6 +155,7 @@ texture_filter = 1
 offset_top = 144.0
 offset_right = 384.0
 offset_bottom = 160.0
+pivot_offset = Vector2(192, 8)
 theme = ExtResource("2_t2xol")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1

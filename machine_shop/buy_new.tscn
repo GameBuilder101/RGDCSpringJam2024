@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://bdm82djtj6w24" path="res://gameplay_ui/small_button.png" id="2_5i7bg"]
 [ext_resource type="Texture2D" uid="uid://c2ja12fg6argj" path="res://gameplay_ui/small_button_highlighted.png" id="3_205d4"]
 [ext_resource type="Script" path="res://machine_shop/BuyButton.cs" id="4_5o4j7"]
-[ext_resource type="Theme" path="res://gameplay_ui/big_font.tres" id="4_wuaed"]
+[ext_resource type="Theme" uid="uid://b2hh8747xw4e8" path="res://gameplay_ui/big_font.tres" id="4_wuaed"]
 [ext_resource type="Texture2D" uid="uid://ckdkdsevn5ukk" path="res://gameplay_ui/arrow_button.png" id="5_oabu3"]
 [ext_resource type="Texture2D" uid="uid://osjit1npbebf" path="res://gameplay_ui/arrow_button_highlighted.png" id="6_1hagl"]
 [ext_resource type="Script" path="res://machine_shop/ArrowButton.cs" id="7_1h844"]
 [ext_resource type="Texture2D" uid="uid://c80s8pnn22okp" path="res://machine/slot_machine_0.png" id="8_tt4bn"]
-[ext_resource type="Theme" path="res://gameplay_ui/small_font.tres" id="9_pcuu0"]
-[ext_resource type="PackedScene" uid="uid://bdade3ye4s3ir" path="res://machine/MachineScene.tscn" id="11_pf5l4"]
+[ext_resource type="Theme" uid="uid://cgkpf3snkxnom" path="res://gameplay_ui/small_font.tres" id="9_pcuu0"]
+[ext_resource type="PackedScene" uid="uid://c4drtbve7sfs1" path="res://machine/MachineScene.tscn" id="11_pf5l4"]
 [ext_resource type="Texture2D" uid="uid://b5noid4ntjqky" path="res://machine/craps_table_0.png" id="12_r0liy"]
 [ext_resource type="Texture2D" uid="uid://n2g66mkm4mur" path="res://machine/craps_table_1.png" id="13_11fow"]
 [ext_resource type="Texture2D" uid="uid://dwoi377ovkh65" path="res://machine/craps_table_2.png" id="14_up4xv"]
@@ -22,14 +22,15 @@
 
 [node name="BuyNew" type="Node2D" node_paths=PackedStringArray("MachineTypes", "ShopCostLabel", "MachineImage", "NameLabel", "CostLabel", "JackpotLabel", "SusLabel", "RollsLabel")]
 script = ExtResource("1_3hjxg")
-MachineTypes = [NodePath("MachineTypes/craps_0"), NodePath("MachineTypes/craps_1"), NodePath("MachineTypes/craps_2"), NodePath("MachineTypes/poker_0"), NodePath("MachineTypes/poker_1"), NodePath("MachineTypes/poker_2"), NodePath("MachineTypes/slot_0"), NodePath("MachineTypes/slot_1"), NodePath("MachineTypes/slot_2")]
+MachineTypes = [NodePath("MachineTypes/slot_0"), NodePath("MachineTypes/slot_1"), NodePath("MachineTypes/slot_2"), NodePath("MachineTypes/poker_0"), NodePath("MachineTypes/poker_1"), NodePath("MachineTypes/poker_2"), NodePath("MachineTypes/craps_0"), NodePath("MachineTypes/craps_1"), NodePath("MachineTypes/craps_2")]
 ShopCostLabel = NodePath("Buy Button/Label")
-MachineImage = NodePath("Machine")
+MachineImage = NodePath("Machine Icon")
 NameLabel = NodePath("Machine Name")
 CostLabel = NodePath("Play Cost")
 JackpotLabel = NodePath("Jackpot Amount")
 SusLabel = NodePath("Suspicion Factor")
 RollsLabel = NodePath("Num Rolls")
+_machineTemplate = ExtResource("11_pf5l4")
 
 [node name="Buy Button" type="TextureButton" parent="."]
 texture_filter = 1
@@ -80,7 +81,7 @@ texture_pressed = ExtResource("6_1hagl")
 texture_hover = ExtResource("6_1hagl")
 script = ExtResource("7_1h844")
 
-[node name="Machine" type="Sprite2D" parent="."]
+[node name="Machine Icon" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(68, 216)
 texture = ExtResource("8_tt4bn")
@@ -143,7 +144,8 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 text = "Rolls per Guest: "
 
-[node name="MachineTypes" type="Node" parent="."]
+[node name="MachineTypes" type="Node2D" parent="."]
+visible = false
 
 [node name="craps_0" parent="MachineTypes" instance=ExtResource("11_pf5l4")]
 name = "Craps Table (I)"

@@ -24,9 +24,12 @@ public partial class BuyNew : Node2D
 	private Label SusLabel;
 	[Export]
 	private Label RollsLabel;
-	
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+
+    [Export]
+    private PackedScene _machineTemplate;
+
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
 		instance = this;
 		UpdateDisplay();
@@ -55,7 +58,11 @@ public partial class BuyNew : Node2D
 		if (MachineManager.instance.Moola < m.ShopCost) {
 			return;
 		}
-		MachineManager.instance.placeMachine(m.copy());
+
+		Machine newMachine = (Machine)_machineTemplate.Instantiate();
+		newMachine.CopyValuesFrom(m);
+
+		MachineManager.instance.placeMachine(newMachine);
 		MachineManager.instance.Moola -= m.ShopCost;
 		Machine display = MachineManager.instance.getMachine();
 

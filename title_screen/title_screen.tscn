@@ -28,7 +28,7 @@ framesPerSecond = 2.0
 creditsText = NodePath("Credits")
 creditsDuration = 2.0
 frames = Array[Texture2D]([ExtResource("2_w588t"), ExtResource("3_y0svh"), ExtResource("4_ilkb8")])
-flashInterval = 0.6
+flashInterval = 0.8
 flashColors = PackedColorArray(0.243137, 1, 0.992157, 1, 0.972549, 0.243137, 1, 1, 0.972549, 1, 0.243137, 1)
 sprite = NodePath("Animation")
 startLabel = NodePath("PressStart")
@@ -143,6 +143,7 @@ offset_right = 384.0
 offset_bottom = 208.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(192, 8)
 theme = ExtResource("5_u50um")
 theme_override_colors/font_color = Color(0.243137, 1, 0.992157, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -161,9 +162,9 @@ texture = ExtResource("6_xmqd2")
 
 [node name="Skip Button" type="TextureButton" parent="Instructions"]
 texture_filter = 1
-offset_left = 112.0
+offset_left = 148.0
 offset_top = 184.0
-offset_right = 200.0
+offset_right = 236.0
 offset_bottom = 208.0
 texture_normal = ExtResource("12_fut6g")
 texture_pressed = ExtResource("13_rqsi0")
@@ -185,11 +186,23 @@ text = "Skip"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Back Button" type="TextureButton" parent="Instructions"]
+texture_filter = 1
+offset_left = 112.0
+offset_top = 180.0
+offset_right = 146.0
+offset_bottom = 212.0
+texture_normal = ExtResource("15_7lqqc")
+texture_pressed = ExtResource("16_0xgrb")
+texture_hover = ExtResource("16_0xgrb")
+flip_h = true
+script = ExtResource("17_56ma3")
+
 [node name="Next Button" type="TextureButton" parent="Instructions"]
 texture_filter = 1
-offset_left = 232.0
+offset_left = 238.0
 offset_top = 180.0
-offset_right = 266.0
+offset_right = 272.0
 offset_bottom = 212.0
 texture_normal = ExtResource("15_7lqqc")
 texture_pressed = ExtResource("16_0xgrb")
@@ -231,7 +244,7 @@ theme_override_constants/outline_size = 2
 bbcode_enabled = true
 text = "You are the manager of a casino. Make as much money as you can without raising suspicion to stay open as long as possible.
 
-(Press arrow to go to next page)"
+(Press right arrow to go to next page)"
 
 [node name="Page 2" type="Node2D" parent="Instructions"]
 visible = false
@@ -397,7 +410,7 @@ theme = ExtResource("11_ymwo4")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 bbcode_enabled = true
-text = "If [color=#ff5a00]the inspector[/color] arrives while your [color=#ff5a00]suspicion[/color] is maximum, you get fined."
+text = "If [color=#ff5a00]the inspector[/color] is present while your [color=#ff5a00]suspicion[/color] is maximum, you get fined."
 
 [node name="Inspector" type="Sprite2D" parent="Instructions/Page 5"]
 texture_filter = 1
@@ -441,4 +454,5 @@ bbcode_enabled = true
 text = "If you go bankrupt, the game ends. Stay open longer to get a higher score!"
 
 [connection signal="button_down" from="Instructions/Skip Button" to="." method="EndInstructions"]
+[connection signal="button_down" from="Instructions/Back Button" to="." method="PreviousInstructionPage"]
 [connection signal="button_down" from="Instructions/Next Button" to="." method="NextInstructionPage"]

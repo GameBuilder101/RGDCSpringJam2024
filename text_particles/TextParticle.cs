@@ -34,6 +34,8 @@ public partial class TextParticle : Label
 	public override void _Process(double delta)
 	{
 		this.LifeTime -= delta;
+		this.GlobalPosition += new Vector2(0.0f, -1.1f * (float)delta);
+
 		if (this.LifeTime <= 0) {
 			this.QueueFree();
 		} else {

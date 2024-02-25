@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqgs2r8mlglx3"]
+
+[ext_resource type="Texture2D" uid="uid://cfn17pocu10cc" path="res://casino/inspector.png" id="1_rx3s5"]
+[ext_resource type="Script" path="res://casino/Guest.cs" id="2_nl74s"]
+
+[node name="Inspector" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_rx3s5")
+centered = false
+offset = Vector2(-16, -32)
+script = ExtResource("2_nl74s")
+_maxDestinationOffset = 10.0
+_minMoveSpeed = 10.0
+_maxMoveSpeed = 20.0
+_idleAnimScale = 0.25

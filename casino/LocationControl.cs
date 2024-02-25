@@ -11,6 +11,8 @@ public partial class LocationControl : Control
 	public bool Focus {get {return _f;} set {_f = value; updateDiamond();}}
 	private bool _m;
 	private bool MouseOn {get {return _m;} set {_m = value; updateDiamond();}}
+
+	private double _animTime;
 	
 	public override void _Ready()
 	{
@@ -18,8 +20,17 @@ public partial class LocationControl : Control
 		Focus = false;
 		MouseOn = false;
 	}
-	
-	private void OnMouseEntered()
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+		_animTime += delta;
+		float scale = 1.0f + (float)Math.Sin(_animTime * 3.0) * 0.1f;
+
+        Diamond.Scale = new Vector2(scale, scale);
+    }
+
+    private void OnMouseEntered()
 	{
 		MouseOn = true;
 	}

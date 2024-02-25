@@ -33,11 +33,22 @@ public partial class Machine : Sprite2D
 	/// </summary>
 	[Export]
 	public int JackpotAmount { get; private set; }
+	private float _jackpotProbability;
 	/// <summary>
 	/// The chance for a guest to win the jackpot. 0 means no chance, and 1 means 100% chance.
 	/// </summary>
 	[Export]
-	public float JackpotProbability {get; set;}
+	public float JackpotProbability
+	{
+		get { return _jackpotProbability; }
+		set
+		{
+			_jackpotProbability = value;
+            if (_jackpotProbabilityLabel == null)
+                return;
+            _jackpotProbabilityLabel.Text = Math.Round(_jackpotProbability * 100) + "%";
+        }
+	}
 	/// <summary>
 	/// The default chance for a guest to win the jackpot.
 	/// </summary>
@@ -62,9 +73,12 @@ public partial class Machine : Sprite2D
 	
 	public float JackpotSuspicionReduction {get; private set;}
 
+	[Export]
+	private Label _jackpotProbabilityLabel;
+
 	public Machine() {}
 
-	private Machine(Machine m) {
+	public void CopyValuesFrom(Machine m) {
 		this.name = m.name;
 		this.MachineTexture = m.MachineTexture;
 		this.Texture = m.MachineTexture;
@@ -82,9 +96,9 @@ public partial class Machine : Sprite2D
 		this.posRNG.Randomize();
 	}
 
-	public Machine copy() {
+	/*public Machine copy() {   <--------- Lyx there is something called PACKED SCENES
 		return new Machine(this);
-	}
+	}*/
 
 	/*
 	[Export]
@@ -150,8 +164,8 @@ public partial class Machine : Sprite2D
 	public int Roll()
 	{
 		if(moneyRNG.Randf() <= JackpotProbability){
-			return JackpotAmount;
-			MachineManager.instance.Suspicion -= JackpotSuspicionReduction;
+            MachineManager.instance.Suspicion -= JackpotSuspicionReduction;
+            return JackpotAmount;
 		}
 		else{
 			return 0;

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://svqohi0hhij1"]
+
+[ext_resource type="Texture2D" uid="uid://cd4eqqdcqdbdw" path="res://casino/guest.png" id="1_o03vt"]
+[ext_resource type="Script" path="res://casino/Guest.cs" id="2_c5l13"]
+
+[node name="Guest" type="Sprite2D" node_paths=PackedStringArray("Destination")]
+texture_filter = 1
+texture = ExtResource("1_o03vt")
+centered = false
+offset = Vector2(-16, -32)
+script = ExtResource("2_c5l13")
+Destination = NodePath("")
+_maxDestinationOffset = 10.0
+_minMoveSpeed = 30.0
+_maxMoveSpeed = 40.0
+_maxLoiterTime = 8.0

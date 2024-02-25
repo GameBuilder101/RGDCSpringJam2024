@@ -30,8 +30,8 @@ public partial class TitleScreen : Node2D
 	TitleState state;
 	bool prevPressState;
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
 		secondsPerFrame = 1 / framesPerSecond;
 		timer = 0;
@@ -69,6 +69,9 @@ public partial class TitleScreen : Node2D
 				break;
 			case TitleState.Title:
                 timer += delta;
+
+                startLabel.RotationDegrees = (float)(Math.Sin(timer * 2.0) - 0.5) * 5.0f;
+
                 if (frameIndex < frames.Length - 1)
                 {
 					if (Mathf.Floor(timer / secondsPerFrame) > frameIndex)
@@ -142,7 +145,16 @@ public partial class TitleScreen : Node2D
         startLabel.AddThemeColorOverride("font_color", flashColors[index]);
     }
 
-	public void NextInstructionPage()
+    public void PreviousInstructionPage()
+    {
+        instructions[instructionIndex].Visible = false;
+        instructionIndex--;
+		if (instructionIndex < 0)
+			instructionIndex = 0;
+        instructions[instructionIndex].Visible = true;
+    }
+
+    public void NextInstructionPage()
 	{
 		instructions[instructionIndex].Visible = false;
 		instructionIndex++;

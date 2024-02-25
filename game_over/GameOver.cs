@@ -16,14 +16,23 @@ public partial class GameOver : Node2D
 	[Export]
 	private Label _finalScoreLabel;
 
+	private double _animTime;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_timePlayedLabel.Text = "Minutes in Business: " + _timePlayed;
+		_timePlayedLabel.Text = "Minutes in Business: " + Math.Round(_timePlayed / 60.0);
 		_highestMoneyLabel.Text = "Most Money at Once: " + _highestMoney;
 		_timesFinedLabel.Text = "Times Fined: " + _timesFined;
 		_finalScoreLabel.Text = "" + CalculateFinalScore(_timePlayed, _highestMoney, _timesFined);
 	}
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+		_animTime += delta;
+		_finalScoreLabel.RotationDegrees = (float)(Math.Sin(_animTime * 2.0) - 0.5) * 5.0f;
+    }
 
     public void SwitchToTitle()
     {

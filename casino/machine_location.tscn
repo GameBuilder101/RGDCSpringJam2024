@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cc53oe3kgmt80"]
+[gd_scene load_steps=9 format=3 uid="uid://ceyh43t7uoupa"]
 
 [ext_resource type="Script" path="res://casino/MachineLocation.cs" id="1_kno7u"]
 [ext_resource type="Texture2D" uid="uid://bq8a5dehcxb7u" path="res://casino/selection_diamond.png" id="1_mxj48"]

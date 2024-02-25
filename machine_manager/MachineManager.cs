@@ -15,12 +15,14 @@ public partial class MachineManager : Node2D
 	private double TimePlayed = 0;
 	private int HighMoola = 0;
 	private int NumFines = 0;
-	
+
 	[Export]
 	private Node LocationHolder;
-	
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+
+    public int TotalMachineRollCount { get; private set; }
+
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
 		instance = this;
 		int num = LocationHolder.GetChildCount();
@@ -51,7 +53,7 @@ public partial class MachineManager : Node2D
 			}
 		}
 		if (Moola < 0) {
-			GameOver.SetScoreValues(TimePlayer, HighMoola, NumFines);
+			GameOver.SetScoreValues(TimePlayed, HighMoola, NumFines);
 			GetTree().ChangeSceneToFile("res://game_over/game_over.tscn");
 		}
 		if (Moola > HighMoola) {
@@ -72,10 +74,14 @@ public partial class MachineManager : Node2D
 		m.Position = Locations[index].Position + new Vector2(0, -8);
 		Machines[index] = m;
 		AddChild(m);
+
+		TotalMachineRollCount += m.NumRolls;
 	}
 	
 	public void removeMachine(int index) {
-		Machines[index].QueueFree();
+        TotalMachineRollCount -= Machines[index].NumRolls;
+
+        Machines[index].QueueFree();
 		Machines[index] = null;
 	}
 	
