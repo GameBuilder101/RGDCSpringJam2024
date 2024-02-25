@@ -92,7 +92,7 @@ public partial class Machine : Sprite2D
 		int Revenue = 0;
 		for(int index = 0; index < NumRolls; index++){
 			Revenue += PlayCost;
-			Revenue -= Roll(0);
+			Revenue -= Roll();
 		}
 		MachineManager.instance.Moola += Revenue;
 		MachineManager.instance.Suspicion += (double)SuspicionFactor;
@@ -102,9 +102,9 @@ public partial class Machine : Sprite2D
 	/// Simulates a guest using the machine.
 	/// </summary>
 	
-	public int Roll(ulong seed)
+	public int Roll()
 	{
-		float random = Probability(seed);
+		float random = Probability();
 		if(random <= JackpotProbability){
 			return JackpotAmount;
 		}
@@ -113,11 +113,10 @@ public partial class Machine : Sprite2D
 		}
 	}
 	
-	public float Probability(ulong seed)
+	public float Probability()
 	{
 		var RNG = new RandomNumberGenerator();
 		RNG.Randomize();
-		GD.Seed(seed);
 		float value = RNG.Randf();
 		return value;
 	}

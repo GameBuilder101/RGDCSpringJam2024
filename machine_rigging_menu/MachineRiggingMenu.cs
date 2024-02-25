@@ -67,7 +67,7 @@ public partial class MachineRiggingMenu : Node2D
 
 	private void UpdateDynamicDisplay() {
 		_winChanceLabel.Text = Math.Round(TargetMachine.JackpotProbability * 100) + "%";
-		_suspicionFactorLabel.Text = "Suspicion Factor: " + Math.Round(TargetMachine.SuspicionFactor * 100.0) + "%";
+		_suspicionFactorLabel.Text = "Suspicion Factor: " + (Math.Round(TargetMachine.SuspicionFactor * 100000.0))/1000 + "%";
 	}
 
 	public void IncreaseWinChance()
