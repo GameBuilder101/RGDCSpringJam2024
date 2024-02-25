@@ -1,8 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://brhocaqo0jdyd"]
+[gd_scene load_steps=19 format=3 uid="uid://byfamwoajjqun"]
 
 [ext_resource type="Texture2D" uid="uid://b6ghw8ubbxs4h" path="res://gameplay_ui/inspect_background.png" id="1_mvyaj"]
 [ext_resource type="Script" path="res://machine_shop/MachineShop.cs" id="1_uvfg6"]
-[ext_resource type="PackedScene" uid="uid://drh46xmeyvrse" path="res://machine_shop/buy_new.tscn" id="3_61s6k"]
+[ext_resource type="PackedScene" uid="uid://ba4yl4t23kwar" path="res://machine_shop/buy_new.tscn" id="3_61s6k"]
 [ext_resource type="Texture2D" uid="uid://c80s8pnn22okp" path="res://machine/slot_machine_0.png" id="3_iarv2"]
 [ext_resource type="Texture2D" uid="uid://bdm82djtj6w24" path="res://gameplay_ui/small_button.png" id="4_0vxbb"]
 [ext_resource type="Texture2D" uid="uid://c2ja12fg6argj" path="res://gameplay_ui/small_button_highlighted.png" id="5_ch3lx"]
@@ -63,7 +63,8 @@ vertical_alignment = 1
 [node name="craps_0" parent="MachineTypes" instance=ExtResource("8_5eohu")]
 name = "Craps Table (I)"
 MachineTexture = ExtResource("9_4lmo0")
-DefaultSuspicionFactor = 0.2
+ShopCost = 10
+DefaultSuspicionFactor = 0.01
 
 [node name="craps_1" parent="MachineTypes" instance=ExtResource("8_5eohu")]
 name = "Craps Table (II)"

@@ -64,10 +64,10 @@ public partial class Machine : Sprite2D
 		this.ShopCost = m.ShopCost;
 		this.PlayCost = m.PlayCost;
 		this.JackpotAmount = m.JackpotAmount;
-		this.JackpotProbability = m.DefaultJackpotProbability;
+		this.JackpotProbability = m.JackpotProbability;
 		this.DefaultJackpotProbability = m.DefaultJackpotProbability;
 		this.NumRolls = m.NumRolls;
-		this.SuspicionFactor = m.DefaultSuspicionFactor;
+		this.SuspicionFactor = m.SuspicionFactor;
 		this.DefaultSuspicionFactor = m.DefaultSuspicionFactor;
 	}
 
@@ -124,9 +124,16 @@ public partial class Machine : Sprite2D
 	
 	public void SuspicionUpdater()
 	{
-		SuspicionFactor = DefaultJackpotProbability * DefaultSuspicionFactor / JackpotProbability;
+		JackpotProbabilityLowerLimit();
+		SuspicionFactor = ((DefaultJackpotProbability/JackpotProbability)-1)*DefaultSuspicionFactor;
 		if(SuspicionFactor < 0){
 			SuspicionFactor = 0;
+		}
+	}
+	public void JackpotProbabilityLowerLimit()
+	{
+		if(JackpotProbability < 0.001){
+			JackpotProbability = (float)0.001;
 		}
 	}
 
