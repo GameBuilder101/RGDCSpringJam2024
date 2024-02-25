@@ -1,3 +1,50 @@
-[gd_scene format=3 uid="uid://7x4txyy55dxm"]
+[gd_scene load_steps=6 format=3 uid="uid://7x4txyy55dxm"]
 
-[node name="UiMeter" type="Node2D"]
+[ext_resource type="Script" path="res://machine_manager/UIMeter.cs" id="1_2kxxf"]
+[ext_resource type="Texture2D" uid="uid://duchougise7f" path="res://machine_manager/meter_background.png" id="1_inwdo"]
+[ext_resource type="Texture2D" uid="uid://bogyxnkiahkx" path="res://machine_manager/meter_fill.png" id="2_euco2"]
+[ext_resource type="Theme" uid="uid://cgkpf3snkxnom" path="res://gameplay_ui/small_font.tres" id="3_jkydj"]
+[ext_resource type="Theme" uid="uid://b2hh8747xw4e8" path="res://gameplay_ui/big_font.tres" id="4_rg7yj"]
+
+[node name="UiMeter" type="Node2D" node_paths=PackedStringArray("_meterFill", "_moneyLabel")]
+script = ExtResource("1_2kxxf")
+_meterFill = NodePath("MeterFill")
+_moneyLabel = NodePath("Money")
+
+[node name="MeterBackground" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(192, 24)
+texture = ExtResource("1_inwdo")
+
+[node name="MeterFill" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(134, 0)
+texture = ExtResource("2_euco2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 116, 48)
+
+[node name="Money" type="Label" parent="."]
+texture_filter = 1
+offset_left = 168.0
+offset_top = 24.0
+offset_right = 216.0
+offset_bottom = 40.0
+theme = ExtResource("3_jkydj")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "$69420"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Suspicion" type="Label" parent="."]
+texture_filter = 1
+offset_left = 128.0
+offset_right = 256.0
+offset_bottom = 24.0
+theme = ExtResource("4_rg7yj")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "SUSPICION"
+horizontal_alignment = 1
+vertical_alignment = 1
