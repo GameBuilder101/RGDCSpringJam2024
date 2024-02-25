@@ -45,7 +45,7 @@ public partial class BuyNew : Node2D
 		MachineImage.Texture = m.MachineTexture;
 		NameLabel.Text = m.name;
 		CostLabel.Text = string.Format("Payout Per Play: ${0}", m.PlayCost);
-        _defaultJackpotChanceLabel.Text = "Expected Jackpot: " + Math.Round(m.DefaultJackpotProbability * 100) + "%";
+        _defaultJackpotChanceLabel.Text = "No Suspicion Chance: " + Math.Round(m.DefaultJackpotProbability * 100) + "%";
         _jackpotAmountLabel.Text = "Jackpot Amount: $" + m.JackpotAmount;
 		RollsLabel.Text = string.Format("Rolls Per Guest: {0}", m.NumRolls);
 	}

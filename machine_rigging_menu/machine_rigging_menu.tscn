@@ -102,7 +102,7 @@ theme = ExtResource("8_oakfx")
 theme_override_colors/font_color = Color(0.243137, 1, 0.992157, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-text = "Expected Jackpot: %"
+text = "No Suspicion Chance: %"
 
 [node name="Num Rolls" type="Label" parent="."]
 texture_filter = 1
