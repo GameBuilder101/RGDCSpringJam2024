@@ -5,12 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://c3ulteue43g5y" path="res://title_screen/IMG_1877.png" id="3_y0svh"]
 [ext_resource type="Texture2D" uid="uid://e1mmc6jy7ln0" path="res://title_screen/IMG_1916.png" id="4_ilkb8"]
 [ext_resource type="Texture2D" uid="uid://bfjokgh4vrx7s" path="res://title_screen/background_club.png" id="5_2ap5w"]
-[ext_resource type="Theme" uid="uid://b2hh8747xw4e8" path="res://gameplay_ui/big_font.tres" id="5_u50um"]
+[ext_resource type="Theme" path="res://gameplay_ui/big_font.tres" id="5_u50um"]
 [ext_resource type="Texture2D" uid="uid://bf8vawrmb4rf1" path="res://title_screen/background_diamond.png" id="6_fxlgb"]
 [ext_resource type="Texture2D" uid="uid://bvewoahciuf6n" path="res://title_screen/tutorial_background.png" id="6_xmqd2"]
 [ext_resource type="Texture2D" uid="uid://dumf7e8an0v36" path="res://title_screen/background_heart.png" id="7_n4r1h"]
 [ext_resource type="Texture2D" uid="uid://dyc3inbotvehk" path="res://title_screen/background_spade.png" id="8_gqrav"]
-[ext_resource type="Theme" uid="uid://cgkpf3snkxnom" path="res://gameplay_ui/small_font.tres" id="11_ymwo4"]
+[ext_resource type="Theme" path="res://gameplay_ui/small_font.tres" id="11_ymwo4"]
 [ext_resource type="Texture2D" uid="uid://bdm82djtj6w24" path="res://gameplay_ui/small_button.png" id="12_fut6g"]
 [ext_resource type="Texture2D" uid="uid://c2ja12fg6argj" path="res://gameplay_ui/small_button_highlighted.png" id="13_rqsi0"]
 [ext_resource type="Script" path="res://machine_shop/CancelButton.cs" id="14_lc13s"]
@@ -25,7 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://15y4j4q5byru" path="res://gameplay_ui/ui_click_1.wav" id="23_t827o"]
 [ext_resource type="Script" path="res://gameplay_ui/EventPlayableAudio.cs" id="23_ugli6"]
 
-[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("creditsText", "sprite", "startLabel", "instructionsParent", "instructions", "_startAudio")]
+[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("creditsText", "sprite", "startLabel", "instructionsParent", "instructions")]
 script = ExtResource("1_qmqmw")
 framesPerSecond = 2.0
 creditsText = NodePath("Credits")
@@ -37,7 +37,6 @@ sprite = NodePath("Animation")
 startLabel = NodePath("PressStart")
 instructionsParent = NodePath("Instructions")
 instructions = [NodePath("Instructions/Page 1"), NodePath("Instructions/Page 2"), NodePath("Instructions/Page 3"), NodePath("Instructions/Page 4"), NodePath("Instructions/Page 5"), NodePath("Instructions/Page 6")]
-_startAudio = NodePath("UI Click 0")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 384.0
