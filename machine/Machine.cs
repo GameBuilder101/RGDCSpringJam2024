@@ -147,6 +147,10 @@ public partial class Machine : Sprite2D
 		MachineManager.instance.Suspicion += (double)SuspicionFactor;
 		}
 		
+		// LMAO
+		if (MachineManager.instance.Suspicion < 0) {
+			MachineManager.instance.Suspicion = 0;
+		}
 	}
 
 	private Vector2 nextParticlePos() {
